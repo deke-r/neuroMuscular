@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from '../../styles/cards/ServiceCard.module.css';
 
-const ServiceCard = ({ title, description, icon: Icon, image, features }) => {
+const ServiceCard = ({ id, title, description, icon: Icon, image, features }) => {
     return (
-        <div className={styles.serviceCard}>
+        <Link to={`/services/${id}`} className={styles.serviceCard}>
             <div className={styles.iconWrapper}>
                 {Icon && <Icon className={styles.icon} />}
             </div>
@@ -19,8 +20,9 @@ const ServiceCard = ({ title, description, icon: Icon, image, features }) => {
                         ))}
                     </ul>
                 )}
+                <span className={styles.learnMore}>Learn More →</span>
             </div>
-        </div>
+        </Link>
     );
 };
 

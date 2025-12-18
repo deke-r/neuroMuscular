@@ -8,6 +8,7 @@ import ScrollToTop from './utils/ScrollToTop';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
+import ServiceDetail from './pages/ServiceDetail';
 import Conditions from './pages/Conditions';
 import Doctors from './pages/Doctors';
 import Packages from './pages/Packages';
@@ -27,6 +28,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/:serviceId" element={<ServiceDetail />} />
             <Route path="/conditions" element={<Conditions />} />
             <Route path="/doctors" element={<Doctors />} />
             <Route path="/packages" element={<Packages />} />
