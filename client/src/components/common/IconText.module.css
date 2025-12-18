@@ -1,0 +1,31 @@
+.iconText {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.iconText.horizontal {
+    flex-direction: row;
+}
+
+.iconText.vertical {
+    flex-direction: column;
+    text-align: center;
+}
+
+.icon {
+    font-size: var(--font-size-xl);
+    color: var(--color-primary);
+    flex-shrink: 0;
+}
+
+.text {
+    font-size: var(--font-size-base);
+    color: var(--color-gray-700);
+    line-height: var(--line-height-normal);
+}
+
+.vertical .icon {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-sm);
+}

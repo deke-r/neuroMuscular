@@ -1,0 +1,157 @@
+import React from 'react';
+import { FaHeart, FaUserMd, FaBullseye, FaHandshake } from 'react-icons/fa';
+import PageHelmet from '../utils/PageHelmet.jsx';
+import PageHeader from '../components/layout/PageHeader';
+import SectionHeader from '../components/common/SectionHeader';
+import StatsBox from '../components/common/StatsBox';
+import DoctorCard from '../components/cards/DoctorCard';
+import { doctors } from '../data/doctors.data';
+
+const About = () => {
+    const breadcrumbs = [
+        { label: 'Home', path: '/' },
+        { label: 'About Us', path: '/about' }
+    ];
+
+    const values = [
+        {
+            icon: FaHeart,
+            title: 'Patient-Centered Care',
+            description: 'We prioritize your comfort, dignity, and individual needs in every aspect of treatment.'
+        },
+        {
+            icon: FaUserMd,
+            title: 'Expert Team',
+            description: 'Our multidisciplinary team brings years of specialized experience in rehabilitation medicine.'
+        },
+        {
+            icon: FaBullseye,
+            title: 'Evidence-Based Approach',
+            description: 'We use the latest research and proven techniques to deliver the best outcomes.'
+        },
+        {
+            icon: FaHandshake,
+            title: 'Collaborative Care',
+            description: 'We work closely with you and your family to achieve your rehabilitation goals.'
+        }
+    ];
+
+    return (
+        <>
+            <PageHelmet
+                title="About Us - PMR Hospital | Leading Rehabilitation Center"
+                description="Learn about PMR Hospital, our expert team, state-of-the-art facilities, and commitment to providing exceptional rehabilitation care in Delhi."
+                keywords="about PMR Hospital, rehabilitation center Delhi, expert rehabilitation team, neuro rehabilitation facility"
+                canonicalUrl="https://pmrhospital.com/about"
+            />
+
+            <PageHeader
+                title="About PMR Hospital"
+                subtitle="Dedicated to Restoring Lives and Rebuilding Hope"
+                breadcrumbs={breadcrumbs}
+            />
+
+            <section className="section-padding">
+                <div className="container">
+                    <div className="row align-items-center g-5">
+                        <div className="col-lg-6">
+                            <SectionHeader
+                                subtitle="Our Story"
+                                title="15 Years of Excellence in Rehabilitation"
+                                align="left"
+                            />
+                            <p style={{ fontSize: 'var(--font-size-lg)', lineHeight: 'var(--line-height-relaxed)', color: 'var(--color-gray-600)' }}>
+                                PMR Hospital was founded in 2009 with a vision to provide world-class rehabilitation services
+                                to patients recovering from neurological and musculoskeletal conditions. Over the years, we have
+                                grown into one of Delhi's most trusted rehabilitation centers.
+                            </p>
+                            <p style={{ fontSize: 'var(--font-size-lg)', lineHeight: 'var(--line-height-relaxed)', color: 'var(--color-gray-600)' }}>
+                                Our state-of-the-art facility combines advanced medical technology with compassionate care,
+                                helping thousands of patients regain their independence and improve their quality of life.
+                            </p>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="row g-4">
+                                <div className="col-6">
+                                    <StatsBox number="15" suffix="+" label="Years of Service" />
+                                </div>
+                                <div className="col-6">
+                                    <StatsBox number="5000" suffix="+" label="Patients Treated" />
+                                </div>
+                                <div className="col-6">
+                                    <StatsBox number="50" suffix="+" label="Expert Staff" />
+                                </div>
+                                <div className="col-6">
+                                    <StatsBox number="95" suffix="%" label="Success Rate" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="section-padding" style={{ background: 'var(--color-light)' }}>
+                <div className="container">
+                    <SectionHeader
+                        subtitle="Our Values"
+                        title="What Drives Us"
+                        description="Our core values guide everything we do, ensuring the highest quality care for every patient."
+                        align="center"
+                    />
+                    <div className="row g-4">
+                        {values.map((value, index) => (
+                            <div key={index} className="col-lg-3 col-md-6">
+                                <div style={{
+                                    background: 'var(--color-white)',
+                                    padding: 'var(--spacing-xl)',
+                                    borderRadius: 'var(--radius-xl)',
+                                    textAlign: 'center',
+                                    height: '100%',
+                                    boxShadow: 'var(--shadow-md)',
+                                    transition: 'all var(--transition-base)',
+                                    border: '1px solid var(--color-gray-200)'
+                                }}
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.style.transform = 'translateY(-5px)';
+                                        e.currentTarget.style.boxShadow = 'var(--shadow-xl)';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.style.transform = 'translateY(0)';
+                                        e.currentTarget.style.boxShadow = 'var(--shadow-md)';
+                                    }}>
+                                    <value.icon style={{ fontSize: 'var(--font-size-4xl)', color: 'var(--color-primary)', marginBottom: 'var(--spacing-lg)' }} />
+                                    <h4 style={{ fontSize: 'var(--font-size-xl)', fontWeight: 'var(--font-weight-bold)', marginBottom: 'var(--spacing-md)', color: 'var(--color-gray-800)' }}>
+                                        {value.title}
+                                    </h4>
+                                    <p style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-gray-600)', lineHeight: 'var(--line-height-relaxed)', margin: 0 }}>
+                                        {value.description}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="section-padding">
+                <div className="container">
+                    <SectionHeader
+                        subtitle="Our Team"
+                        title="Meet Our Expert Doctors"
+                        description="Our multidisciplinary team of specialists is dedicated to your recovery."
+                        align="center"
+                    />
+                    <div className="row g-4">
+                        {doctors.map((doctor) => (
+                            <div key={doctor.id} className="col-lg-4 col-md-6">
+                                <DoctorCard {...doctor} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+        </>
+    );
+};
+
+export default About;

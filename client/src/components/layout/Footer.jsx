@@ -1,0 +1,135 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import styles from './Footer.module.css';
+
+const Footer = () => {
+    const quickLinks = [
+        { path: '/', label: 'Home' },
+        { path: '/about', label: 'About Us' },
+        { path: '/services', label: 'Services' },
+        { path: '/doctors', label: 'Our Doctors' },
+        { path: '/packages', label: 'Packages' },
+        { path: '/contact', label: 'Contact' }
+    ];
+
+    const services = [
+        { path: '/services', label: 'Neuro Rehabilitation' },
+        { path: '/services', label: 'Physical Therapy' },
+        { path: '/services', label: 'Occupational Therapy' },
+        { path: '/services', label: 'Speech Therapy' },
+        { path: '/services', label: 'Pediatric Rehabilitation' }
+    ];
+
+    const contactInfo = {
+        address: '123 Medical Street, Healthcare City, Delhi - 110001',
+        phone: '+91 123 456 7890',
+        email: 'info@pmrhospital.com'
+    };
+
+    const socialLinks = [
+        { icon: FaFacebookF, url: 'https://facebook.com', label: 'Facebook' },
+        { icon: FaTwitter, url: 'https://twitter.com', label: 'Twitter' },
+        { icon: FaInstagram, url: 'https://instagram.com', label: 'Instagram' },
+        { icon: FaLinkedinIn, url: 'https://linkedin.com', label: 'LinkedIn' }
+    ];
+
+    return (
+        <footer className={styles.footer}>
+            <div className="container">
+                <div className="row g-4">
+                    <div className="col-lg-4 col-md-6">
+                        <div className={styles.footerSection}>
+                            <h3 className={styles.footerTitle}>PMR Hospital</h3>
+                            <p className={styles.footerDescription}>
+                                Leading rehabilitation center providing comprehensive care for neurological and musculoskeletal conditions.
+                                Our expert team is dedicated to helping you regain independence and improve quality of life.
+                            </p>
+                            <div className={styles.socialLinks}>
+                                {socialLinks.map((social, index) => (
+                                    <a
+                                        key={index}
+                                        href={social.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={styles.socialLink}
+                                        aria-label={social.label}
+                                    >
+                                        <social.icon />
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-lg-2 col-md-6">
+                        <div className={styles.footerSection}>
+                            <h4 className={styles.sectionTitle}>Quick Links</h4>
+                            <ul className={styles.linkList}>
+                                {quickLinks.map((link, index) => (
+                                    <li key={index}>
+                                        <Link to={link.path} className={styles.footerLink}>
+                                            {link.label}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div className="col-lg-3 col-md-6">
+                        <div className={styles.footerSection}>
+                            <h4 className={styles.sectionTitle}>Our Services</h4>
+                            <ul className={styles.linkList}>
+                                {services.map((service, index) => (
+                                    <li key={index}>
+                                        <Link to={service.path} className={styles.footerLink}>
+                                            {service.label}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div className="col-lg-3 col-md-6">
+                        <div className={styles.footerSection}>
+                            <h4 className={styles.sectionTitle}>Contact Info</h4>
+                            <ul className={styles.contactList}>
+                                <li className={styles.contactItem}>
+                                    <FaMapMarkerAlt className={styles.contactIcon} />
+                                    <span>{contactInfo.address}</span>
+                                </li>
+                                <li className={styles.contactItem}>
+                                    <FaPhone className={styles.contactIcon} />
+                                    <a href={`tel:${contactInfo.phone}`} className={styles.contactLink}>
+                                        {contactInfo.phone}
+                                    </a>
+                                </li>
+                                <li className={styles.contactItem}>
+                                    <FaEnvelope className={styles.contactIcon} />
+                                    <a href={`mailto:${contactInfo.email}`} className={styles.contactLink}>
+                                        {contactInfo.email}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={styles.footerBottom}>
+                    <p className={styles.copyright}>
+                        © {new Date().getFullYear()} PMR Hospital. All rights reserved.
+                    </p>
+                    <div className={styles.footerBottomLinks}>
+                        <Link to="/privacy" className={styles.bottomLink}>Privacy Policy</Link>
+                        <span className={styles.separator}>|</span>
+                        <Link to="/terms" className={styles.bottomLink}>Terms of Service</Link>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    );
+};
+
+export default Footer;

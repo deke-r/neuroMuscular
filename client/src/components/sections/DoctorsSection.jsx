@@ -1,0 +1,27 @@
+import React from 'react';
+import SectionHeader from '../common/SectionHeader';
+import DoctorCard from '../cards/DoctorCard';
+import styles from './DoctorsSection.module.css';
+
+const DoctorsSection = ({ title, subtitle, doctors }) => {
+    return (
+        <section className={`${styles.doctorsSection} section-padding`}>
+            <div className="container">
+                <SectionHeader
+                    title={title}
+                    subtitle={subtitle}
+                    align="center"
+                />
+                <div className="row g-4">
+                    {doctors && doctors.map((doctor) => (
+                        <div key={doctor.id} className="col-lg-4 col-md-6">
+                            <DoctorCard {...doctor} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default DoctorsSection;

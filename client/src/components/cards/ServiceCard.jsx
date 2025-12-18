@@ -1,0 +1,27 @@
+import React from 'react';
+import styles from './ServiceCard.module.css';
+
+const ServiceCard = ({ title, description, icon: Icon, image, features }) => {
+    return (
+        <div className={styles.serviceCard}>
+            <div className={styles.iconWrapper}>
+                {Icon && <Icon className={styles.icon} />}
+            </div>
+            <div className={styles.content}>
+                <h3 className={styles.title}>{title}</h3>
+                <p className={styles.description}>{description}</p>
+                {features && features.length > 0 && (
+                    <ul className={styles.featuresList}>
+                        {features.slice(0, 3).map((feature, index) => (
+                            <li key={index} className={styles.feature}>
+                                {feature}
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </div>
+        </div>
+    );
+};
+
+export default ServiceCard;

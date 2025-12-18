@@ -1,0 +1,147 @@
+.hero {
+    position: relative;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    background: var(--gradient-primary);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: var(--spacing-5xl) 0;
+}
+
+.overlay {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(12, 67, 121, 0.95) 0%, rgba(8, 48, 86, 0.85) 100%);
+    z-index: 0;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    animation: fadeIn var(--transition-slow) ease-out;
+}
+
+.subtitle {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-accent-light);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: var(--spacing-lg);
+    animation: slideInLeft var(--transition-slow) ease-out;
+}
+
+.title {
+    font-size: var(--font-size-6xl);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-white);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--spacing-2xl);
+    font-family: var(--font-secondary);
+    animation: slideInLeft var(--transition-slow) ease-out 0.2s;
+}
+
+.ctaButton {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    background: var(--gradient-accent);
+    color: var(--color-white);
+    padding: var(--spacing-lg) var(--spacing-2xl);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-xl);
+    margin-bottom: var(--spacing-2xl);
+    animation: slideInLeft var(--transition-slow) ease-out 0.4s;
+}
+
+.ctaButton:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-2xl);
+    color: var(--color-white);
+}
+
+.ctaIcon {
+    transition: transform var(--transition-base);
+}
+
+.ctaButton:hover .ctaIcon {
+    transform: translateX(5px);
+}
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xl);
+    animation: fadeIn var(--transition-slow) ease-out 0.6s;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--color-white);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+}
+
+.featureIcon {
+    font-size: var(--font-size-xl);
+    color: var(--color-accent-light);
+}
+
+@media (max-width: 992px) {
+    .hero {
+        min-height: 500px;
+    }
+
+    .title {
+        font-size: var(--font-size-5xl);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: 450px;
+        padding: var(--spacing-4xl) 0;
+    }
+
+    .title {
+        font-size: var(--font-size-4xl);
+    }
+
+    .subtitle {
+        font-size: var(--font-size-base);
+    }
+
+    .ctaButton {
+        padding: var(--spacing-md) var(--spacing-xl);
+        font-size: var(--font-size-base);
+    }
+
+    .features {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+}
+
+@media (max-width: 576px) {
+    .title {
+        font-size: var(--font-size-3xl);
+    }
+}
