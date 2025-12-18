@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './IconText.module.css';
+import styles from '../../styles/common/IconText.module.css';
 
 const IconText = ({ icon: Icon, text, variant = 'horizontal' }) => {
     return (

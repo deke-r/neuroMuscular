@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
-import styles from './HeroSection.module.css';
+import styles from '../../styles/sections/HeroSection.module.css';
 
 const HeroSection = ({ title, subtitle, ctaText, ctaLink, backgroundImage, features }) => {
     const heroStyle = backgroundImage

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaCheckCircle } from 'react-icons/fa';
-import styles from './AppointmentForm.module.css';
+import styles from '../../styles/form/AppointmentForm.module.css';
 
 const AppointmentForm = ({
     formTitle = 'Book an Appointment',

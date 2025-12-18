@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
-import styles from './Footer.module.css';
+import styles from '../../styles/layout/Footer.module.css';
 
 const Footer = () => {
     const quickLinks = [

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './DoctorCard.module.css';
+import styles from '../../styles/cards/DoctorCard.module.css';
 
 const DoctorCard = ({ name, designation, specialization, experience, image, qualifications }) => {
     return (

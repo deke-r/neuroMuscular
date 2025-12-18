@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaCheck } from 'react-icons/fa';
-import styles from './PackageCard.module.css';
+import styles from '../../styles/cards/PackageCard.module.css';
 
 const PackageCard = ({ name, price, duration, features, popular, onSelect }) => {
     return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaChevronRight } from 'react-icons/fa';
-import styles from './Breadcrumbs.module.css';
+import styles from '../../styles/common/Breadcrumbs.module.css';
 
 const Breadcrumbs = ({ items }) => {
     if (!items || items.length === 0) return null;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaCheckCircle } from 'react-icons/fa';
-import styles from './ContactForm.module.css';
+import styles from '../../styles/form/ContactForm.module.css';
 
 const ContactForm = ({
     formTitle = 'Send us a Message',

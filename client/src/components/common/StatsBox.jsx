@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './StatsBox.module.css';
+import styles from '../../styles/common/StatsBox.module.css';
 
 const StatsBox = ({ number, label, icon: Icon, suffix = '' }) => {
     return (

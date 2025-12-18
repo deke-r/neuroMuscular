@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaStar, FaQuoteLeft, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import SectionHeader from '../common/SectionHeader';
-import styles from './TestimonialsSection.module.css';
+import styles from '../../styles/sections/TestimonialsSection.module.css';
 
 const TestimonialsSection = ({ title, subtitle, testimonials }) => {
     const [currentIndex, setCurrentIndex] = useState(0);

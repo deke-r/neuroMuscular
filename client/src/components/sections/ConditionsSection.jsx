@@ -1,7 +1,7 @@
 import React from 'react';
 import SectionHeader from '../common/SectionHeader';
 import ConditionCard from '../cards/ConditionCard';
-import styles from './ConditionsSection.module.css';
+import styles from '../../styles/sections/ConditionsSection.module.css';
 
 const ConditionsSection = ({ title, subtitle, conditions }) => {
     return (

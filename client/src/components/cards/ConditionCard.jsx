@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './ConditionCard.module.css';
+import styles from '../../styles/cards/ConditionCard.module.css';
 
 const ConditionCard = ({ title, description, icon: Icon, link = '#' }) => {
     return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import Breadcrumbs from '../common/Breadcrumbs';
-import styles from './PageHeader.module.css';
+import styles from '../../styles/layout/PageHeader.module.css';
 
 const PageHeader = ({ title, subtitle, breadcrumbs, backgroundImage }) => {
     const headerStyle = backgroundImage

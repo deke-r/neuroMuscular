@@ -1,7 +1,7 @@
 import React from 'react';
 import SectionHeader from '../common/SectionHeader';
 import ServiceCard from '../cards/ServiceCard';
-import styles from './ServicesSection.module.css';
+import styles from '../../styles/sections/ServicesSection.module.css';
 
 const ServicesSection = ({ title, subtitle, services }) => {
     return (

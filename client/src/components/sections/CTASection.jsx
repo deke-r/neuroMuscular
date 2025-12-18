@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
-import styles from './CTASection.module.css';
+import styles from '../../styles/sections/CTASection.module.css';
 
 const CTASection = ({ title, description, buttonText, buttonLink, variant = 'primary' }) => {
     return (

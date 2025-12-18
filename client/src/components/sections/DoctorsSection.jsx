@@ -1,7 +1,7 @@
 import React from 'react';
 import SectionHeader from '../common/SectionHeader';
 import DoctorCard from '../cards/DoctorCard';
-import styles from './DoctorsSection.module.css';
+import styles from '../../styles/sections/DoctorsSection.module.css';
 
 const DoctorsSection = ({ title, subtitle, doctors }) => {
     return (
