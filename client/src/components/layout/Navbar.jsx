@@ -12,7 +12,7 @@ const Navbar = () => {
         { path: '/services', label: 'Services' },
         { path: '/conditions', label: 'Conditions' },
         { path: '/doctors', label: 'Doctors' },
-        { path: '/packages', label: 'Packages' },
+        // { path: '/packages', label: 'Packages' },
         { path: '/infrastructure', label: 'Infrastructure' },
         { path: '/blog', label: 'Blog' },
         { path: '/contact', label: 'Contact' }
