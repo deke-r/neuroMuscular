@@ -34,6 +34,7 @@ const ServiceDetail = () => {
                 title={service.title}
                 subtitle={service.description}
                 breadcrumbs={breadcrumbs}
+                backgroundImage={service.image}
             />
 
             <section className={styles.serviceDetail}>

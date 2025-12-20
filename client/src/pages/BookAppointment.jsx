@@ -50,6 +50,7 @@ const BookAppointment = () => {
                 title="Book an Appointment"
                 subtitle="Take the First Step Towards Your Recovery"
                 breadcrumbs={breadcrumbs}
+                backgroundImage="/img/hero/contact-hero.jpg"
             />
 
             <section className="section-padding">

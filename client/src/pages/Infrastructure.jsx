@@ -68,6 +68,7 @@ const Infrastructure = () => {
                 title="Our Infrastructure"
                 subtitle="State-of-the-Art Facilities for Optimal Recovery"
                 breadcrumbs={breadcrumbs}
+                backgroundImage="/img/hero/infrastructure-hero.jpg"
             />
 
             <section className="section-padding">

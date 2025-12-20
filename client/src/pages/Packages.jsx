@@ -30,6 +30,7 @@ const Packages = () => {
                 title="Treatment Packages"
                 subtitle="Comprehensive Rehabilitation Plans Designed for Your Recovery"
                 breadcrumbs={breadcrumbs}
+                backgroundImage="/img/hero/services-hero.jpg"
             />
 
             <section className="section-padding">

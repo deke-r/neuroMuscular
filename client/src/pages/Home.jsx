@@ -17,6 +17,7 @@ const Home = () => {
         subtitle: 'Welcome to PMR Hospital',
         ctaText: 'Book Appointment',
         ctaLink: '/book-appointment',
+        backgroundImage: '/img/hero/infrastructure-hero.jpg',
         features: [
             { icon: FaAward, text: '15+ Years of Excellence' },
             { icon: FaUsers, text: 'Expert Medical Team' },

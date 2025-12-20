@@ -14,7 +14,7 @@ const ServicesSection = ({ title, subtitle, services }) => {
                 />
                 <div className="row g-4">
                     {services && services.map((service) => (
-                        <div key={service.id} className="col-lg-4 col-md-6">
+                        <div key={service.id} className="col-lg-6 col-md-6">
                             <ServiceCard {...service} />
                         </div>
                     ))}

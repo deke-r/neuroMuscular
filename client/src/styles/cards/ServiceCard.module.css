@@ -1,7 +1,7 @@
 .serviceCard {
     background: var(--color-white);
     border-radius: var(--radius-xl);
-    padding: var(--spacing-2xl);
+    padding: 0;
     box-shadow: var(--shadow-md);
     transition: all var(--transition-base);
     height: 100%;
@@ -10,6 +10,40 @@
     border: 1px solid var(--color-gray-200);
     text-decoration: none;
     color: inherit;
+    overflow: hidden;
+    position: relative;
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-base);
+}
+
+.serviceCard:hover .image {
+    transform: scale(1.1);
+}
+
+.imageOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(18, 137, 191, 0.1), rgba(18, 137, 191, 0.3));
+    transition: all var(--transition-base);
+}
+
+.serviceCard:hover .imageOverlay {
+    background: linear-gradient(to bottom, rgba(18, 137, 191, 0.2), rgba(18, 137, 191, 0.4));
 }
 
 .serviceCard:hover {
@@ -18,7 +52,11 @@
     border-color: var(--color-primary);
 }
 
+
 .iconWrapper {
+    position: absolute;
+    top: var(--spacing-lg);
+    left: var(--spacing-lg);
     width: 70px;
     height: 70px;
     border-radius: var(--radius-lg);
@@ -26,8 +64,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: var(--spacing-lg);
     transition: all var(--transition-base);
+    z-index: 2;
+    box-shadow: var(--shadow-lg);
 }
 
 .serviceCard:hover .iconWrapper {
@@ -43,6 +82,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    padding: var(--spacing-2xl);
 }
 
 .title {

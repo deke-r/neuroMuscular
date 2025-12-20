@@ -14,11 +14,10 @@ const Footer = () => {
     ];
 
     const services = [
-        { path: '/services', label: 'Neuro Rehabilitation' },
-        { path: '/services', label: 'Physical Therapy' },
-        { path: '/services', label: 'Occupational Therapy' },
-        { path: '/services', label: 'Speech Therapy' },
-        { path: '/services', label: 'Pediatric Rehabilitation' }
+        { path: '/services', label: 'Core Musculoskeletal Services' },
+        { path: '/services', label: 'Neurology and Balance Services' },
+        { path: '/services', label: 'Pain and Electrotherapy Services' },
+        { path: '/services', label: 'Sports, Spine, and Lifestyle Services' }
     ];
 
     const contactInfo = {

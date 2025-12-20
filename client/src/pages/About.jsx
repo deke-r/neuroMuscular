@@ -49,6 +49,7 @@ const About = () => {
                 title="About PMR Hospital"
                 subtitle="Dedicated to Restoring Lives and Rebuilding Hope"
                 breadcrumbs={breadcrumbs}
+                backgroundImage="/img/hero/about-hero.jpg"
             />
 
             <section className="section-padding">

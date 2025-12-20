@@ -24,6 +24,7 @@ const Conditions = () => {
                 title="Conditions We Treat"
                 subtitle="Expert Care for a Wide Range of Neurological and Musculoskeletal Conditions"
                 breadcrumbs={breadcrumbs}
+                backgroundImage="/img/hero/infrastructure-hero.jpg"
             />
 
             <section className="section-padding">

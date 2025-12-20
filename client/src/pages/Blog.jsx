@@ -86,6 +86,7 @@ const Blog = () => {
                 title="Our Blog"
                 subtitle="Expert Insights, Tips, and Stories from Our Medical Team"
                 breadcrumbs={breadcrumbs}
+                backgroundImage="/img/hero/about-hero.jpg"
             />
 
             <section className="section-padding">

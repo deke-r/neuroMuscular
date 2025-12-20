@@ -24,6 +24,7 @@ const Doctors = () => {
                 title="Our Expert Team"
                 subtitle="Meet the Specialists Dedicated to Your Recovery"
                 breadcrumbs={breadcrumbs}
+                backgroundImage="/img/hero/doctors-hero.jpg"
             />
 
             <section className="section-padding">

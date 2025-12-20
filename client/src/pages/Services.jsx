@@ -24,13 +24,14 @@ const Services = () => {
                 title="Our Services"
                 subtitle="Comprehensive Rehabilitation Solutions Tailored to Your Needs"
                 breadcrumbs={breadcrumbs}
+                backgroundImage="/img/hero/services-hero.jpg"
             />
 
             <section className="section-padding">
                 <div className="container">
                     <div className="row g-4">
                         {services.map((service) => (
-                            <div key={service.id} className="col-lg-4 col-md-6">
+                            <div key={service.id} className="col-lg-6 col-md-6">
                                 <ServiceCard {...service} />
                             </div>
                         ))}

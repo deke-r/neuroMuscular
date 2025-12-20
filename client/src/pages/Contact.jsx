@@ -49,6 +49,7 @@ const Contact = () => {
                 title="Contact Us"
                 subtitle="We're Here to Help You on Your Recovery Journey"
                 breadcrumbs={breadcrumbs}
+                backgroundImage="/img/hero/contact-hero.jpg"
             />
 
             <section className="section-padding">

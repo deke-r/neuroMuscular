@@ -5,6 +5,12 @@ import styles from '../../styles/cards/ServiceCard.module.css';
 const ServiceCard = ({ id, title, description, icon: Icon, image, features }) => {
     return (
         <Link to={`/services/${id}`} className={styles.serviceCard}>
+            {image && (
+                <div className={styles.imageWrapper}>
+                    <img src={image} alt={title} className={styles.image} />
+                    <div className={styles.imageOverlay}></div>
+                </div>
+            )}
             <div className={styles.iconWrapper}>
                 {Icon && <Icon className={styles.icon} />}
             </div>
