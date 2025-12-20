@@ -19,23 +19,23 @@
 }
 
 .link {
-    color: var(--color-gray-600);
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     font-size: var(--font-size-sm);
     transition: color var(--transition-fast);
 }
 
 .link:hover {
-    color: var(--color-primary);
+    color: var(--color-white);
 }
 
 .separator {
     font-size: var(--font-size-xs);
-    color: var(--color-gray-400);
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .active {
-    color: var(--color-primary);
+    color: var(--color-white);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
 }

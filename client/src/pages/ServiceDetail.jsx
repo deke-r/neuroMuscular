@@ -125,13 +125,17 @@ const ServiceDetail = () => {
                                     {services
                                         .filter(s => s.id !== service.id)
                                         .slice(0, 3)
-                                        .map(relatedService => (
-                                            <li key={relatedService.id} className={styles.relatedItem}>
-                                                <Link to={`/services/${relatedService.id}`} className={styles.relatedLink}>
-                                                    {relatedService.title}
-                                                </Link>
-                                            </li>
-                                        ))
+                                        .map(relatedService => {
+                                            const RelatedIcon = relatedService.icon;
+                                            return (
+                                                <li key={relatedService.id} className={styles.relatedItem}>
+                                                    <Link to={`/services/${relatedService.id}`} className={styles.relatedLink}>
+                                                        <RelatedIcon className={styles.relatedIcon} />
+                                                        <span>{relatedService.title}</span>
+                                                    </Link>
+                                                </li>
+                                            );
+                                        })
                                     }
                                 </ul>
                             </div>
