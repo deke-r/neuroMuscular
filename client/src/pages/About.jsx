@@ -6,6 +6,7 @@ import SectionHeader from '../components/common/SectionHeader';
 import StatsBox from '../components/common/StatsBox';
 import DoctorCard from '../components/cards/DoctorCard';
 import { doctors } from '../data/doctors.data';
+import CTASection from '../components/sections/CTASection.jsx';
 
 const About = () => {
     const breadcrumbs = [
@@ -151,6 +152,14 @@ const About = () => {
                     </div>
                 </div>
             </section>
+
+                <CTASection
+                title="Ready to Meet Our Team?"
+                description="Book an appointment with one of our expert specialists and start your journey to recovery."
+                buttonText="Book Appointment"
+                buttonLink="/book-appointment"
+                variant="secondary"
+            /> 
         </>
     );
 };
