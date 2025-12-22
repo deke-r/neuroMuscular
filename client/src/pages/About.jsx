@@ -58,29 +58,29 @@ const About = () => {
                         <div className="col-lg-6">
                             <SectionHeader
                                 subtitle="Our Story"
-                                title="15 Years of Excellence in Rehabilitation"
+                                title="Expert Rehabilitation Care"
                                 align="left"
                             />
                             <p style={{ fontSize: 'var(--font-size-lg)', lineHeight: 'var(--line-height-relaxed)', color: 'var(--color-gray-600)' }}>
-                                PMR Hospital was founded in 2009 with a vision to provide world-class rehabilitation services
-                                to patients recovering from neurological and musculoskeletal conditions. Over the years, we have
-                                grown into one of Delhi's most trusted rehabilitation centers.
+                                PMR Hospital is a professional rehabilitation center dedicated to providing world-class rehabilitation services
+                                to patients recovering from neurological and musculoskeletal conditions. Our vision is to become
+                                a premier destination for comprehensive rehabilitation care.
                             </p>
                             <p style={{ fontSize: 'var(--font-size-lg)', lineHeight: 'var(--line-height-relaxed)', color: 'var(--color-gray-600)' }}>
                                 Our state-of-the-art facility combines advanced medical technology with compassionate care,
-                                helping thousands of patients regain their independence and improve their quality of life.
+                                delivered by experienced physiotherapists committed to helping patients regain their independence and improve their quality of life.
                             </p>
                         </div>
                         <div className="col-lg-6">
                             <div className="row g-4">
                                 <div className="col-6">
-                                    <StatsBox number="15" suffix="+" label="Years of Service" />
+                                    <StatsBox number="2" suffix="" label="Expert Physiotherapists" />
                                 </div>
                                 <div className="col-6">
-                                    <StatsBox number="5000" suffix="+" label="Patients Treated" />
+                                    <StatsBox number="4" suffix="" label="Specialized Services" />
                                 </div>
                                 <div className="col-6">
-                                    <StatsBox number="50" suffix="+" label="Expert Staff" />
+                                    <StatsBox number="10" suffix="+" label="Years Combined Experience" />
                                 </div>
                                 <div className="col-6">
                                     <StatsBox number="95" suffix="%" label="Success Rate" />
@@ -142,7 +142,7 @@ const About = () => {
                         description="Our multidisciplinary team of specialists is dedicated to your recovery."
                         align="center"
                     />
-                    <div className="row g-4">
+                    <div className="row g-4 justify-content-center">
                         {doctors.map((doctor) => (
                             <div key={doctor.id} className="col-lg-4 col-md-6">
                                 <DoctorCard {...doctor} />

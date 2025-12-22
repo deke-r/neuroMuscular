@@ -41,7 +41,7 @@ const Footer = () => {
                         <div className={styles.footerSection}>
                             <h3 className={styles.footerTitle}>PMR Hospital</h3>
                             <p className={styles.footerDescription}>
-                                Leading rehabilitation center providing comprehensive care for neurological and musculoskeletal conditions.
+                                Professional rehabilitation center providing comprehensive care for neurological and musculoskeletal conditions.
                                 Our expert team is dedicated to helping you regain independence and improve quality of life.
                             </p>
                             <div className={styles.socialLinks}>

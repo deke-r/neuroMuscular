@@ -10,6 +10,7 @@ import About from './pages/About';
 import Services from './pages/Services';
 import ServiceDetail from './pages/ServiceDetail';
 import Conditions from './pages/Conditions';
+import ConditionDetail from './pages/ConditionDetail';
 import Doctors from './pages/Doctors';
 import Packages from './pages/Packages';
 import Infrastructure from './pages/Infrastructure';
@@ -30,6 +31,7 @@ const App = () => {
             <Route path="/services" element={<Services />} />
             <Route path="/services/:serviceId" element={<ServiceDetail />} />
             <Route path="/conditions" element={<Conditions />} />
+            <Route path="/conditions/:conditionId" element={<ConditionDetail />} />
             <Route path="/doctors" element={<Doctors />} />
             <Route path="/packages" element={<Packages />} />
             <Route path="/infrastructure" element={<Infrastructure />} />

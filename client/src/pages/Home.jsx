@@ -19,7 +19,7 @@ const Home = () => {
         ctaLink: '/book-appointment',
         backgroundImage: '/img/hero/infrastructure-hero.jpg',
         features: [
-            { icon: FaAward, text: '15+ Years of Excellence' },
+            { icon: FaAward, text: 'Evidence-Based Treatment' },
             { icon: FaUsers, text: 'Expert Medical Team' },
             { icon: FaHospital, text: 'State-of-the-Art Facilities' }
         ]
@@ -40,10 +40,10 @@ const Home = () => {
                 <div className="container">
                     <div className="row g-4">
                         <div className="col-lg-4 col-md-6">
-                            <StatsBox number="15" suffix="+" label="Years Experience" icon={FaAward} />
+                            <StatsBox number="2" suffix="" label="Expert Physiotherapists" icon={FaAward} />
                         </div>
                         <div className="col-lg-4 col-md-6">
-                            <StatsBox number="5000" suffix="+" label="Patients Treated" icon={FaUsers} />
+                            <StatsBox number="4" suffix="" label="Specialized Services" icon={FaUsers} />
                         </div>
                         <div className="col-lg-4 col-md-6">
                             <StatsBox number="95" suffix="%" label="Success Rate" icon={FaHospital} />

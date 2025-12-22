@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../../styles/cards/ConditionCard.module.css';
 
-const ConditionCard = ({ title, description, icon: Icon, link = '#' }) => {
+const ConditionCard = ({ title, description, icon: Icon, slug }) => {
     return (
-        <Link to={link} className={styles.conditionCard}>
+        <Link to={`/conditions/${slug}`} className={styles.conditionCard}>
             <div className={styles.iconWrapper}>
                 {Icon && <Icon className={styles.icon} />}
             </div>

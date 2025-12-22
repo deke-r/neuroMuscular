@@ -29,7 +29,7 @@ const Doctors = () => {
 
             <section className="section-padding">
                 <div className="container">
-                    <div className="row g-4">
+                    <div className="row g-4 justify-content-center">
                         {doctors.map((doctor) => (
                             <div key={doctor.id} className="col-lg-4 col-md-6">
                                 <DoctorCard {...doctor} />

@@ -12,7 +12,7 @@ const DoctorsSection = ({ title, subtitle, doctors }) => {
                     subtitle={subtitle}
                     align="center"
                 />
-                <div className="row g-4">
+                <div className="row g-4 justify-content-center">
                     {doctors && doctors.map((doctor) => (
                         <div key={doctor.id} className="col-lg-4 col-md-6">
                             <DoctorCard {...doctor} />
