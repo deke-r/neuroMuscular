@@ -5,7 +5,7 @@ export const doctors = [
         designation: 'Physiotherapist',
         specialization: 'Neurology',
         experience: 'More than 10 years',
-        image: '/img/doctors/doctor-1.jpg',
+        image: '/img/doctors/doctor-1.jpeg',
         qualifications: [
             'MPT (Neuro)',
             'Neurology Specialist',
@@ -18,7 +18,7 @@ export const doctors = [
         designation: 'Physiotherapist',
         specialization: 'Musculoskeletal / Orthopedics',
         experience: '7 years',
-        image: '/img/doctors/doctor-2.jpg',
+        image: '/img/doctors/doctor-2.jpeg',
         qualifications: [
             'Masters in Musculoskeletal/Orthopedic',
             'COMT (Certified Orthopedic Manual Therapist)',
