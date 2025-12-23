@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import PageHelmet from '../utils/PageHelmet.jsx';
 import PageHeader from '../components/layout/PageHeader';
 import DoctorCard from '../components/cards/DoctorCard';
 import CTASection from '../components/sections/CTASection';
-import { doctors } from '../data/doctors.data';
 
 const Doctors = () => {
+    const [doctors, setDoctors] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        fetchDoctors();
+    }, []);
+
+    const fetchDoctors = async () => {
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/doctors`);
+            setDoctors(response.data.data || []);
+            setLoading(false);
+        } catch (err) {
+            console.error('Error fetching doctors:', err);
+            setError('Failed to load doctors. Please try again later.');
+            setLoading(false);
+        }
+    };
+
     const breadcrumbs = [
         { label: 'Home', path: '/' },
         { label: 'Doctors', path: '/doctors' }
@@ -29,13 +49,30 @@ const Doctors = () => {
 
             <section className="section-padding">
                 <div className="container">
-                    <div className="row g-4 justify-content-center">
-                        {doctors.map((doctor) => (
-                            <div key={doctor.id} className="col-lg-4 col-md-6">
-                                <DoctorCard {...doctor} />
+                    {loading ? (
+                        <div className="text-center py-5">
+                            <div className="spinner-border text-primary" role="status">
+                                <span className="visually-hidden">Loading...</span>
                             </div>
-                        ))}
-                    </div>
+                            <p className="mt-3 text-muted">Loading our expert team...</p>
+                        </div>
+                    ) : error ? (
+                        <div className="alert alert-danger text-center" role="alert">
+                            {error}
+                        </div>
+                    ) : doctors.length === 0 ? (
+                        <div className="text-center py-5">
+                            <p className="text-muted">No doctors available at the moment.</p>
+                        </div>
+                    ) : (
+                        <div className="row g-4 justify-content-center">
+                            {doctors.map((doctor) => (
+                                <div key={doctor.id} className="col-lg-4 col-md-6">
+                                    <DoctorCard {...doctor} />
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </section>
 

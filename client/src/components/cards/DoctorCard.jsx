@@ -1,12 +1,17 @@
 import React from 'react';
 import styles from '../../styles/cards/DoctorCard.module.css';
 
-const DoctorCard = ({ name, designation, specialization, experience, image, qualifications }) => {
+const DoctorCard = ({ name, designation, specialization, experience, image, image_url, qualifications }) => {
+    // Handle both static data (image) and API data (image_url)
+    const imageSource = image_url
+        ? `${import.meta.env.VITE_API_URL}${image_url}`
+        : image || 'https://via.placeholder.com/300x350/0C4379/FFFFFF?text=Doctor';
+
     return (
         <div className={styles.doctorCard}>
             <div className={styles.imageWrapper}>
                 <img
-                    src={image}
+                    src={imageSource}
                     alt={name}
                     className={styles.image}
                     onError={(e) => {

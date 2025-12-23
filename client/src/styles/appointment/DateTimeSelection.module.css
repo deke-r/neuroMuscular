@@ -1,0 +1,78 @@
+.dateTimeContainer {
+    margin-top: var(--spacing-xl);
+}
+
+.dateInput {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 2px solid var(--color-gray-300);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-xl);
+    font-family: inherit;
+}
+
+.dateInput:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.timeSlotGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.timeSlot {
+    padding: var(--spacing-md);
+    border: 2px solid var(--color-gray-300);
+    border-radius: var(--radius-md);
+    text-align: center;
+    cursor: pointer;
+    font-weight: var(--font-weight-medium);
+    transition: all var(--transition-base);
+    background: var(--color-white);
+}
+
+.timeSlot:hover:not(.disabled) {
+    border-color: var(--color-primary);
+    background: rgba(18, 137, 191, 0.05);
+}
+
+.timeSlot.selected {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.timeSlot.disabled {
+    background: var(--color-gray-100);
+    border-color: var(--color-gray-200);
+    color: var(--color-gray-400);
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+.noSlots {
+    text-align: center;
+    padding: var(--spacing-3xl);
+    color: var(--color-gray-500);
+    background: var(--color-gray-50);
+    border-radius: var(--radius-md);
+}
+
+.workingHoursInfo {
+    background: rgba(124, 195, 57, 0.1);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-700);
+}
+
+@media (max-width: 768px) {
+    .timeSlotGrid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+}

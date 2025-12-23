@@ -1,0 +1,79 @@
+.confirmationContainer {
+    text-align: center;
+    padding: var(--spacing-3xl);
+}
+
+.successIcon {
+    width: 80px;
+    height: 80px;
+    background: var(--color-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-xl);
+    font-size: 48px;
+    color: var(--color-white);
+}
+
+.confirmationTitle {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-gray-800);
+    margin-bottom: var(--spacing-md);
+}
+
+.confirmationMessage {
+    font-size: var(--font-size-lg);
+    color: var(--color-gray-600);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.appointmentSummary {
+    background: var(--color-gray-50);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin: var(--spacing-2xl) 0;
+    text-align: left;
+}
+
+.summaryTitle {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-gray-800);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.summaryRow {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid var(--color-gray-200);
+}
+
+.summaryRow:last-child {
+    border-bottom: none;
+}
+
+.summaryLabel {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-gray-700);
+}
+
+.summaryValue {
+    color: var(--color-gray-600);
+}
+
+.actionButtons {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    margin-top: var(--spacing-2xl);
+}
+
+@media (max-width: 768px) {
+    .actionButtons {
+        flex-direction: column;
+    }
+}

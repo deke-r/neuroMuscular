@@ -1,160 +1,308 @@
-import React from 'react';
-import { FaCheckCircle, FaCalendarAlt, FaUserMd } from 'react-icons/fa';
+import React, { useState, useEffect, useRef } from 'react';
 import PageHelmet from '../utils/PageHelmet.jsx';
 import PageHeader from '../components/layout/PageHeader';
-import AppointmentForm from '../components/forms/AppointmentForm';
+import DoctorSelection from '../components/appointment/DoctorSelection';
+import ServiceSelection from '../components/appointment/ServiceSelection';
+import DateTimeSelection from '../components/appointment/DateTimeSelection';
+import PatientForm from '../components/appointment/PatientForm';
+import BookingConfirmation from '../components/appointment/BookingConfirmation';
+import { fetchDoctors, fetchServicesByDoctor, bookAppointment } from '../utils/api';
+import styles from '../styles/pages/BookAppointment.module.css';
 
 const BookAppointment = () => {
+    const [currentStep, setCurrentStep] = useState(1);
+    const [doctors, setDoctors] = useState([]);
+    const [services, setServices] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [bookingError, setBookingError] = useState(null);
+
+    // Form data
+    const [selectedDoctor, setSelectedDoctor] = useState(null);
+    const [selectedService, setSelectedService] = useState(null);
+    const [selectedDate, setSelectedDate] = useState('');
+    const [selectedTime, setSelectedTime] = useState('');
+    const [patientData, setPatientData] = useState({});
+    const [confirmedAppointment, setConfirmedAppointment] = useState(null);
+
+    const patientFormRef = useRef(null);
+
     const breadcrumbs = [
         { label: 'Home', path: '/' },
         { label: 'Book Appointment', path: '/book-appointment' }
     ];
 
-    const benefits = [
-        'Comprehensive initial assessment',
-        'Personalized treatment plan',
-        'Expert multidisciplinary team',
-        'State-of-the-art facilities',
-        'Flexible appointment scheduling',
-        'Insurance assistance available'
+    const steps = [
+        { number: 1, label: 'Select Doctor' },
+        { number: 2, label: 'Choose Service' },
+        { number: 3, label: 'Date & Time' },
+        { number: 4, label: 'Your Details' },
+        { number: 5, label: 'Confirmation' }
     ];
 
-    const steps = [
-        {
-            icon: FaCalendarAlt,
-            title: 'Choose Your Date',
-            description: 'Select a convenient date and time for your appointment'
-        },
-        {
-            icon: FaUserMd,
-            title: 'Meet Our Expert',
-            description: 'Consult with our specialized rehabilitation team'
-        },
-        {
-            icon: FaCheckCircle,
-            title: 'Start Your Journey',
-            description: 'Begin your personalized rehabilitation program'
+    useEffect(() => {
+        loadDoctors();
+    }, []);
+
+    useEffect(() => {
+        if (selectedDoctor) {
+            loadServices(selectedDoctor.id);
         }
-    ];
+    }, [selectedDoctor]);
+
+    const loadDoctors = async () => {
+        try {
+            setLoading(true);
+            const data = await fetchDoctors();
+            setDoctors(data);
+        } catch (err) {
+            setError('Failed to load doctors. Please try again later.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const loadServices = async (doctorId) => {
+        try {
+            const data = await fetchServicesByDoctor(doctorId);
+            setServices(data);
+        } catch (err) {
+            setError('Failed to load services. Please try again later.');
+        }
+    };
+
+    const handleDoctorSelect = (doctor) => {
+        setSelectedDoctor(doctor);
+        setSelectedService(null);
+        setSelectedDate('');
+        setSelectedTime('');
+    };
+
+    const handleServiceSelect = (service) => {
+        setSelectedService(service);
+    };
+
+    const handleDateSelect = (date) => {
+        setSelectedDate(date);
+        setSelectedTime('');
+    };
+
+    const handleTimeSelect = (time) => {
+        setSelectedTime(time);
+    };
+
+    const handlePatientFormSubmit = async (data) => {
+        setPatientData(data);
+        setBookingError(null);
+
+        // Prepare appointment data
+        const appointmentData = {
+            doctorId: selectedDoctor.id,
+            serviceId: selectedService.id,
+            patientName: data.patientName,
+            patientEmail: data.patientEmail,
+            patientPhone: data.patientPhone,
+            patientAge: data.patientAge ? parseInt(data.patientAge) : null,
+            patientGender: data.patientGender || null,
+            appointmentDate: selectedDate,
+            appointmentTime: selectedTime,
+            notes: data.notes || null
+        };
+
+        try {
+            const result = await bookAppointment(appointmentData);
+            setConfirmedAppointment({
+                ...appointmentData,
+                doctorName: selectedDoctor.name,
+                serviceName: selectedService.service_name
+            });
+            setCurrentStep(5);
+        } catch (err) {
+            setBookingError(err.message || 'Failed to book appointment. Please try again.');
+        }
+    };
+
+    const handleNext = () => {
+        if (currentStep === 4) {
+            // Trigger form submission
+            if (patientFormRef.current) {
+                patientFormRef.current.dispatchEvent(
+                    new Event('submit', { cancelable: true, bubbles: true })
+                );
+            }
+        } else {
+            setCurrentStep(currentStep + 1);
+        }
+    };
+
+    const handleBack = () => {
+        setCurrentStep(currentStep - 1);
+        setBookingError(null);
+    };
+
+    const canProceed = () => {
+        switch (currentStep) {
+            case 1:
+                return selectedDoctor !== null;
+            case 2:
+                return selectedService !== null;
+            case 3:
+                return selectedDate && selectedTime;
+            case 4:
+                return true; // Form validation handles this
+            default:
+                return false;
+        }
+    };
+
+    const renderStepContent = () => {
+        switch (currentStep) {
+            case 1:
+                return (
+                    <>
+                        <h2 className={styles.formTitle}>Select Your Doctor</h2>
+                        <p className={styles.formSubtitle}>
+                            Choose from our team of experienced specialists
+                        </p>
+                        {loading && <div className={styles.loading}>Loading doctors...</div>}
+                        {error && <div className={styles.error}>{error}</div>}
+                        {!loading && !error && (
+                            <DoctorSelection
+                                doctors={doctors}
+                                selectedDoctor={selectedDoctor}
+                                onSelectDoctor={handleDoctorSelect}
+                            />
+                        )}
+                    </>
+                );
+            case 2:
+                return (
+                    <>
+                        <h2 className={styles.formTitle}>Choose a Service</h2>
+                        <p className={styles.formSubtitle}>
+                            Select the treatment or consultation you need
+                        </p>
+                        <ServiceSelection
+                            services={services}
+                            selectedService={selectedService}
+                            onSelectService={handleServiceSelect}
+                        />
+                    </>
+                );
+            case 3:
+                return (
+                    <>
+                        <h2 className={styles.formTitle}>Select Date & Time</h2>
+                        <p className={styles.formSubtitle}>
+                            Choose your preferred appointment slot
+                        </p>
+                        <DateTimeSelection
+                            doctorId={selectedDoctor.id}
+                            selectedDate={selectedDate}
+                            selectedTime={selectedTime}
+                            onSelectDate={handleDateSelect}
+                            onSelectTime={handleTimeSelect}
+                        />
+                    </>
+                );
+            case 4:
+                return (
+                    <>
+                        <h2 className={styles.formTitle}>Your Information</h2>
+                        <p className={styles.formSubtitle}>
+                            Please provide your contact details
+                        </p>
+                        {bookingError && <div className={styles.error}>{bookingError}</div>}
+                        <div ref={patientFormRef}>
+                            <PatientForm
+                                onSubmit={handlePatientFormSubmit}
+                                initialData={patientData}
+                            />
+                        </div>
+                    </>
+                );
+            case 5:
+                return (
+                    <BookingConfirmation appointmentDetails={confirmedAppointment} />
+                );
+            default:
+                return null;
+        }
+    };
 
     return (
         <>
             <PageHelmet
-                title="Book Appointment - PMR Hospital | Schedule Your Consultation"
-                description="Book an appointment with our expert rehabilitation team. Easy online booking for physiotherapy, occupational therapy, speech therapy, and more."
-                keywords="book appointment, schedule consultation, rehabilitation appointment, physiotherapy booking, online appointment booking"
+                title="Book Appointment - PMR Hospital | Schedule Your Visit"
+                description="Book an appointment with our expert rehabilitation specialists. Choose your doctor, select a service, and pick a convenient time slot."
+                keywords="book appointment, schedule visit, doctor appointment, rehabilitation booking, PMR hospital appointment"
                 canonicalUrl="https://pmrhospital.com/book-appointment"
             />
 
             <PageHeader
                 title="Book an Appointment"
-                subtitle="Take the First Step Towards Your Recovery"
+                subtitle="Schedule Your Visit with Our Expert Team"
                 breadcrumbs={breadcrumbs}
                 backgroundImage="/img/hero/contact-hero.jpg"
             />
 
-            <section className="section-padding">
-                <div className="container">
-                    <div className="row g-5">
-                        <div className="col-lg-5">
-                            <div style={{ position: 'sticky', top: '100px' }}>
-                                <h3 style={{ fontSize: 'var(--font-size-2xl)', fontWeight: 'var(--font-weight-bold)', marginBottom: 'var(--spacing-lg)', color: 'var(--color-gray-800)' }}>
-                                    Why Choose PMR Hospital?
-                                </h3>
-                                <div style={{
-                                    background: 'var(--color-white)',
-                                    padding: 'var(--spacing-2xl)',
-                                    borderRadius: 'var(--radius-xl)',
-                                    boxShadow: 'var(--shadow-lg)',
-                                    marginBottom: 'var(--spacing-2xl)',
-                                    border: '1px solid var(--color-gray-200)'
-                                }}>
-                                    <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                                        {benefits.map((benefit, index) => (
-                                            <li key={index} style={{
-                                                padding: 'var(--spacing-md) 0',
-                                                borderBottom: index < benefits.length - 1 ? '1px solid var(--color-gray-200)' : 'none',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                gap: 'var(--spacing-md)'
-                                            }}>
-                                                <FaCheckCircle style={{ color: 'var(--color-secondary)', fontSize: 'var(--font-size-lg)', flexShrink: 0 }} />
-                                                <span style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-gray-700)' }}>
-                                                    {benefit}
-                                                </span>
-                                            </li>
-                                        ))}
-                                    </ul>
+            <div className={styles.appointmentPage}>
+                <div className={styles.container}>
+                    {/* Progress Bar */}
+                    {currentStep < 5 && (
+                        <div className={styles.progressBar}>
+                            {steps.map((step) => (
+                                <div key={step.number} className={styles.progressStep}>
+                                    <div
+                                        className={`${styles.stepCircle} ${currentStep === step.number
+                                                ? styles.active
+                                                : currentStep > step.number
+                                                    ? styles.completed
+                                                    : ''
+                                            }`}
+                                    >
+                                        {currentStep > step.number ? '✓' : step.number}
+                                    </div>
+                                    <span
+                                        className={`${styles.stepLabel} ${currentStep === step.number ? styles.active : ''
+                                            }`}
+                                    >
+                                        {step.label}
+                                    </span>
                                 </div>
-
-                                <h4 style={{ fontSize: 'var(--font-size-xl)', fontWeight: 'var(--font-weight-bold)', marginBottom: 'var(--spacing-lg)', color: 'var(--color-gray-800)' }}>
-                                    How It Works
-                                </h4>
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-lg)' }}>
-                                    {steps.map((step, index) => (
-                                        <div key={index} style={{ display: 'flex', gap: 'var(--spacing-md)' }}>
-                                            <div style={{
-                                                width: '50px',
-                                                height: '50px',
-                                                borderRadius: 'var(--radius-md)',
-                                                background: 'var(--gradient-primary)',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                flexShrink: 0
-                                            }}>
-                                                <step.icon style={{ fontSize: 'var(--font-size-xl)', color: 'var(--color-white)' }} />
-                                            </div>
-                                            <div>
-                                                <h5 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 'var(--font-weight-semibold)', marginBottom: 'var(--spacing-xs)', color: 'var(--color-gray-800)' }}>
-                                                    {step.title}
-                                                </h5>
-                                                <p style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-gray-600)', margin: 0 }}>
-                                                    {step.description}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
+                            ))}
                         </div>
+                    )}
 
-                        <div className="col-lg-7">
-                            <AppointmentForm />
-                        </div>
-                    </div>
-                </div>
-            </section>
+                    {/* Form Card */}
+                    <div className={styles.formCard}>
+                        {renderStepContent()}
 
-            <section className="section-padding-sm" style={{ background: 'var(--color-light)' }}>
-                <div className="container">
-                    <div className="row justify-content-center">
-                        <div className="col-lg-8">
-                            <div style={{
-                                background: 'var(--color-white)',
-                                padding: 'var(--spacing-2xl)',
-                                borderRadius: 'var(--radius-xl)',
-                                boxShadow: 'var(--shadow-lg)',
-                                textAlign: 'center'
-                            }}>
-                                <h3 style={{ fontSize: 'var(--font-size-2xl)', fontWeight: 'var(--font-weight-bold)', marginBottom: 'var(--spacing-md)', color: 'var(--color-gray-800)' }}>
-                                    Need Immediate Assistance?
-                                </h3>
-                                <p style={{ fontSize: 'var(--font-size-lg)', color: 'var(--color-gray-600)', marginBottom: 'var(--spacing-xl)' }}>
-                                    For urgent appointments or inquiries, please call us directly.
-                                </p>
-                                <a
-                                    href="tel:+911234567890"
-                                    className="btn btn-primary btn-lg"
-                                    style={{ textDecoration: 'none' }}
+                        {/* Navigation Buttons */}
+                        {currentStep < 5 && (
+                            <div className={styles.buttonGroup}>
+                                {currentStep > 1 && (
+                                    <button
+                                        type="button"
+                                        className={styles.btnSecondary}
+                                        onClick={handleBack}
+                                    >
+                                        Back
+                                    </button>
+                                )}
+                                <button
+                                    type="button"
+                                    className={styles.btnPrimary}
+                                    onClick={handleNext}
+                                    disabled={!canProceed()}
                                 >
-                                    Call +91 123 456 7890
-                                </a>
+                                    {currentStep === 4 ? 'Confirm Booking' : 'Next'}
+                                </button>
                             </div>
-                        </div>
+                        )}
                     </div>
                 </div>
-            </section>
+            </div>
         </>
     );
 };
