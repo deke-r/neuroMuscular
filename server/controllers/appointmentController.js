@@ -65,8 +65,8 @@ const getAvailableSlots = async (req, res, next) => {
 
         const workingHours = hours[0];
 
-        // Generate all possible time slots
-        const allSlots = generateTimeSlots(workingHours.start_time, workingHours.end_time, 30);
+        // Generate all possible time slots (1 hour intervals)
+        const allSlots = generateTimeSlots(workingHours.start_time, workingHours.end_time, 60);
 
         // Get booked slots
         const [appointments] = await pool.query(`

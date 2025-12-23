@@ -1,186 +1,305 @@
 .appointmentPage {
     min-height: 100vh;
-    background: var(--color-gray-50);
+    background: #f5f5f5;
+    padding: 40px 0;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: var(--spacing-2xl) var(--spacing-lg);
-}
-
-.progressBar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--spacing-3xl);
-    position: relative;
-}
-
-.progressBar::before {
-    content: '';
-    position: absolute;
-    top: 20px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--color-gray-300);
-    z-index: 0;
-}
-
-.progressStep {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-sm);
-    position: relative;
-    z-index: 1;
-    flex: 1;
-}
-
-.stepCircle {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: var(--color-white);
-    border: 2px solid var(--color-gray-300);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-gray-500);
-    transition: all var(--transition-base);
-}
-
-.stepCircle.active {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-    color: var(--color-white);
-}
-
-.stepCircle.completed {
-    background: var(--color-secondary);
-    border-color: var(--color-secondary);
-    color: var(--color-white);
-}
-
-.stepLabel {
-    font-size: var(--font-size-sm);
-    color: var(--color-gray-600);
-    font-weight: var(--font-weight-medium);
-}
-
-.stepLabel.active {
-    color: var(--color-primary);
-    font-weight: var(--font-weight-semibold);
+    padding: 0 20px;
 }
 
 .formCard {
-    background: var(--color-white);
-    border-radius: var(--radius-xl);
-    padding: var(--spacing-3xl);
-    box-shadow: var(--shadow-lg);
+    background: white;
+    padding: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .formTitle {
-    font-size: var(--font-size-3xl);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-gray-800);
-    margin-bottom: var(--spacing-sm);
-    font-family: var(--font-secondary);
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 10px 0;
 }
 
 .formSubtitle {
-    font-size: var(--font-size-base);
-    color: var(--color-gray-600);
-    margin-bottom: var(--spacing-2xl);
+    font-size: 16px;
+    color: #666;
+    margin: 0 0 30px 0;
 }
 
-.buttonGroup {
-    display: flex;
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-2xl);
-    padding-top: var(--spacing-2xl);
-    border-top: 1px solid var(--color-gray-200);
+/* Doctor Grid */
+.doctorGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
 }
 
-.btnSecondary,
-.btnPrimary {
-    padding: var(--spacing-md) var(--spacing-2xl);
-    border-radius: var(--radius-lg);
-    font-weight: var(--font-weight-semibold);
-    font-size: var(--font-size-base);
+.doctorCard {
+    background: white;
+    border: 2px solid #e0e0e0;
     cursor: pointer;
-    transition: all var(--transition-base);
-    border: none;
+    transition: all 0.3s;
+    overflow: hidden;
 }
 
-.btnSecondary {
-    background: var(--color-gray-200);
-    color: var(--color-gray-700);
+.doctorCard:hover {
+    border-color: #1289BF;
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(18, 137, 191, 0.2);
 }
 
-.btnSecondary:hover {
-    background: var(--color-gray-300);
+.doctorImage {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
 }
 
-.btnPrimary {
-    background: var(--color-primary);
-    color: var(--color-white);
+.doctorInfo {
+    padding: 16px;
+}
+
+.doctorName {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 8px 0;
+}
+
+.doctorDesignation {
+    font-size: 14px;
+    color: #1289BF;
+    margin: 0 0 4px 0;
+}
+
+.doctorSpecialization {
+    font-size: 14px;
+    color: #666;
+    margin: 0 0 4px 0;
+}
+
+.doctorExperience {
+    font-size: 13px;
+    color: #999;
+    margin: 0;
+}
+
+/* Selected Doctor Header */
+.selectedDoctorHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.selectedDoctorInfo {
     flex: 1;
 }
 
+.selectedDoctorText {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+}
+
+.changeDoctor {
+    padding: 10px 20px;
+    background: #f5f5f5;
+    color: #333;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.changeDoctor:hover {
+    background: #e0e0e0;
+}
+
+.sectionTitle {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin: 30px 0 20px 0;
+    padding-top: 30px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.appointmentForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.formGroup label {
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.required {
+    color: #f44336;
+}
+
+.formInput,
+.formSelect,
+.formTextarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.formInput:focus,
+.formSelect:focus,
+.formTextarea:focus {
+    outline: none;
+    border-color: #1289BF;
+}
+
+.formInput.error,
+.formSelect.error {
+    border-color: #f44336;
+}
+
+.formSelect:disabled {
+    background: #f5f5f5;
+    cursor: not-allowed;
+}
+
+.formTextarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.errorMessage {
+    color: #f44336;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.infoMessage {
+    color: #ff9800;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.errorAlert {
+    background: #fee;
+    color: #c33;
+    padding: 16px;
+    margin-bottom: 24px;
+    border-left: 4px solid #c33;
+}
+
+.btnPrimary {
+    padding: 14px 32px;
+    background: #1289BF;
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 10px;
+}
+
 .btnPrimary:hover {
-    background: var(--color-primary-dark);
+    background: #0a5f8a;
     transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 4px 12px rgba(18, 137, 191, 0.3);
 }
 
 .btnPrimary:disabled {
-    background: var(--color-gray-300);
+    background: #ccc;
     cursor: not-allowed;
     transform: none;
 }
 
 .loading {
     text-align: center;
-    padding: var(--spacing-3xl);
-    color: var(--color-gray-600);
+    padding: 40px;
+    color: #666;
 }
 
-.error {
-    background: #fee;
-    color: #c33;
-    padding: var(--spacing-md);
-    border-radius: var(--radius-md);
-    margin-bottom: var(--spacing-lg);
-    border-left: 4px solid #c33;
+/* Success Card */
+.successCard {
+    background: white;
+    padding: 60px 40px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+.successIcon {
+    width: 80px;
+    height: 80px;
+    background: #4caf50;
+    color: white;
+    font-size: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+}
+
+.successTitle {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 16px 0;
+}
+
+.successMessage {
+    font-size: 16px;
+    color: #666;
+    margin: 0 0 32px 0;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
     .container {
-        padding: var(--spacing-lg) var(--spacing-md);
+        padding: 0 16px;
     }
 
     .formCard {
-        padding: var(--spacing-xl);
+        padding: 24px;
     }
 
-    .progressBar {
-        margin-bottom: var(--spacing-xl);
+    .formRow {
+        grid-template-columns: 1fr;
     }
 
-    .stepLabel {
-        font-size: var(--font-size-xs);
+    .formTitle {
+        font-size: 24px;
     }
 
-    .stepCircle {
-        width: 32px;
-        height: 32px;
-        font-size: var(--font-size-sm);
+    .sectionTitle {
+        font-size: 18px;
     }
 
-    .buttonGroup {
-        flex-direction: column;
+    .successCard {
+        padding: 40px 24px;
+    }
+
+    .successTitle {
+        font-size: 24px;
     }
 }
