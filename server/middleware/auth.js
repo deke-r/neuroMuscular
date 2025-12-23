@@ -45,8 +45,20 @@ const canManageAppointments = (req, res, next) => {
     next();
 };
 
+// Check if user can modify appointments (admin only)
+const canModifyAppointments = (req, res, next) => {
+    if (req.user.role !== 'admin') {
+        return res.status(403).json({
+            success: false,
+            message: 'Access denied. Only admins can modify appointments.'
+        });
+    }
+    next();
+};
+
 module.exports = {
     verifyToken,
     isAdmin,
-    canManageAppointments
+    canManageAppointments,
+    canModifyAppointments
 };

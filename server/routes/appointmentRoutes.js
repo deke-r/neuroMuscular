@@ -7,15 +7,15 @@ const {
     updateAppointmentStatus,
     deleteAppointment
 } = require('../controllers/appointmentController');
-const { verifyToken, isAdmin } = require('../middleware/auth');
+const { verifyToken, isAdmin, canManageAppointments } = require('../middleware/auth');
 
 // Public routes
 router.get('/available-slots', getAvailableSlots);
 router.post('/', bookAppointment);
 
-// Protected admin routes
-router.get('/admin', verifyToken, isAdmin, getAllAppointments);
-router.put('/:id/status', verifyToken, isAdmin, updateAppointmentStatus);
-router.delete('/:id', verifyToken, isAdmin, deleteAppointment);
+// Protected routes - accessible by admin and appointment_manager
+router.get('/admin', verifyToken, canManageAppointments, getAllAppointments);
+router.put('/:id/status', verifyToken, canManageAppointments, updateAppointmentStatus);
+router.delete('/:id', verifyToken, canManageAppointments, deleteAppointment);
 
 module.exports = router;

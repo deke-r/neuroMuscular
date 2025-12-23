@@ -1,31 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link, useLocation, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
 import styles from '../../styles/admin/Dashboard.module.css';
 import DoctorsManagement from './DoctorsManagement';
 import ServicesManagement from './ServicesManagement';
 import AppointmentsManagement from './AppointmentsManagement';
+import Settings from './Settings';
+import ManagersManagement from './ManagersManagement';
 
-const DashboardHome = ({ stats }) => (
+const DashboardHome = ({ stats, user }) => (
     <>
         <h1 className={styles.pageTitle}>Dashboard Overview</h1>
 
         <div className={styles.statsGrid}>
-            <div className={styles.statCard}>
-                <div className={styles.statIcon}>👨‍⚕️</div>
-                <div className={styles.statInfo}>
-                    <h3 className={styles.statValue}>{stats.doctors}</h3>
-                    <p className={styles.statLabel}>Total Doctors</p>
-                </div>
-            </div>
+            {user.role === 'admin' && (
+                <>
+                    <div className={styles.statCard}>
+                        <div className={styles.statIcon}>👨‍⚕️</div>
+                        <div className={styles.statInfo}>
+                            <h3 className={styles.statValue}>{stats.doctors}</h3>
+                            <p className={styles.statLabel}>Total Doctors</p>
+                        </div>
+                    </div>
 
-            <div className={styles.statCard}>
-                <div className={styles.statIcon}>🏥</div>
-                <div className={styles.statInfo}>
-                    <h3 className={styles.statValue}>{stats.services}</h3>
-                    <p className={styles.statLabel}>Total Services</p>
-                </div>
-            </div>
+                    <div className={styles.statCard}>
+                        <div className={styles.statIcon}>🏥</div>
+                        <div className={styles.statInfo}>
+                            <h3 className={styles.statValue}>{stats.services}</h3>
+                            <p className={styles.statLabel}>Total Services</p>
+                        </div>
+                    </div>
+                </>
+            )}
 
             <div className={styles.statCard}>
                 <div className={styles.statIcon}>📅</div>
@@ -39,14 +46,18 @@ const DashboardHome = ({ stats }) => (
         <div className={styles.quickActions}>
             <h2 className={styles.sectionTitle}>Quick Actions</h2>
             <div className={styles.actionsGrid}>
-                <Link to="/admin/dashboard/doctors" className={styles.actionCard}>
-                    <span className={styles.actionIcon}>➕</span>
-                    <span>Add New Doctor</span>
-                </Link>
-                <Link to="/admin/dashboard/services" className={styles.actionCard}>
-                    <span className={styles.actionIcon}>➕</span>
-                    <span>Add New Service</span>
-                </Link>
+                {user.role === 'admin' && (
+                    <>
+                        <Link to="/admin/dashboard/doctors" className={styles.actionCard}>
+                            <span className={styles.actionIcon}>➕</span>
+                            <span>Add New Doctor</span>
+                        </Link>
+                        <Link to="/admin/dashboard/services" className={styles.actionCard}>
+                            <span className={styles.actionIcon}>➕</span>
+                            <span>Add New Service</span>
+                        </Link>
+                    </>
+                )}
                 <Link to="/admin/dashboard/appointments" className={styles.actionCard}>
                     <span className={styles.actionIcon}>📋</span>
                     <span>View Appointments</span>
@@ -72,10 +83,37 @@ const Dashboard = () => {
             return;
         }
 
-        setUser(JSON.parse(userData));
+        try {
+            // Verify token and check role
+            const decoded = jwtDecode(token);
 
-        // Fetch stats
-        fetchStats(token);
+            // Check if token is expired
+            if (decoded.exp * 1000 < Date.now()) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+                navigate('/admin/login');
+                return;
+            }
+
+            // Check if user is admin or appointment_manager
+            if (decoded.role !== 'admin' && decoded.role !== 'appointment_manager') {
+                alert('Access denied. Admin or Appointment Manager privileges required.');
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+                navigate('/admin/login');
+                return;
+            }
+
+            setUser(JSON.parse(userData));
+
+            // Fetch stats
+            fetchStats(token);
+        } catch (error) {
+            console.error('Token verification failed:', error);
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            navigate('/admin/login');
+        }
     }, [navigate]);
 
     const fetchStats = async (token) => {
@@ -125,20 +163,28 @@ const Dashboard = () => {
                         <span className={styles.icon}>📊</span>
                         Dashboard
                     </Link>
-                    <Link
-                        to="/admin/dashboard/doctors"
-                        className={`${styles.navItem} ${location.pathname.includes('/doctors') ? styles.active : ''}`}
-                    >
-                        <span className={styles.icon}>👨‍⚕️</span>
-                        Doctors
-                    </Link>
-                    <Link
-                        to="/admin/dashboard/services"
-                        className={`${styles.navItem} ${location.pathname.includes('/services') ? styles.active : ''}`}
-                    >
-                        <span className={styles.icon}>🏥</span>
-                        Services
-                    </Link>
+
+                    {/* Admin-only menu items */}
+                    {user.role === 'admin' && (
+                        <>
+                            <Link
+                                to="/admin/dashboard/doctors"
+                                className={`${styles.navItem} ${location.pathname.includes('/doctors') ? styles.active : ''}`}
+                            >
+                                <span className={styles.icon}>👨‍⚕️</span>
+                                Doctors
+                            </Link>
+                            <Link
+                                to="/admin/dashboard/services"
+                                className={`${styles.navItem} ${location.pathname.includes('/services') ? styles.active : ''}`}
+                            >
+                                <span className={styles.icon}>🏥</span>
+                                Services
+                            </Link>
+                        </>
+                    )}
+
+                    {/* Accessible by both admin and appointment_manager */}
                     <Link
                         to="/admin/dashboard/appointments"
                         className={`${styles.navItem} ${location.pathname.includes('/appointments') ? styles.active : ''}`}
@@ -146,6 +192,26 @@ const Dashboard = () => {
                         <span className={styles.icon}>📅</span>
                         Appointments
                     </Link>
+
+                    {/* Admin-only menu items */}
+                    {user.role === 'admin' && (
+                        <>
+                            <Link
+                                to="/admin/dashboard/managers"
+                                className={`${styles.navItem} ${location.pathname.includes('/managers') ? styles.active : ''}`}
+                            >
+                                <span className={styles.icon}>👥</span>
+                                Managers
+                            </Link>
+                            <Link
+                                to="/admin/dashboard/settings"
+                                className={`${styles.navItem} ${location.pathname.includes('/settings') ? styles.active : ''}`}
+                            >
+                                <span className={styles.icon}>⚙️</span>
+                                Settings
+                            </Link>
+                        </>
+                    )}
                 </nav>
 
                 <div className={styles.sidebarFooter}>
@@ -163,10 +229,12 @@ const Dashboard = () => {
             <main className={styles.mainContent}>
                 <div className={styles.contentWrapper}>
                     <Routes>
-                        <Route index element={<DashboardHome stats={stats} />} />
+                        <Route index element={<DashboardHome stats={stats} user={user} />} />
                         <Route path="doctors" element={<DoctorsManagement />} />
                         <Route path="services" element={<ServicesManagement />} />
                         <Route path="appointments" element={<AppointmentsManagement />} />
+                        <Route path="managers" element={<ManagersManagement />} />
+                        <Route path="settings" element={<Settings />} />
                     </Routes>
                 </div>
             </main>

@@ -315,3 +315,146 @@
         min-width: 800px;
     }
 }
+
+/* Appointments Management Specific Styles */
+.filterGroup {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.filterGroup label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.filterSelect {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.filterSelect:focus {
+    outline: none;
+    border-color: #1289BF;
+}
+
+.statusBadge {
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.statusPending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.statusConfirmed {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.statusCompleted {
+    background: #d4edda;
+    color: #155724;
+}
+
+.statusCancelled {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.subText {
+    font-size: 12px;
+    color: #999;
+    margin-top: 2px;
+}
+
+.contactInfo {
+    font-size: 13px;
+}
+
+.confirmBtn,
+.completeBtn,
+.cancelBtn {
+    padding: 6px 10px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 4px;
+}
+
+.confirmBtn {
+    background: #4caf50;
+    color: white;
+}
+
+.confirmBtn:hover {
+    background: #45a049;
+}
+
+.completeBtn {
+    background: #2196F3;
+    color: white;
+}
+
+.completeBtn:hover {
+    background: #0b7dda;
+}
+
+.cancelBtn {
+    background: #ff9800;
+    color: white;
+}
+
+.cancelBtn:hover {
+    background: #e68900;
+}
+
+/* Manager Management Specific Styles */
+.statusActive {
+    background: #d4edda;
+    color: #155724;
+}
+
+.statusInactive {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.activateBtn {
+    padding: 6px 12px;
+    background: #4caf50;
+    color: white;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.activateBtn:hover {
+    background: #45a049;
+}
+
+.deactivateBtn {
+    padding: 6px 12px;
+    background: #ff9800;
+    color: white;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.deactivateBtn:hover {
+    background: #e68900;
+}
+
+.helpText {
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+    display: block;
+}
