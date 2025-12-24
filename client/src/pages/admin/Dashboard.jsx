@@ -162,7 +162,8 @@ const Dashboard = () => {
             // Calculate today's stats
             const todayAppointments = todayAppointmentsRes.data.data || [];
             const completedToday = todayAppointments.filter(apt => apt.status === 'completed').length;
-            const pendingToday = todayAppointments.filter(apt => apt.status === 'pending').length;
+            // Pending = confirmed appointments that are yet to be completed
+            const pendingToday = todayAppointments.filter(apt => apt.status === 'confirmed').length;
 
             let doctorsCount = 0;
             let servicesCount = 0;

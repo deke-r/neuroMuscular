@@ -1,14 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { FaHeart, FaUserMd, FaBullseye, FaHandshake } from 'react-icons/fa';
 import PageHelmet from '../utils/PageHelmet.jsx';
 import PageHeader from '../components/layout/PageHeader';
 import SectionHeader from '../components/common/SectionHeader';
 import StatsBox from '../components/common/StatsBox';
 import DoctorCard from '../components/cards/DoctorCard';
-import { doctors } from '../data/doctors.data';
 import CTASection from '../components/sections/CTASection.jsx';
+import { services } from '../data/services.data';
 
 const About = () => {
+    const [doctors, setDoctors] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetchDoctors();
+    }, []);
+
+    const fetchDoctors = async () => {
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/doctors`);
+            setDoctors(response.data.data || []);
+            setLoading(false);
+        } catch (error) {
+            console.error('Error fetching doctors:', error);
+            setLoading(false);
+        }
+    };
+
     const breadcrumbs = [
         { label: 'Home', path: '/' },
         { label: 'About Us', path: '/about' }
@@ -36,6 +55,10 @@ const About = () => {
             description: 'We work closely with you and your family to achieve your rehabilitation goals.'
         }
     ];
+
+    if (loading) {
+        return <div style={{ textAlign: 'center', padding: '50px' }}>Loading...</div>;
+    }
 
     return (
         <>
@@ -75,10 +98,10 @@ const About = () => {
                         <div className="col-lg-6">
                             <div className="row g-4">
                                 <div className="col-6">
-                                    <StatsBox number="2" suffix="" label="Expert Physiotherapists" />
+                                    <StatsBox number={doctors.length.toString()} suffix="" label="Expert Physiotherapists" />
                                 </div>
                                 <div className="col-6">
-                                    <StatsBox number="4" suffix="" label="Specialized Services" />
+                                    <StatsBox number={services.length.toString()} suffix="" label="Specialized Services" />
                                 </div>
                                 <div className="col-6">
                                     <StatsBox number="10" suffix="+" label="Years Combined Experience" />
@@ -153,13 +176,13 @@ const About = () => {
                 </div>
             </section>
 
-                <CTASection
+            <CTASection
                 title="Ready to Meet Our Team?"
                 description="Book an appointment with one of our expert specialists and start your journey to recovery."
                 buttonText="Book Appointment"
                 buttonLink="/book-appointment"
                 variant="secondary"
-            /> 
+            />
         </>
     );
 };

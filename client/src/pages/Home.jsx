@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { FaAward, FaUsers, FaHospital } from 'react-icons/fa';
 import PageHelmet from '../utils/PageHelmet.jsx';
 import HeroSection from '../components/sections/HeroSection';
@@ -8,10 +9,27 @@ import TestimonialsSection from '../components/sections/TestimonialsSection';
 import CTASection from '../components/sections/CTASection';
 import StatsBox from '../components/common/StatsBox';
 import { services } from '../data/services.data';
-import { doctors } from '../data/doctors.data';
 import { testimonials } from '../data/testimonials.data';
 
 const Home = () => {
+    const [doctors, setDoctors] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetchDoctors();
+    }, []);
+
+    const fetchDoctors = async () => {
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/doctors`);
+            setDoctors(response.data.data || []);
+            setLoading(false);
+        } catch (error) {
+            console.error('Error fetching doctors:', error);
+            setLoading(false);
+        }
+    };
+
     const heroData = {
         title: 'Expert Neuro & Physical Rehabilitation Care',
         subtitle: 'Welcome to PMR Hospital',
@@ -24,6 +42,10 @@ const Home = () => {
             { icon: FaHospital, text: 'State-of-the-Art Facilities' }
         ]
     };
+
+    if (loading) {
+        return <div style={{ textAlign: 'center', padding: '50px' }}>Loading...</div>;
+    }
 
     return (
         <>
@@ -40,10 +62,10 @@ const Home = () => {
                 <div className="container">
                     <div className="row g-4">
                         <div className="col-lg-4 col-md-6">
-                            <StatsBox number="2" suffix="" label="Expert Physiotherapists" icon={FaAward} />
+                            <StatsBox number={doctors.length.toString()} suffix="" label="Expert Physiotherapists" icon={FaAward} />
                         </div>
                         <div className="col-lg-4 col-md-6">
-                            <StatsBox number="4" suffix="" label="Specialized Services" icon={FaUsers} />
+                            <StatsBox number={services.length.toString()} suffix="" label="Specialized Services" icon={FaUsers} />
                         </div>
                         <div className="col-lg-4 col-md-6">
                             <StatsBox number="95" suffix="%" label="Success Rate" icon={FaHospital} />

@@ -10,10 +10,10 @@ const {
 const { verifyToken, isAdmin } = require('../middleware/auth');
 
 // Public routes
+router.get('/', getAllServices);
 router.get('/doctor/:doctorId', getServicesByDoctor);
 
 // Protected admin routes
-router.get('/', verifyToken, isAdmin, getAllServices);
 router.post('/', verifyToken, isAdmin, createService);
 router.put('/:id', verifyToken, isAdmin, updateService);
 router.delete('/:id', verifyToken, isAdmin, deleteService);
