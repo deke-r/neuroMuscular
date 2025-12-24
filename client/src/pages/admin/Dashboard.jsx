@@ -41,6 +41,30 @@ const DashboardHome = ({ stats, user }) => (
                     <p className={styles.statLabel}>Total Appointments</p>
                 </div>
             </div>
+
+            <div className={styles.statCard}>
+                <div className={styles.statIcon}>📆</div>
+                <div className={styles.statInfo}>
+                    <h3 className={styles.statValue}>{stats.todayTotal || 0}</h3>
+                    <p className={styles.statLabel}>Appointments Today</p>
+                </div>
+            </div>
+
+            <div className={styles.statCard}>
+                <div className={styles.statIcon}>✅</div>
+                <div className={styles.statInfo}>
+                    <h3 className={styles.statValue}>{stats.todayCompleted || 0}</h3>
+                    <p className={styles.statLabel}>Completed Today</p>
+                </div>
+            </div>
+
+            <div className={styles.statCard}>
+                <div className={styles.statIcon}>⏳</div>
+                <div className={styles.statInfo}>
+                    <h3 className={styles.statValue}>{stats.todayPending || 0}</h3>
+                    <p className={styles.statLabel}>Pending Today</p>
+                </div>
+            </div>
         </div>
 
         <div className={styles.quickActions}>
@@ -71,7 +95,14 @@ const Dashboard = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [user, setUser] = useState(null);
-    const [stats, setStats] = useState({ doctors: 0, services: 0, appointments: 0 });
+    const [stats, setStats] = useState({
+        doctors: 0,
+        services: 0,
+        appointments: 0,
+        todayTotal: 0,
+        todayCompleted: 0,
+        todayPending: 0
+    });
 
     useEffect(() => {
         // Check authentication
@@ -119,17 +150,44 @@ const Dashboard = () => {
     const fetchStats = async (token) => {
         try {
             const headers = { Authorization: `Bearer ${token}` };
+            const today = new Date().toISOString().split('T')[0];
+            const userData = JSON.parse(localStorage.getItem('user'));
 
-            const [doctorsRes, servicesRes, appointmentsRes] = await Promise.all([
-                axios.get(`${import.meta.env.VITE_API_URL}/api/doctors`),
-                axios.get(`${import.meta.env.VITE_API_URL}/api/services`, { headers }),
-                axios.get(`${import.meta.env.VITE_API_URL}/api/appointments/admin`, { headers })
+            // Fetch appointments data for all roles
+            const [appointmentsRes, todayAppointmentsRes] = await Promise.all([
+                axios.get(`${import.meta.env.VITE_API_URL}/api/appointments/admin?limit=1`, { headers }),
+                axios.get(`${import.meta.env.VITE_API_URL}/api/appointments/admin?date=${today}&limit=1000`, { headers })
             ]);
 
+            // Calculate today's stats
+            const todayAppointments = todayAppointmentsRes.data.data || [];
+            const completedToday = todayAppointments.filter(apt => apt.status === 'completed').length;
+            const pendingToday = todayAppointments.filter(apt => apt.status === 'pending').length;
+
+            let doctorsCount = 0;
+            let servicesCount = 0;
+
+            // Only fetch doctors and services for admin role
+            if (userData?.role === 'admin') {
+                try {
+                    const [doctorsRes, servicesRes] = await Promise.all([
+                        axios.get(`${import.meta.env.VITE_API_URL}/api/doctors`),
+                        axios.get(`${import.meta.env.VITE_API_URL}/api/services`, { headers })
+                    ]);
+                    doctorsCount = doctorsRes.data.count || 0;
+                    servicesCount = servicesRes.data.count || 0;
+                } catch (error) {
+                    console.error('Error fetching doctors/services:', error);
+                }
+            }
+
             setStats({
-                doctors: doctorsRes.data.count || 0,
-                services: servicesRes.data.count || 0,
-                appointments: appointmentsRes.data.count || 0
+                doctors: doctorsCount,
+                services: servicesCount,
+                appointments: appointmentsRes.data.total || 0,
+                todayTotal: todayAppointments.length,
+                todayCompleted: completedToday,
+                todayPending: pendingToday
             });
         } catch (error) {
             console.error('Error fetching stats:', error);

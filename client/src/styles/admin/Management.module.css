@@ -458,3 +458,120 @@
     margin-top: 4px;
     display: block;
 }
+
+/* Reschedule Button */
+.rescheduleBtn {
+    padding: 6px 10px;
+    background: #ff9800;
+    color: white;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 4px;
+}
+
+.rescheduleBtn:hover {
+    background: #e68900;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 24px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.paginationBtn {
+    padding: 8px 16px;
+    background: #1289BF;
+    color: white;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.paginationBtn:hover:not(:disabled) {
+    background: #0a5f8a;
+}
+
+.paginationBtn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.pageInfo {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Modal */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    background: white;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal h2 {
+    margin: 0 0 20px 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.modal p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.modal .formGroup {
+    margin: 16px 0;
+}
+
+.modal .input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.modal .input:focus {
+    outline: none;
+    border-color: #1289BF;
+}
+
+.modalActions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.modalActions button {
+    flex: 1;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 500;
+}

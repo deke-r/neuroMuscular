@@ -1,4 +1,12 @@
 const { pool } = require('../config/database');
+const {
+    sendAppointmentBookingEmail,
+    sendAppointmentManagerNotification,
+    sendAppointmentStatusUpdateEmail,
+    sendManagerStatusUpdateNotification,
+    sendAppointmentRescheduleEmail,
+    sendManagerRescheduleNotification
+} = require('../utils/emailService');
 
 // Helper function to generate time slots
 const generateTimeSlots = (startTime, endTime, interval = 30) => {
@@ -53,7 +61,7 @@ const getAvailableSlots = async (req, res, next) => {
             SELECT start_time, end_time, is_available
             FROM working_hours
             WHERE doctor_id = ? AND day_of_week = ? AND is_available = TRUE
-        `, [doctorId, dayOfWeek]);
+    `, [doctorId, dayOfWeek]);
 
         if (hours.length === 0) {
             return res.status(200).json({
@@ -72,11 +80,11 @@ const getAvailableSlots = async (req, res, next) => {
         const [appointments] = await pool.query(`
             SELECT appointment_time
             FROM appointments
-            WHERE doctor_id = ? 
-            AND appointment_date = ?
-            AND status != 'cancelled'
+            WHERE doctor_id = ?
+    AND appointment_date = ?
+        AND status != 'cancelled'
             ORDER BY appointment_time
-        `, [doctorId, date]);
+    `, [doctorId, date]);
 
         const bookedSlots = appointments.map(apt => apt.appointment_time);
         const bookedSlotsSet = new Set(bookedSlots);
@@ -130,11 +138,11 @@ const bookAppointment = async (req, res, next) => {
         const [existingAppointments] = await pool.query(`
             SELECT id
             FROM appointments
-            WHERE doctor_id = ? 
-            AND appointment_date = ?
-            AND appointment_time = ?
+            WHERE doctor_id = ?
+    AND appointment_date = ?
+        AND appointment_time = ?
             AND status != 'cancelled'
-        `, [doctorId, appointmentDate, appointmentTime]);
+                `, [doctorId, appointmentDate, appointmentTime]);
 
         if (existingAppointments.length > 0) {
             return res.status(409).json({
@@ -145,20 +153,20 @@ const bookAppointment = async (req, res, next) => {
 
         // Create appointment
         const [result] = await pool.query(`
-            INSERT INTO appointments (
-                doctor_id,
-                service_id,
-                patient_name,
-                patient_email,
-                patient_phone,
-                patient_age,
-                patient_gender,
-                appointment_date,
-                appointment_time,
-                notes,
-                status
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')
-        `, [
+            INSERT INTO appointments(
+                    doctor_id,
+                    service_id,
+                    patient_name,
+                    patient_email,
+                    patient_phone,
+                    patient_age,
+                    patient_gender,
+                    appointment_date,
+                    appointment_time,
+                    notes,
+                    status
+                ) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')
+                    `, [
             doctorId,
             serviceId,
             patientName,
@@ -170,6 +178,34 @@ const bookAppointment = async (req, res, next) => {
             appointmentTime,
             notes
         ]);
+
+        // Fetch doctor and service details for email
+        const [doctors] = await pool.query('SELECT name FROM doctors WHERE id = ?', [doctorId]);
+        const [services] = await pool.query('SELECT service_name FROM services WHERE id = ?', [serviceId]);
+
+        const doctorName = doctors.length > 0 ? doctors[0].name : 'Doctor';
+        const serviceName = services.length > 0 ? services[0].service_name : 'Service';
+
+        // Send email notifications (non-blocking)
+        const appointmentDetails = {
+            patientName,
+            patientEmail,
+            patientPhone,
+            doctorName,
+            serviceName,
+            appointmentDate,
+            appointmentTime,
+            notes
+        };
+
+        // Send emails asynchronously without blocking the response
+        Promise.all([
+            sendAppointmentBookingEmail(patientEmail, appointmentDetails),
+            sendAppointmentManagerNotification(appointmentDetails)
+        ]).catch(error => {
+            console.error('❌ Error sending appointment emails:', error);
+            // Don't fail the booking if emails fail
+        });
 
         res.status(201).json({
             success: true,
@@ -207,27 +243,27 @@ const getAllAppointments = async (req, res, next) => {
         const { status, date, limit = 50, offset = 0 } = req.query;
 
         let query = `
-            SELECT 
-                a.id,
-                a.doctor_id,
-                a.service_id,
-                a.patient_name,
-                a.patient_email,
-                a.patient_phone,
-                a.patient_age,
-                a.patient_gender,
-                a.appointment_date,
-                a.appointment_time,
-                a.notes,
-                a.status,
-                a.created_at,
-                d.name as doctor_name,
-                s.service_name
+SELECT
+a.id,
+    a.doctor_id,
+    a.service_id,
+    a.patient_name,
+    a.patient_email,
+    a.patient_phone,
+    a.patient_age,
+    a.patient_gender,
+    a.appointment_date,
+    a.appointment_time,
+    a.notes,
+    a.status,
+    a.created_at,
+    d.name as doctor_name,
+    s.service_name
             FROM appointments a
             LEFT JOIN doctors d ON a.doctor_id = d.id
             LEFT JOIN services s ON a.service_id = s.id
-            WHERE 1=1
-        `;
+            WHERE 1 = 1
+    `;
 
         const params = [];
 
@@ -241,14 +277,32 @@ const getAllAppointments = async (req, res, next) => {
             params.push(date);
         }
 
-        query += ' ORDER BY a.appointment_date DESC, a.appointment_time DESC LIMIT ? OFFSET ?';
+        query += ' ORDER BY a.created_at DESC, a.appointment_date DESC, a.appointment_time DESC LIMIT ? OFFSET ?';
         params.push(parseInt(limit), parseInt(offset));
 
         const [appointments] = await pool.query(query, params);
 
+        // Get total count for pagination
+        let countQuery = `SELECT COUNT(*) as total FROM appointments a WHERE 1 = 1`;
+        const countParams = [];
+
+        if (status) {
+            countQuery += ' AND a.status = ?';
+            countParams.push(status);
+        }
+
+        if (date) {
+            countQuery += ' AND a.appointment_date = ?';
+            countParams.push(date);
+        }
+
+        const [countResult] = await pool.query(countQuery, countParams);
+        const total = countResult[0].total;
+
         res.status(200).json({
             success: true,
             count: appointments.length,
+            total,
             data: appointments
         });
     } catch (error) {
@@ -270,10 +324,34 @@ const updateAppointmentStatus = async (req, res, next) => {
             });
         }
 
+        // Fetch appointment details before update for email
+        const [appointments] = await pool.query(`
+SELECT
+a.patient_name,
+    a.patient_email,
+    a.appointment_date,
+    a.appointment_time,
+    d.name as doctor_name,
+    s.service_name
+            FROM appointments a
+            LEFT JOIN doctors d ON a.doctor_id = d.id
+            LEFT JOIN services s ON a.service_id = s.id
+            WHERE a.id = ?
+    `, [id]);
+
+        if (appointments.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: 'Appointment not found'
+            });
+        }
+
+        const appointment = appointments[0];
+
         const [result] = await pool.query(`
             UPDATE appointments
             SET status = ?
-            WHERE id = ?
+    WHERE id = ?
         `, [status, id]);
 
         if (result.affectedRows === 0) {
@@ -282,6 +360,25 @@ const updateAppointmentStatus = async (req, res, next) => {
                 message: 'Appointment not found'
             });
         }
+
+        // Send email notifications (non-blocking)
+        const appointmentDetails = {
+            patientName: appointment.patient_name,
+            patientEmail: appointment.patient_email,
+            doctorName: appointment.doctor_name || 'Doctor',
+            serviceName: appointment.service_name || 'Service',
+            appointmentDate: appointment.appointment_date,
+            appointmentTime: appointment.appointment_time
+        };
+
+        // Send emails asynchronously without blocking the response
+        Promise.all([
+            sendAppointmentStatusUpdateEmail(appointment.patient_email, appointmentDetails, status),
+            sendManagerStatusUpdateNotification(appointmentDetails, status)
+        ]).catch(error => {
+            console.error('❌ Error sending status update emails:', error);
+            // Don't fail the update if emails fail
+        });
 
         res.status(200).json({
             success: true,
@@ -292,23 +389,103 @@ const updateAppointmentStatus = async (req, res, next) => {
     }
 };
 
-// Delete appointment (Admin)
-const deleteAppointment = async (req, res, next) => {
+// Reschedule appointment (Admin)
+const rescheduleAppointment = async (req, res, next) => {
     try {
         const { id } = req.params;
+        const { appointmentDate, appointmentTime } = req.body;
 
-        const [result] = await pool.query('DELETE FROM appointments WHERE id = ?', [id]);
+        if (!appointmentDate || !appointmentTime) {
+            return res.status(400).json({
+                success: false,
+                message: 'New appointment date and time are required'
+            });
+        }
 
-        if (result.affectedRows === 0) {
+        // Fetch current appointment details
+        const [appointments] = await pool.query(`
+            SELECT
+a.*,
+    d.name as doctor_name,
+    s.service_name
+            FROM appointments a
+            LEFT JOIN doctors d ON a.doctor_id = d.id
+            LEFT JOIN services s ON a.service_id = s.id
+            WHERE a.id = ?
+    `, [id]);
+
+        if (appointments.length === 0) {
             return res.status(404).json({
                 success: false,
                 message: 'Appointment not found'
             });
         }
 
+        const appointment = appointments[0];
+        const oldDate = appointment.appointment_date;
+        const oldTime = appointment.appointment_time;
+
+        // Check if new slot is available (excluding current appointment)
+        const [existingAppointments] = await pool.query(`
+            SELECT id
+            FROM appointments
+            WHERE doctor_id = ?
+    AND appointment_date = ?
+        AND appointment_time = ?
+            AND status != 'cancelled'
+            AND id != ?
+    `, [appointment.doctor_id, appointmentDate, appointmentTime, id]);
+
+        if (existingAppointments.length > 0) {
+            return res.status(409).json({
+                success: false,
+                message: 'This time slot is already booked'
+            });
+        }
+
+        // Update appointment
+        const [result] = await pool.query(`
+            UPDATE appointments
+            SET appointment_date = ?, appointment_time = ?
+    WHERE id = ?
+        `, [appointmentDate, appointmentTime, id]);
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({
+                success: false,
+                message: 'Failed to reschedule appointment'
+            });
+        }
+
+        // Send email notifications (non-blocking)
+        const appointmentDetails = {
+            patientName: appointment.patient_name,
+            patientEmail: appointment.patient_email,
+            doctorName: appointment.doctor_name || 'Doctor',
+            serviceName: appointment.service_name || 'Service',
+            appointmentDate,
+            appointmentTime
+        };
+
+        // Send emails asynchronously without blocking the response
+        Promise.all([
+            sendAppointmentRescheduleEmail(appointment.patient_email, appointmentDetails, oldDate, oldTime),
+            sendManagerRescheduleNotification(appointmentDetails, oldDate, oldTime)
+        ]).catch(error => {
+            console.error('❌ Error sending reschedule emails:', error);
+            // Don't fail the reschedule if emails fail
+        });
+
         res.status(200).json({
             success: true,
-            message: 'Appointment deleted successfully'
+            message: 'Appointment rescheduled successfully',
+            data: {
+                id,
+                oldDate,
+                oldTime,
+                newDate: appointmentDate,
+                newTime: appointmentTime
+            }
         });
     } catch (error) {
         next(error);
@@ -320,5 +497,5 @@ module.exports = {
     bookAppointment,
     getAllAppointments,
     updateAppointmentStatus,
-    deleteAppointment
+    rescheduleAppointment
 };
