@@ -32,7 +32,7 @@ const Home = () => {
 
     const heroData = {
         title: 'Expert Neuro & Physical Rehabilitation Care',
-        subtitle: 'Welcome to PMR Hospital',
+        subtitle: 'Welcome to NeuroMusculoRehab',
         ctaText: 'Book Appointment',
         ctaLink: '/book-appointment',
         backgroundImage: '/img/hero/infrastructure-hero.jpg',
@@ -50,9 +50,9 @@ const Home = () => {
     return (
         <>
             <PageHelmet
-                title="PMR Hospital - Expert Neuro & Physical Rehabilitation Care"
+                title="NeuroMusculoRehab - Expert Neuro & Physical Rehabilitation Care"
                 description="Leading rehabilitation center in Delhi providing comprehensive neuro and physical rehabilitation services. Expert care for stroke, spinal injuries, and neurological conditions."
-                keywords="PMR Hospital, rehabilitation center, neuro rehabilitation, physical therapy, stroke recovery, spinal injury, Delhi hospital"
+                keywords="NeuroMusculoRehab, rehabilitation center, neuro rehabilitation, physical therapy, stroke recovery, spinal injury, Delhi hospital"
                 canonicalUrl="https://pmrhospital.com/"
             />
 

@@ -1,4 +1,4 @@
-# PMR Hospital Backend - Environment Setup
+# NeuroMusculoRehab Backend - Environment Setup
 
 ## Step 1: Create .env file
 

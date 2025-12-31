@@ -152,7 +152,7 @@ const BookAppointment = () => {
         return (
             <>
                 <PageHelmet
-                    title="Appointment Confirmed - PMR Hospital"
+                    title="Appointment Confirmed - NeuroMusculoRehab"
                     description="Your appointment has been successfully booked."
                     keywords="appointment confirmed, booking success"
                     canonicalUrl="https://pmrhospital.com/book-appointment"
@@ -189,9 +189,9 @@ const BookAppointment = () => {
     return (
         <>
             <PageHelmet
-                title="Book Appointment - PMR Hospital | Schedule Your Visit"
+                title="Book Appointment - NeuroMusculoRehab | Schedule Your Visit"
                 description="Book an appointment with our expert rehabilitation specialists. Choose your doctor, select a service, and pick a convenient time slot."
-                keywords="book appointment, schedule visit, doctor appointment, rehabilitation booking, PMR hospital appointment"
+                keywords="book appointment, schedule visit, doctor appointment, rehabilitation booking, NeuroMusculoRehab appointment"
                 canonicalUrl="https://pmrhospital.com/book-appointment"
             />
 

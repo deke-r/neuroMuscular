@@ -25,9 +25,9 @@ const ServiceDetail = () => {
     return (
         <>
             <PageHelmet
-                title={`${service.title} | PMR Hospital`}
+                title={`${service.title} | NeuroMusculoRehab`}
                 description={service.description}
-                keywords={`${service.title}, rehabilitation, therapy, PMR Hospital`}
+                keywords={`${service.title}, rehabilitation, therapy, NeuroMusculoRehab`}
             />
 
             <PageHeader

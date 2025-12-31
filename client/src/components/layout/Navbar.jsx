@@ -14,7 +14,7 @@ const Navbar = () => {
         { path: '/doctors', label: 'Doctors' },
         // { path: '/packages', label: 'Packages' },
         // { path: '/infrastructure', label: 'Infrastructure' },
-        { path: '/blog', label: 'Blog' },
+        // { path: '/blog', label: 'Blog' },
         { path: '/contact', label: 'Contact' }
     ];
 
@@ -27,13 +27,13 @@ const Navbar = () => {
                 <div className="container">
                     <div className={styles.topBarContent}>
                         <div className={styles.contactInfo}>
-                            <a href="tel:+911234567890" className={styles.contactLink}>
+                            <a href="tel:+918882270509" className={styles.contactLink}>
                                 <FaPhone className={styles.contactIcon} />
-                                <span>+91 123 456 7890</span>
+                                <span>+91 8882270509</span>
                             </a>
-                            <a href="mailto:info@pmrhospital.com" className={styles.contactLink}>
+                            <a href="mailto:info@musculoneurorehab.com" className={styles.contactLink}>
                                 <FaEnvelope className={styles.contactIcon} />
-                                <span>info@pmrhospital.com</span>
+                                <span>info@musculoneurorehab.com</span>
                             </a>
                         </div>
                     </div>
@@ -44,7 +44,7 @@ const Navbar = () => {
                 <div className="container">
                     <div className={styles.navContent}>
                         <Link to="/" className={styles.logo} onClick={closeMenu}>
-                            <span className={styles.logoText}>PMR Hospital</span>
+                            <span className={styles.logoText}>NeuroMusculoRehab</span>
                         </Link>
 
                         <button

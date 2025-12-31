@@ -23,9 +23,9 @@ transporter.verify((error, success) => {
 const sendOTPEmail = async (email, otp) => {
     try {
         const mailOptions = {
-            from: `"PMR Hospital" <${process.env.MAIL_USER}>`,
+            from: `"NeuroMusculoRehab" <${process.env.MAIL_USER}>`,
             to: email,
-            subject: 'Password Reset OTP - PMR Hospital',
+            subject: 'Password Reset OTP - NeuroMusculoRehab',
             html: `
                 <!DOCTYPE html>
                 <html>
@@ -84,7 +84,7 @@ const sendOTPEmail = async (email, otp) => {
                 <body>
                     <div class="container">
                         <div class="header">
-                            <h1>PMR Hospital</h1>
+                            <h1>NeuroMusculoRehab</h1>
                             <p>Password Reset Request</p>
                         </div>
                         <div class="content">
@@ -99,13 +99,13 @@ const sendOTPEmail = async (email, otp) => {
                             
                             <p>If you didn't request a password reset, please ignore this email or contact support if you have concerns.</p>
                             
-                            <p class="warning">⚠️ Never share this OTP with anyone. PMR Hospital staff will never ask for your OTP.</p>
+                            <p class="warning">⚠️ Never share this OTP with anyone. NeuroMusculoRehab staff will never ask for your OTP.</p>
                             
-                            <p>Best regards,<br><strong>PMR Hospital Team</strong></p>
+                            <p>Best regards,<br><strong>NeuroMusculoRehab Team</strong></p>
                         </div>
                         <div class="footer">
                             <p>This is an automated email. Please do not reply to this message.</p>
-                            <p>&copy; ${new Date().getFullYear()} PMR Hospital. All rights reserved.</p>
+                            <p>&copy; ${new Date().getFullYear()} NeuroMusculoRehab. All rights reserved.</p>
                         </div>
                     </div>
                 </body>
@@ -128,9 +128,9 @@ const sendAppointmentBookingEmail = async (patientEmail, appointmentDetails) => 
         const { patientName, doctorName, serviceName, appointmentDate, appointmentTime } = appointmentDetails;
 
         const mailOptions = {
-            from: `"PMR Hospital" <${process.env.MAIL_USER}>`,
+            from: `"NeuroMusculoRehab" <${process.env.MAIL_USER}>`,
             to: patientEmail,
-            subject: 'Appointment Booking Confirmation - PMR Hospital',
+            subject: 'Appointment Booking Confirmation - NeuroMusculoRehab',
             html: `
                 <!DOCTYPE html>
                 <html>
@@ -207,7 +207,7 @@ const sendAppointmentBookingEmail = async (patientEmail, appointmentDetails) => 
                 <body>
                     <div class="container">
                         <div class="header">
-                            <h1>PMR Hospital</h1>
+                            <h1>NeuroMusculoRehab</h1>
                             <p>Appointment Confirmation</p>
                         </div>
                         <div class="content">
@@ -243,11 +243,11 @@ const sendAppointmentBookingEmail = async (patientEmail, appointmentDetails) => 
                             
                             <p>If you need to reschedule or cancel, please contact us as soon as possible.</p>
                             
-                            <p>Best regards,<br><strong>PMR Hospital Team</strong></p>
+                            <p>Best regards,<br><strong>NeuroMusculoRehab Team</strong></p>
                         </div>
                         <div class="footer">
                             <p>This is an automated email. Please do not reply to this message.</p>
-                            <p>&copy; ${new Date().getFullYear()} PMR Hospital. All rights reserved.</p>
+                            <p>&copy; ${new Date().getFullYear()} NeuroMusculoRehab. All rights reserved.</p>
                         </div>
                     </div>
                 </body>
@@ -284,7 +284,7 @@ const sendAppointmentManagerNotification = async (appointmentDetails) => {
         const managerEmails = managers.map(m => m.email).join(', ');
 
         const mailOptions = {
-            from: `"PMR Hospital" <${process.env.MAIL_USER}>`,
+            from: `"NeuroMusculoRehab" <${process.env.MAIL_USER}>`,
             to: managerEmails,
             subject: 'New Appointment Booking - Action Required',
             html: `
@@ -354,7 +354,7 @@ const sendAppointmentManagerNotification = async (appointmentDetails) => {
                 <body>
                     <div class="container">
                         <div class="header">
-                            <h1>PMR Hospital</h1>
+                            <h1>NeuroMusculoRehab</h1>
                             <p>New Appointment Notification</p>
                         </div>
                         <div class="content">
@@ -407,11 +407,11 @@ const sendAppointmentManagerNotification = async (appointmentDetails) => {
                             
                             <p>Please log in to the admin panel to confirm or manage this appointment.</p>
                             
-                            <p>Best regards,<br><strong>PMR Hospital System</strong></p>
+                            <p>Best regards,<br><strong>NeuroMusculoRehab System</strong></p>
                         </div>
                         <div class="footer">
                             <p>This is an automated email. Please do not reply to this message.</p>
-                            <p>&copy; ${new Date().getFullYear()} PMR Hospital. All rights reserved.</p>
+                            <p>&copy; ${new Date().getFullYear()} NeuroMusculoRehab. All rights reserved.</p>
                         </div>
                     </div>
                 </body>
@@ -442,9 +442,9 @@ const sendAppointmentStatusUpdateEmail = async (patientEmail, appointmentDetails
         const status = statusConfig[newStatus] || { color: '#ffc107', label: newStatus, icon: '📌' };
 
         const mailOptions = {
-            from: `"PMR Hospital" <${process.env.MAIL_USER}>`,
+            from: `"NeuroMusculoRehab" <${process.env.MAIL_USER}>`,
             to: patientEmail,
-            subject: `Appointment ${status.label} - PMR Hospital`,
+            subject: `Appointment ${status.label} - NeuroMusculoRehab`,
             html: `
                 <!DOCTYPE html>
                 <html>
@@ -515,7 +515,7 @@ const sendAppointmentStatusUpdateEmail = async (patientEmail, appointmentDetails
                 <body>
                     <div class="container">
                         <div class="header">
-                            <h1>PMR Hospital</h1>
+                            <h1>NeuroMusculoRehab</h1>
                             <p>Appointment Status Update</p>
                         </div>
                         <div class="content">
@@ -547,16 +547,16 @@ const sendAppointmentStatusUpdateEmail = async (patientEmail, appointmentDetails
                             </div>
                             
                             ${newStatus === 'confirmed' ? '<p>We look forward to seeing you at your scheduled appointment time.</p>' : ''}
-                            ${newStatus === 'completed' ? '<p>Thank you for visiting PMR Hospital. We hope you had a positive experience.</p>' : ''}
+                            ${newStatus === 'completed' ? '<p>Thank you for visiting NeuroMusculoRehab. We hope you had a positive experience.</p>' : ''}
                             ${newStatus === 'cancelled' ? '<p>If you would like to reschedule, please contact us or book a new appointment.</p>' : ''}
                             
                             <p>If you have any questions, please feel free to contact us.</p>
                             
-                            <p>Best regards,<br><strong>PMR Hospital Team</strong></p>
+                            <p>Best regards,<br><strong>NeuroMusculoRehab Team</strong></p>
                         </div>
                         <div class="footer">
                             <p>This is an automated email. Please do not reply to this message.</p>
-                            <p>&copy; ${new Date().getFullYear()} PMR Hospital. All rights reserved.</p>
+                            <p>&copy; ${new Date().getFullYear()} NeuroMusculoRehab. All rights reserved.</p>
                         </div>
                     </div>
                 </body>
@@ -601,7 +601,7 @@ const sendManagerStatusUpdateNotification = async (appointmentDetails, newStatus
         const status = statusConfig[newStatus] || { color: '#ffc107', label: newStatus };
 
         const mailOptions = {
-            from: `"PMR Hospital" <${process.env.MAIL_USER}>`,
+            from: `"NeuroMusculoRehab" <${process.env.MAIL_USER}>`,
             to: managerEmails,
             subject: `Appointment ${status.label} - ${patientName}`,
             html: `
@@ -674,7 +674,7 @@ const sendManagerStatusUpdateNotification = async (appointmentDetails, newStatus
                 <body>
                     <div class="container">
                         <div class="header">
-                            <h1>PMR Hospital</h1>
+                            <h1>NeuroMusculoRehab</h1>
                             <p>Appointment Status Update</p>
                         </div>
                         <div class="content">
@@ -716,11 +716,11 @@ const sendManagerStatusUpdateNotification = async (appointmentDetails, newStatus
                             
                             <p>This is a notification that the appointment status has been updated to <strong>${status.label}</strong>.</p>
                             
-                            <p>Best regards,<br><strong>PMR Hospital System</strong></p>
+                            <p>Best regards,<br><strong>NeuroMusculoRehab System</strong></p>
                         </div>
                         <div class="footer">
                             <p>This is an automated email. Please do not reply to this message.</p>
-                            <p>&copy; ${new Date().getFullYear()} PMR Hospital. All rights reserved.</p>
+                            <p>&copy; ${new Date().getFullYear()} NeuroMusculoRehab. All rights reserved.</p>
                         </div>
                     </div>
                 </body>
@@ -743,9 +743,9 @@ const sendAppointmentRescheduleEmail = async (patientEmail, appointmentDetails, 
         const { patientName, doctorName, serviceName, appointmentDate, appointmentTime } = appointmentDetails;
 
         const mailOptions = {
-            from: `"PMR Hospital" <${process.env.MAIL_USER}>`,
+            from: `"NeuroMusculoRehab" <${process.env.MAIL_USER}>`,
             to: patientEmail,
-            subject: 'Appointment Rescheduled - PMR Hospital',
+            subject: 'Appointment Rescheduled - NeuroMusculoRehab',
             html: `
                 <!DOCTYPE html>
                 <html>
@@ -835,7 +835,7 @@ const sendAppointmentRescheduleEmail = async (patientEmail, appointmentDetails, 
                 <body>
                     <div class="container">
                         <div class="header">
-                            <h1>PMR Hospital</h1>
+                            <h1>NeuroMusculoRehab</h1>
                             <p>Appointment Rescheduled</p>
                         </div>
                         <div class="content">
@@ -874,11 +874,11 @@ const sendAppointmentRescheduleEmail = async (patientEmail, appointmentDetails, 
                             
                             <p>If you have any questions or need to make further changes, please contact us.</p>
                             
-                            <p>Best regards,<br><strong>PMR Hospital Team</strong></p>
+                            <p>Best regards,<br><strong>NeuroMusculoRehab Team</strong></p>
                         </div>
                         <div class="footer">
                             <p>This is an automated email. Please do not reply to this message.</p>
-                            <p>&copy; ${new Date().getFullYear()} PMR Hospital. All rights reserved.</p>
+                            <p>&copy; ${new Date().getFullYear()} NeuroMusculoRehab. All rights reserved.</p>
                         </div>
                     </div>
                 </body>
@@ -915,7 +915,7 @@ const sendManagerRescheduleNotification = async (appointmentDetails, oldDate, ol
         const managerEmails = managers.map(m => m.email).join(', ');
 
         const mailOptions = {
-            from: `"PMR Hospital" <${process.env.MAIL_USER}>`,
+            from: `"NeuroMusculoRehab" <${process.env.MAIL_USER}>`,
             to: managerEmails,
             subject: `Appointment Rescheduled - ${patientName}`,
             html: `
@@ -1007,7 +1007,7 @@ const sendManagerRescheduleNotification = async (appointmentDetails, oldDate, ol
                 <body>
                     <div class="container">
                         <div class="header">
-                            <h1>PMR Hospital</h1>
+                            <h1>NeuroMusculoRehab</h1>
                             <p>Appointment Rescheduled</p>
                         </div>
                         <div class="content">
@@ -1054,11 +1054,11 @@ const sendManagerRescheduleNotification = async (appointmentDetails, oldDate, ol
                             
                             <p>This appointment has been rescheduled. The patient has been notified of the change.</p>
                             
-                            <p>Best regards,<br><strong>PMR Hospital System</strong></p>
+                            <p>Best regards,<br><strong>NeuroMusculoRehab System</strong></p>
                         </div>
                         <div class="footer">
                             <p>This is an automated email. Please do not reply to this message.</p>
-                            <p>&copy; ${new Date().getFullYear()} PMR Hospital. All rights reserved.</p>
+                            <p>&copy; ${new Date().getFullYear()} NeuroMusculoRehab. All rights reserved.</p>
                         </div>
                     </div>
                 </body>

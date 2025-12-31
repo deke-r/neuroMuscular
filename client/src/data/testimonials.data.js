@@ -4,7 +4,7 @@ export const testimonials = [
         name: 'Ramesh Gupta',
         condition: 'Stroke Recovery',
         rating: 5,
-        text: 'After my stroke, I thought I would never walk again. The team at PMR Hospital worked miracles. Their dedication and expertise helped me regain my independence. I am now walking without support and living a normal life.',
+        text: 'After my stroke, I thought I would never walk again. The team at NeuroMusculoRehab worked miracles. Their dedication and expertise helped me regain my independence. I am now walking without support and living a normal life.',
         image: '/img/testimonials/patient-1.jpg'
     },
     {

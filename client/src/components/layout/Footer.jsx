@@ -21,9 +21,9 @@ const Footer = () => {
     ];
 
     const contactInfo = {
-        address: '123 Medical Street, Healthcare City, Delhi - 110001',
-        phone: '+91 123 456 7890',
-        email: 'info@pmrhospital.com'
+        address: 'Plot number 114 Ground floor, Pocket 1 Jasola, Near DAV school opposite Police park, New Delhi, Delhi - 110025',
+        phone: '+91 8882270509',
+        email: 'info@musculoneurorehab.com'
     };
 
     const socialLinks = [
@@ -39,7 +39,7 @@ const Footer = () => {
                 <div className="row g-4">
                     <div className="col-lg-4 col-md-6">
                         <div className={styles.footerSection}>
-                            <h3 className={styles.footerTitle}>PMR Hospital</h3>
+                            <h3 className={styles.footerTitle}>NeuroMusculoRehab</h3>
                             <p className={styles.footerDescription}>
                                 Professional rehabilitation center providing comprehensive care for neurological and musculoskeletal conditions.
                                 Our expert team is dedicated to helping you regain independence and improve quality of life.
@@ -118,7 +118,7 @@ const Footer = () => {
 
                 <div className={styles.footerBottom}>
                     <p className={styles.copyright}>
-                        © {new Date().getFullYear()} PMR Hospital. All rights reserved.
+                        © {new Date().getFullYear()} NeuroMusculoRehab. All rights reserved.
                     </p>
                     <div className={styles.footerBottomLinks}>
                         <Link to="/privacy" className={styles.bottomLink}>Privacy Policy</Link>

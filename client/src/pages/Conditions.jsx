@@ -14,7 +14,7 @@ const Conditions = () => {
     return (
         <>
             <PageHelmet
-                title="Conditions We Treat - PMR Hospital | Expert Rehabilitation Care"
+                title="Conditions We Treat - NeuroMusculoRehab | Expert Rehabilitation Care"
                 description="We specialize in treating stroke, spinal cord injuries, traumatic brain injury, Parkinson's disease, multiple sclerosis, cerebral palsy, and more."
                 keywords="stroke rehabilitation, spinal cord injury treatment, traumatic brain injury, Parkinson's disease, multiple sclerosis, cerebral palsy, orthopedic rehabilitation"
                 canonicalUrl="https://pmrhospital.com/conditions"

@@ -1,4 +1,4 @@
-# PMR Hospital - Client Information Form
+# NeuroMusculoRehab - Client Information Form
 
 **Instructions:** Please fill in all the details below to complete your hospital website. This form collects all necessary information at once to avoid back-and-forth communication.
 

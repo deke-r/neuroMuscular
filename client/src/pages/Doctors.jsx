@@ -34,7 +34,7 @@ const Doctors = () => {
     return (
         <>
             <PageHelmet
-                title="Our Doctors - PMR Hospital | Expert Rehabilitation Specialists"
+                title="Our Doctors - NeuroMusculoRehab | Expert Rehabilitation Specialists"
                 description="Meet our team of expert rehabilitation specialists including physiatrists, neurologists, physiotherapists, occupational therapists, and speech therapists."
                 keywords="rehabilitation doctors, physiatrist, neurologist, physiotherapist, occupational therapist, speech therapist, expert medical team"
                 canonicalUrl="https://pmrhospital.com/doctors"

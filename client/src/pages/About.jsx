@@ -63,14 +63,14 @@ const About = () => {
     return (
         <>
             <PageHelmet
-                title="About Us - PMR Hospital | Leading Rehabilitation Center"
-                description="Learn about PMR Hospital, our expert team, state-of-the-art facilities, and commitment to providing exceptional rehabilitation care in Delhi."
-                keywords="about PMR Hospital, rehabilitation center Delhi, expert rehabilitation team, neuro rehabilitation facility"
+                title="About Us - NeuroMusculoRehab | Leading Rehabilitation Center"
+                description="Learn about NeuroMusculoRehab, our expert team, state-of-the-art facilities, and commitment to providing exceptional rehabilitation care in Delhi."
+                keywords="about NeuroMusculoRehab, rehabilitation center Delhi, expert rehabilitation team, neuro rehabilitation facility"
                 canonicalUrl="https://pmrhospital.com/about"
             />
 
             <PageHeader
-                title="About PMR Hospital"
+                title="About NeuroMusculoRehab"
                 subtitle="Dedicated to Restoring Lives and Rebuilding Hope"
                 breadcrumbs={breadcrumbs}
                 backgroundImage="/img/hero/about-hero.jpg"
@@ -86,7 +86,7 @@ const About = () => {
                                 align="left"
                             />
                             <p style={{ fontSize: 'var(--font-size-lg)', lineHeight: 'var(--line-height-relaxed)', color: 'var(--color-gray-600)' }}>
-                                PMR Hospital is a professional rehabilitation center dedicated to providing world-class rehabilitation services
+                                NeuroMusculoRehab is a professional rehabilitation center dedicated to providing world-class rehabilitation services
                                 to patients recovering from neurological and musculoskeletal conditions. Our vision is to become
                                 a premier destination for comprehensive rehabilitation care.
                             </p>

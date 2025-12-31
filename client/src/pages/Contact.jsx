@@ -15,19 +15,19 @@ const Contact = () => {
         {
             icon: FaMapMarkerAlt,
             title: 'Address',
-            content: '123 Medical Street, Healthcare City, Delhi - 110001, India'
+            content: 'Plot number 114 Ground floor, Pocket 1 Jasola, Near DAV school opposite Police park, New Delhi, Delhi - 110025'
         },
         {
             icon: FaPhone,
             title: 'Phone',
-            content: '+91 123 456 7890',
-            link: 'tel:+911234567890'
+            content: '+91 8882270509',
+            link: 'tel:+918882270509'
         },
         {
             icon: FaEnvelope,
             title: 'Email',
-            content: 'info@pmrhospital.com',
-            link: 'mailto:info@pmrhospital.com'
+            content: 'info@musculoneurorehab.com',
+            link: 'mailto:info@musculoneurorehab.com'
         },
         {
             icon: FaClock,
@@ -39,9 +39,9 @@ const Contact = () => {
     return (
         <>
             <PageHelmet
-                title="Contact Us - PMR Hospital | Get in Touch"
-                description="Contact PMR Hospital for appointments, inquiries, or to learn more about our rehabilitation services. We're here to help you on your recovery journey."
-                keywords="contact PMR Hospital, rehabilitation center contact, book appointment, hospital address, phone number, email"
+                title="Contact Us - NeuroMusculoRehab | Get in Touch"
+                description="Contact NeuroMusculoRehab for appointments, inquiries, or to learn more about our rehabilitation services. We're here to help you on your recovery journey."
+                keywords="contact NeuroMusculoRehab, rehabilitation center contact, book appointment, hospital address, phone number, email"
                 canonicalUrl="https://pmrhospital.com/contact"
             />
 
@@ -123,7 +123,7 @@ const Contact = () => {
                             allowFullScreen=""
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
-                            title="PMR Hospital Location"
+                            title="NeuroMusculoRehab Location"
                         />
                     </div>
                 </div>

@@ -25,9 +25,9 @@ const ConditionDetail = () => {
     return (
         <>
             <PageHelmet
-                title={`${condition.title} Treatment | PMR Hospital`}
+                title={`${condition.title} Treatment | NeuroMusculoRehab`}
                 description={`Expert rehabilitation and treatment for ${condition.title}. ${condition.description}`}
-                keywords={`${condition.title}, ${condition.title} treatment, ${condition.title} rehabilitation, physiotherapy, PMR Hospital`}
+                keywords={`${condition.title}, ${condition.title} treatment, ${condition.title} rehabilitation, physiotherapy, NeuroMusculoRehab`}
                 canonicalUrl={`https://pmrhospital.com/conditions/${condition.slug}`}
             />
 
@@ -124,7 +124,7 @@ const ConditionDetail = () => {
                             </div>
 
                             <div className={styles.section}>
-                                <h3 className={styles.sectionTitle}>Why Choose PMR Hospital?</h3>
+                                <h3 className={styles.sectionTitle}>Why Choose NeuroMusculoRehab?</h3>
                                 <p className={styles.sectionText}>
                                     Our expert physiotherapists specialize in treating {condition.title.toLowerCase()} using evidence-based
                                     techniques and personalized treatment plans. We focus on maximizing your recovery potential and

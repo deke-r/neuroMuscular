@@ -31,7 +31,7 @@ testConnection();
 app.get('/', (req, res) => {
     res.json({
         success: true,
-        message: 'PMR Hospital API Server',
+        message: 'NeuroMusculoRehab API Server',
         version: '1.0.0'
     });
 });
