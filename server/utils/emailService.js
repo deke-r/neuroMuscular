@@ -1,6 +1,11 @@
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 
+// Debug: Check if email credentials are loaded
+console.log('📧 Email Configuration Debug:');
+console.log('MAIL_USER:', process.env.MAIL_USER ? '✅ Set' : '❌ Missing');
+console.log('MAIL_PASS:', process.env.MAIL_PASS ? '✅ Set' : '❌ Missing');
+
 // Create transporter
 const transporter = nodemailer.createTransport({
     service: 'gmail',

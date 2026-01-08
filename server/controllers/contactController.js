@@ -5,8 +5,8 @@ const createTransporter = () => {
     return nodemailer.createTransport({
         service: process.env.EMAIL_SERVICE || 'gmail',
         auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASSWORD
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_PASS
         }
     });
 };
@@ -36,9 +36,11 @@ const sendContactEmail = async (req, res) => {
         const transporter = createTransporter();
         const recipientEmail = process.env.EMAIL_RECIPIENT || 'info@musculoneurorehab.com';
 
+        console.log('📧 Sending contact form email to:', recipientEmail);
+
         // Email to hospital
         const hospitalMailOptions = {
-            from: process.env.EMAIL_USER,
+            from: process.env.MAIL_USER,
             to: recipientEmail,
             subject: `Contact Form: ${subject}`,
             html: `
@@ -65,7 +67,7 @@ const sendContactEmail = async (req, res) => {
 
         // Auto-reply email to user
         const userMailOptions = {
-            from: process.env.EMAIL_USER,
+            from: process.env.MAIL_USER,
             to: email,
             subject: 'Thank you for contacting NeuroMusculoRehab',
             html: `
@@ -102,8 +104,13 @@ const sendContactEmail = async (req, res) => {
         };
 
         // Send both emails
+        console.log('📤 Sending email to hospital:', recipientEmail);
         await transporter.sendMail(hospitalMailOptions);
+        console.log('✅ Hospital email sent successfully');
+
+        console.log('📤 Sending auto-reply to user:', email);
         await transporter.sendMail(userMailOptions);
+        console.log('✅ User auto-reply sent successfully');
 
         res.status(200).json({
             success: true,

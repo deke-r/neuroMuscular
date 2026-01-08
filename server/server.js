@@ -37,6 +37,23 @@ app.get('/', (req, res) => {
     });
 });
 
+// Test API endpoint
+app.get('/api/test', (req, res) => {
+    res.json({
+        success: true,
+        message: 'API is working correctly',
+        timestamp: new Date().toISOString(),
+        server: 'NeuroMusculoRehab Backend',
+        emailConfig: {
+            mailUser: process.env.MAIL_USER ? 'Configured ✅' : 'Missing ❌',
+            mailPass: process.env.MAIL_PASS ? 'Configured ✅' : 'Missing ❌',
+            emailRecipient: process.env.EMAIL_RECIPIENT || 'info@musculoneurorehab.com (default)'
+        },
+        database: 'Connected',
+        port: process.env.PORT || 5000
+    });
+});
+
 app.use('/api/auth', authRoutes);
 app.use('/api/doctors', doctorRoutes);
 app.use('/api/services', serviceRoutes);
