@@ -19,7 +19,7 @@ const DoctorCard = ({ name, designation, specialization, experience, image, imag
                     }}
                 />
                 <div className={styles.overlay}>
-                    <span className={styles.experience}>{experience} Experience</span>
+                    <span className={styles.experience}>{experience}+ years Experience</span>
                 </div>
             </div>
             <div className={styles.content}>
