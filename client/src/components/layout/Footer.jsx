@@ -23,13 +23,13 @@ const Footer = () => {
     const contactInfo = {
         address: 'Plot number 114 Ground floor, Pocket 1 Jasola, Near DAV school opposite Police park, New Delhi, Delhi - 110025',
         phone: '+91 8882270509',
-        email: 'info@musculoneurorehab.com'
+        email: 'info@muscloneurorehab.com'
     };
 
     const socialLinks = [
-        { icon: FaFacebookF, url: 'https://www.facebook.com/musculoneurorehab', label: 'Facebook' },
+        { icon: FaFacebookF, url: 'https://www.facebook.com/MuscloNeuroRehab', label: 'Facebook' },
         { icon: FaTwitter, url: 'https://x.com/musculoneuro', label: 'Twitter' },
-        { icon: FaInstagram, url: 'https://www.instagram.com/musculoneurorehab/', label: 'Instagram' },
+        { icon: FaInstagram, url: 'https://www.instagram.com/MuscloNeuroRehab/', label: 'Instagram' },
         { icon: FaLinkedinIn, url: 'https://www.linkedin.com/in/musculoneuro-rehab-physiotherapy-centre-b221543a2/', label: 'LinkedIn' }
     ];
 
@@ -39,7 +39,7 @@ const Footer = () => {
                 <div className="row g-4">
                     <div className="col-lg-4 col-md-6">
                         <div className={styles.footerSection}>
-                            <h3 className={styles.footerTitle}>NeuroMusculoRehab</h3>
+                            <h3 className={styles.footerTitle}>MuscloNeuroRehab</h3>
                             <p className={styles.footerDescription}>
                                 Professional rehabilitation center providing comprehensive care for neurological and musculoskeletal conditions.
                                 Our expert team is dedicated to helping you regain independence and improve quality of life.
@@ -118,7 +118,7 @@ const Footer = () => {
 
                 <div className={styles.footerBottom}>
                     <p className={styles.copyright}>
-                        © {new Date().getFullYear()} NeuroMusculoRehab. All rights reserved.
+                        © {new Date().getFullYear()} MuscloNeuroRehab. All rights reserved.
                     </p>
                     <div className={styles.footerBottomLinks}>
                         <Link to="/privacy" className={styles.bottomLink}>Privacy Policy</Link>

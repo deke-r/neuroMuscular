@@ -7,7 +7,7 @@ To enable the contact form email functionality, you need to add the following en
 EMAIL_SERVICE=gmail
 EMAIL_USER=your-email@gmail.com
 EMAIL_PASSWORD=your-app-password
-EMAIL_RECIPIENT=info@musculoneurorehab.com
+EMAIL_RECIPIENT=info@MuscloNeuroRehab.com
 ```
 
 ## Setting up Gmail App Password

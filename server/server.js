@@ -32,7 +32,7 @@ testConnection();
 app.get('/', (req, res) => {
     res.json({
         success: true,
-        message: 'NeuroMusculoRehab API Server',
+        message: 'MuscloNeuroRehab API Server',
         version: '1.0.0'
     });
 });
@@ -43,11 +43,11 @@ app.get('/api/test', (req, res) => {
         success: true,
         message: 'API is working correctly',
         timestamp: new Date().toISOString(),
-        server: 'NeuroMusculoRehab Backend',
+        server: 'MuscloNeuroRehab Backend',
         emailConfig: {
             mailUser: process.env.MAIL_USER ? 'Configured ✅' : 'Missing ❌',
             mailPass: process.env.MAIL_PASS ? 'Configured ✅' : 'Missing ❌',
-            emailRecipient: process.env.EMAIL_RECIPIENT || 'info@musculoneurorehab.com (default)'
+            emailRecipient: process.env.EMAIL_RECIPIENT || 'info@muscloneurorehab.com (default)'
         },
         database: 'Connected',
         port: process.env.PORT || 5000

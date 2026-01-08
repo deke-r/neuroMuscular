@@ -34,7 +34,7 @@ const sendContactEmail = async (req, res) => {
         }
 
         const transporter = createTransporter();
-        const recipientEmail = process.env.EMAIL_RECIPIENT || 'info@musculoneurorehab.com';
+        const recipientEmail = process.env.EMAIL_RECIPIENT || 'info@muscloneurorehab.com';
 
         console.log('📧 Sending contact form email to:', recipientEmail);
 
@@ -59,7 +59,7 @@ const sendContactEmail = async (req, res) => {
                     </div>
                     <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
                     <p style="color: #888; font-size: 12px;">
-                        This email was sent from the NeuroMusculoRehab contact form.
+                        This email was sent from the MuscloNeuroRehab contact form.
                     </p>
                 </div>
             `
@@ -69,7 +69,7 @@ const sendContactEmail = async (req, res) => {
         const userMailOptions = {
             from: process.env.MAIL_USER,
             to: email,
-            subject: 'Thank you for contacting NeuroMusculoRehab',
+            subject: 'Thank you for contacting MuscloNeuroRehab',
             html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
                     <h2 style="color: #1289BF; border-bottom: 2px solid #7CC339; padding-bottom: 10px;">
@@ -77,7 +77,7 @@ const sendContactEmail = async (req, res) => {
                     </h2>
                     <p style="line-height: 1.6; color: #555;">Dear ${name},</p>
                     <p style="line-height: 1.6; color: #555;">
-                        Thank you for reaching out to NeuroMusculoRehab. We have received your message and 
+                        Thank you for reaching out to MuscloNeuroRehab. We have received your message and 
                         our team will get back to you within 24 hours.
                     </p>
                     <div style="background-color: #f9f9f9; padding: 20px; border-radius: 5px; margin: 20px 0;">
@@ -89,11 +89,11 @@ const sendContactEmail = async (req, res) => {
                         <h3 style="margin-top: 0;">Contact Information</h3>
                         <p style="margin: 5px 0;">📍 Plot number 114 Ground floor, Pocket 1 Jasola, Near DAV school opposite Police park, New Delhi, Delhi - 110025</p>
                         <p style="margin: 5px 0;">📞 +91 8882270509</p>
-                        <p style="margin: 5px 0;">📧 info@musculoneurorehab.com</p>
+                        <p style="margin: 5px 0;">📧 info@muscloneurorehab.com</p>
                     </div>
                     <p style="line-height: 1.6; color: #555;">
                         Best regards,<br>
-                        <strong>NeuroMusculoRehab Team</strong>
+                        <strong>MuscloNeuroRehab Team</strong>
                     </p>
                     <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
                     <p style="color: #888; font-size: 12px;">

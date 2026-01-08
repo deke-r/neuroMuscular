@@ -58,10 +58,10 @@ const Infrastructure = () => {
     return (
         <>
             <PageHelmet
-                title="Infrastructure & Facilities - NeuroMusculoRehab | State-of-the-Art Equipment"
+                title="Infrastructure & Facilities - MuscloNeuroRehab | State-of-the-Art Equipment"
                 description="Explore our modern rehabilitation facility featuring advanced equipment, spacious therapy areas, inpatient care, and comprehensive diagnostic services."
                 keywords="rehabilitation facility, modern hospital infrastructure, therapy equipment, inpatient care, diagnostic lab, accessible facility"
-                canonicalUrl="https://musculoneurorehab.in/infrastructure"
+                canonicalUrl="https://MuscloNeuroRehab.in/infrastructure"
             />
 
             <PageHeader

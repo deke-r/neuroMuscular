@@ -25,10 +25,10 @@ const ConditionDetail = () => {
     return (
         <>
             <PageHelmet
-                title={`${condition.title} Treatment | NeuroMusculoRehab`}
+                title={`${condition.title} Treatment | MuscloNeuroRehab`}
                 description={`Expert rehabilitation and treatment for ${condition.title}. ${condition.description}`}
-                keywords={`${condition.title}, ${condition.title} treatment, ${condition.title} rehabilitation, physiotherapy, NeuroMusculoRehab`}
-                canonicalUrl={`https://musculoneurorehab.in/conditions/${condition.slug}`}
+                keywords={`${condition.title}, ${condition.title} treatment, ${condition.title} rehabilitation, physiotherapy, MuscloNeuroRehab`}
+                canonicalUrl={`https://MuscloNeuroRehab.in/conditions/${condition.slug}`}
             />
 
             <PageHeader
@@ -124,7 +124,7 @@ const ConditionDetail = () => {
                             </div>
 
                             <div className={styles.section}>
-                                <h3 className={styles.sectionTitle}>Why Choose NeuroMusculoRehab?</h3>
+                                <h3 className={styles.sectionTitle}>Why Choose MuscloNeuroRehab?</h3>
                                 <p className={styles.sectionText}>
                                     Our expert physiotherapists specialize in treating {condition.title.toLowerCase()} using evidence-based
                                     techniques and personalized treatment plans. We focus on maximizing your recovery potential and

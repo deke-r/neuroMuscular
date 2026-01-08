@@ -63,14 +63,14 @@ const About = () => {
     return (
         <>
             <PageHelmet
-                title="About Us - NeuroMusculoRehab | Leading Rehabilitation Center"
-                description="Learn about NeuroMusculoRehab, our expert team, state-of-the-art facilities, and commitment to providing exceptional rehabilitation care in Delhi."
-                keywords="about NeuroMusculoRehab, rehabilitation center Delhi, expert rehabilitation team, neuro rehabilitation facility"
-                canonicalUrl="https://musculoneurorehab.in/about"
+                title="About Us - MuscloNeuroRehab | Leading Rehabilitation Center"
+                description="Learn about MuscloNeuroRehab, our expert team, state-of-the-art facilities, and commitment to providing exceptional rehabilitation care in Delhi."
+                keywords="about MuscloNeuroRehab, rehabilitation center Delhi, expert rehabilitation team, neuro rehabilitation facility"
+                canonicalUrl="https://MuscloNeuroRehab.in/about"
             />
 
             <PageHeader
-                title="About NeuroMusculoRehab"
+                title="About MuscloNeuroRehab"
                 subtitle="Dedicated to Restoring Lives and Rebuilding Hope"
                 breadcrumbs={breadcrumbs}
                 backgroundImage="/img/hero/about-hero.jpg"
@@ -86,7 +86,7 @@ const About = () => {
                                 align="left"
                             />
                             <p style={{ fontSize: 'var(--font-size-lg)', lineHeight: 'var(--line-height-relaxed)', color: 'var(--color-gray-600)' }}>
-                                NeuroMusculoRehab is a professional rehabilitation center dedicated to providing world-class rehabilitation services
+                                MuscloNeuroRehab is a professional rehabilitation center dedicated to providing world-class rehabilitation services
                                 to patients recovering from neurological and musculoskeletal conditions. Our vision is to become
                                 a premier destination for comprehensive rehabilitation care.
                             </p>
@@ -108,6 +108,9 @@ const About = () => {
                                 </div>
                                 <div className="col-6">
                                     <StatsBox number="95" suffix="%" label="Success Rate" />
+                                </div>
+                                <div className="col-6">
+                                    <StatsBox number="1" suffix="" label="Expert Doctor Consultation" />
                                 </div>
                             </div>
                         </div>

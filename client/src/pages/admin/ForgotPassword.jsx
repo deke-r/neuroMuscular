@@ -107,7 +107,7 @@ const ForgotPassword = () => {
                 <div className={styles.card}>
                     <div className={styles.header}>
                         <h1 className={styles.title}>Reset Password</h1>
-                        <p className={styles.subtitle}>NeuroMusculoRehab Admin Portal</p>
+                        <p className={styles.subtitle}>MuscloNeuroRehab Admin Portal</p>
                     </div>
 
                     {/* Step Indicator */}

@@ -4,7 +4,7 @@ export const testimonials = [
         name: 'Ramesh Gupta',
         condition: 'Stroke Recovery',
         rating: 5,
-        text: 'After my stroke, I thought I would never walk again. The team at NeuroMusculoRehab worked miracles. Their dedication and expertise helped me regain my independence. I am now walking without support and living a normal life.',
+        text: 'After my stroke, I thought I would never walk again. The team at MuscloNeuroRehab worked miracles. Their dedication and expertise helped me regain my independence. I am now walking without support and living a normal life.',
         image: '/img/testimonials/patient-1.jpg'
     },
     {
@@ -46,5 +46,37 @@ export const testimonials = [
         rating: 5,
         text: 'After my knee replacement surgery, the physiotherapy team helped me recover faster than expected. Their personalized approach and modern equipment made all the difference. Highly recommend!',
         image: '/img/testimonials/patient-6.jpg'
+    },
+    {
+        id: 7,
+        name: 'Vikram Singh',
+        condition: 'Chronic Neck Pain',
+        rating: 5,
+        text: 'I suffered from chronic neck pain for years due to poor posture at work. The physiotherapy team identified the root cause and created a targeted treatment plan. Within weeks, my pain reduced significantly, and I learned exercises to prevent it from returning.',
+        image: '/img/testimonials/patient-1.jpg'
+    },
+    {
+        id: 8,
+        name: 'Priya Kapoor',
+        condition: 'Lower Back Pain',
+        rating: 5,
+        text: 'After struggling with lower back pain for months, I found relief at MuscloNeuroRehab. The combination of manual therapy, core strengthening exercises, and ergonomic advice has been life-changing. I can now work and play with my kids pain-free!',
+        image: '/img/testimonials/patient-2.jpg'
+    },
+    {
+        id: 9,
+        name: 'Rohit Verma',
+        condition: 'ACL Reconstruction',
+        rating: 5,
+        text: 'My ACL reconstruction recovery was smooth and efficient thanks to the expert guidance here. The progressive rehabilitation program got me back to playing football in just 6 months. The therapists pushed me at the right pace and ensured proper healing.',
+        image: '/img/testimonials/patient-3.jpg'
+    },
+    {
+        id: 10,
+        name: 'Meera Patel',
+        condition: 'Shoulder Surgery Recovery',
+        rating: 5,
+        text: 'Post-rotator cuff surgery, I was worried about regaining full shoulder mobility. The specialized shoulder rehabilitation program exceeded my expectations. The therapists were gentle yet effective, and I regained complete range of motion within 3 months.',
+        image: '/img/testimonials/patient-4.jpg'
     }
 ];

@@ -1,10 +1,17 @@
 .statsBox {
-    text-align: center;
+    background: var(--color-white);
     padding: var(--spacing-xl);
-    background: linear-gradient(135deg, rgba(12, 67, 121, 0.05) 0%, rgba(12, 67, 121, 0.1) 100%);
     border-radius: var(--radius-xl);
+    text-align: center;
+    box-shadow: var(--shadow-md);
     transition: all var(--transition-base);
-    border: 1px solid rgba(12, 67, 121, 0.1);
+    border: 1px solid var(--color-gray-200);
+    height: 100%;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .statsBox:hover {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaAward, FaUsers, FaHospital } from 'react-icons/fa';
+import { FaAward, FaUsers, FaHospital, FaUserMd } from 'react-icons/fa';
 import PageHelmet from '../utils/PageHelmet.jsx';
 import HeroSection from '../components/sections/HeroSection';
 import ServicesSection from '../components/sections/ServicesSection';
@@ -32,7 +32,7 @@ const Home = () => {
 
     const heroData = {
         title: 'Expert Neuro & Physical Rehabilitation Care',
-        subtitle: 'Welcome to NeuroMusculoRehab',
+        subtitle: 'Welcome to MuscloNeuroRehab',
         ctaText: 'Book Appointment',
         ctaLink: '/book-appointment',
         backgroundImage: '/img/hero/infrastructure-hero.jpg',
@@ -50,10 +50,10 @@ const Home = () => {
     return (
         <>
             <PageHelmet
-                title="NeuroMusculoRehab - Expert Neuro & Physical Rehabilitation Care"
+                title="MuscloNeuroRehab - Expert Neuro & Physical Rehabilitation Care"
                 description="Leading rehabilitation center in Delhi providing comprehensive neuro and physical rehabilitation services. Expert care for stroke, spinal injuries, and neurological conditions."
-                keywords="NeuroMusculoRehab, rehabilitation center, neuro rehabilitation, physical therapy, stroke recovery, spinal injury, Delhi hospital"
-                canonicalUrl="https://musculoneurorehab.in/"
+                keywords="MuscloNeuroRehab, rehabilitation center, neuro rehabilitation, physical therapy, stroke recovery, spinal injury, Delhi hospital"
+                canonicalUrl="https://MuscloNeuroRehab.in/"
             />
 
             <HeroSection {...heroData} />
@@ -61,14 +61,17 @@ const Home = () => {
             <section className="section-padding">
                 <div className="container">
                     <div className="row g-4">
-                        <div className="col-lg-4 col-md-6">
+                        <div className="col-lg-3 col-md-6">
                             <StatsBox number={doctors.length.toString()} suffix="" label="Expert Physiotherapists" icon={FaAward} />
                         </div>
-                        <div className="col-lg-4 col-md-6">
+                        <div className="col-lg-3 col-md-6">
                             <StatsBox number={services.length.toString()} suffix="" label="Specialized Services" icon={FaUsers} />
                         </div>
-                        <div className="col-lg-4 col-md-6">
+                        <div className="col-lg-3 col-md-6">
                             <StatsBox number="95" suffix="%" label="Success Rate" icon={FaHospital} />
+                        </div>
+                        <div className="col-lg-3 col-md-6">
+                            <StatsBox number="1" suffix="" label="Expert Doctor Consultation" icon={FaUserMd} />
                         </div>
                     </div>
                 </div>

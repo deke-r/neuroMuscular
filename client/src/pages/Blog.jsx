@@ -76,10 +76,10 @@ const Blog = () => {
     return (
         <>
             <PageHelmet
-                title="Blog - NeuroMusculoRehab | Rehabilitation Tips & Health Articles"
+                title="Blog - MuscloNeuroRehab | Rehabilitation Tips & Health Articles"
                 description="Read our latest articles on stroke recovery, spinal injury rehabilitation, therapy techniques, and expert health tips from our medical team."
                 keywords="rehabilitation blog, stroke recovery tips, spinal injury articles, therapy techniques, health articles, medical blog"
-                canonicalUrl="https://musculoneurorehab.in/blog"
+                canonicalUrl="https://MuscloNeuroRehab.in/blog"
             />
 
             <PageHeader

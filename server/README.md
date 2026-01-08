@@ -1,4 +1,4 @@
-# NeuroMusculoRehab Backend - Environment Setup
+# MuscloNeuroRehab Backend - Environment Setup
 
 ## Step 1: Create .env file
 

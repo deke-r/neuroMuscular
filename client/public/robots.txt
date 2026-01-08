@@ -1,5 +1,5 @@
-# robots.txt for NeuroMusculoRehab
-# https://musculoneurorehab.in
+# robots.txt for MuscloNeuroRehab
+# https://MuscloNeuroRehab.in
 
 # Allow all search engines to crawl the site
 User-agent: *
@@ -10,4 +10,4 @@ Disallow: /admin/
 Disallow: /admin/*
 
 # Sitemap location
-Sitemap: https://musculoneurorehab.in/sitemap.xml
+Sitemap: https://MuscloNeuroRehab.in/sitemap.xml

@@ -31,9 +31,9 @@ const Navbar = () => {
                                 <FaPhone className={styles.contactIcon} />
                                 <span>+91 8882270509</span>
                             </a>
-                            <a href="mailto:info@musculoneurorehab.com" className={styles.contactLink}>
+                            <a href="mailto:info@muscloneurorehab.com" className={styles.contactLink}>
                                 <FaEnvelope className={styles.contactIcon} />
-                                <span>info@musculoneurorehab.com</span>
+                                <span>info@muscloneurorehab.com</span>
                             </a>
                         </div>
                     </div>
@@ -44,7 +44,7 @@ const Navbar = () => {
                 <div className="container">
                     <div className={styles.navContent}>
                         <Link to="/" className={styles.logo} onClick={closeMenu}>
-                            <span className={styles.logoText}>NeuroMusculoRehab</span>
+                            <img src="/img/logo.png" alt="MuscloNeuroRehab" className={styles.logoImage} />
                         </Link>
 
                         <button

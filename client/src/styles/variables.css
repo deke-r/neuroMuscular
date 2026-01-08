@@ -1,18 +1,18 @@
 :root {
     /* Primary Colors */
-    --color-primary: #1289BF;
-    --color-primary-light: #3DA3D1;
-    --color-primary-dark: #0D6A96;
+    --color-primary: #1B7FB1;
+    --color-primary-light: #4D9FC5;
+    --color-primary-dark: #15658E;
 
     /* Secondary Colors */
-    --color-secondary: #7CC339;
-    --color-secondary-light: #95D157;
-    --color-secondary-dark: #63A02C;
+    --color-secondary: #77C02F;
+    --color-secondary-light: #92D04D;
+    --color-secondary-dark: #5F9A25;
 
-    /* Accent Colors */
-    --color-accent: #F77F00;
-    --color-accent-light: #FCBF49;
-    --color-accent-dark: #D62828;
+    /* Accent Colors (Using Secondary Green) */
+    --color-accent: #77C02F;
+    --color-accent-light: #92D04D;
+    --color-accent-dark: #5F9A25;
 
     /* Neutral Colors */
     --color-white: #FFFFFF;
@@ -130,6 +130,6 @@
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
     --gradient-secondary: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%);
-    --gradient-accent: linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-accent) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--color-secondary-dark) 0%, var(--color-secondary) 100%);
     --gradient-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
 }

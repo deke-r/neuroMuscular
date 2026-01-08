@@ -46,7 +46,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--spacing-md) 0;
+    padding: var(--spacing-sm) 0;
+    min-height: 90px;
 }
 
 .logo {
@@ -58,6 +59,17 @@
     font-weight: var(--font-weight-extrabold);
     color: var(--color-primary);
     font-family: var(--font-secondary);
+}
+
+.logoImage {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    transition: transform var(--transition-fast);
+}
+
+.logoImage:hover {
+    transform: scale(1.05);
 }
 
 .menuToggle {
@@ -218,5 +230,9 @@
 
     .logoText {
         font-size: var(--font-size-xl);
+    }
+
+    .logoImage {
+        height: 40px;
     }
 }

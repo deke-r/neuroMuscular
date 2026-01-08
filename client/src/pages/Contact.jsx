@@ -26,8 +26,8 @@ const Contact = () => {
         {
             icon: FaEnvelope,
             title: 'Email',
-            content: 'info@musculoneurorehab.com',
-            link: 'mailto:info@musculoneurorehab.com'
+            content: 'info@muscloneurorehab.com',
+            link: 'mailto:info@muscloneurorehab.com'
         },
         {
             icon: FaClock,
@@ -39,10 +39,10 @@ const Contact = () => {
     return (
         <>
             <PageHelmet
-                title="Contact Us - NeuroMusculoRehab | Get in Touch"
-                description="Contact NeuroMusculoRehab for appointments, inquiries, or to learn more about our rehabilitation services. We're here to help you on your recovery journey."
-                keywords="contact NeuroMusculoRehab, rehabilitation center contact, book appointment, hospital address, phone number, email"
-                canonicalUrl="https://musculoneurorehab.in/contact"
+                title="Contact Us - MuscloNeuroRehab | Get in Touch"
+                description="Contact MuscloNeuroRehab for appointments, inquiries, or to learn more about our rehabilitation services. We're here to help you on your recovery journey."
+                keywords="contact MuscloNeuroRehab, rehabilitation center contact, book appointment, hospital address, phone number, email"
+                canonicalUrl="https://MuscloNeuroRehab.in/contact"
             />
 
             <PageHeader
@@ -123,7 +123,7 @@ const Contact = () => {
                             allowFullScreen=""
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
-                            title="NeuroMusculoRehab Location"
+                            title="MuscloNeuroRehab Location"
                         />
                     </div>
                 </div>

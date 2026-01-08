@@ -34,10 +34,10 @@ const Doctors = () => {
     return (
         <>
             <PageHelmet
-                title="Our Doctors - NeuroMusculoRehab | Expert Rehabilitation Specialists"
+                title="Our Doctors - MuscloNeuroRehab | Expert Rehabilitation Specialists"
                 description="Meet our team of expert rehabilitation specialists including physiatrists, neurologists, physiotherapists, occupational therapists, and speech therapists."
                 keywords="rehabilitation doctors, physiatrist, neurologist, physiotherapist, occupational therapist, speech therapist, expert medical team"
-                canonicalUrl="https://musculoneurorehab.in/doctors"
+                canonicalUrl="https://MuscloNeuroRehab.in/doctors"
             />
 
             <PageHeader
