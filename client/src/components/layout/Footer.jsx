@@ -27,10 +27,10 @@ const Footer = () => {
     };
 
     const socialLinks = [
-        { icon: FaFacebookF, url: 'https://facebook.com', label: 'Facebook' },
-        { icon: FaTwitter, url: 'https://twitter.com', label: 'Twitter' },
-        { icon: FaInstagram, url: 'https://instagram.com', label: 'Instagram' },
-        { icon: FaLinkedinIn, url: 'https://linkedin.com', label: 'LinkedIn' }
+        { icon: FaFacebookF, url: 'https://www.facebook.com/musculoneurorehab', label: 'Facebook' },
+        { icon: FaTwitter, url: 'https://x.com/musculoneuro', label: 'Twitter' },
+        { icon: FaInstagram, url: 'https://www.instagram.com/musculoneurorehab/', label: 'Instagram' },
+        { icon: FaLinkedinIn, url: 'https://www.linkedin.com/in/musculoneuro-rehab-physiotherapy-centre-b221543a2/', label: 'LinkedIn' }
     ];
 
     return (

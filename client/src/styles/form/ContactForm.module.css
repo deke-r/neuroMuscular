@@ -121,6 +121,32 @@
     transform: translateY(0);
 }
 
+.submitButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.submitButton:disabled:hover {
+    transform: none;
+    box-shadow: var(--shadow-md);
+}
+
+.errorMessageBox {
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.1) 0%, rgba(220, 53, 69, 0.05) 100%);
+    border: 2px solid var(--color-error);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    animation: slideInLeft var(--transition-base) ease-out;
+}
+
+.errorMessageBox p {
+    color: var(--color-error);
+    font-weight: var(--font-weight-medium);
+    margin: 0;
+}
+
 @media (max-width: 768px) {
     .formWrapper {
         padding: var(--spacing-xl);

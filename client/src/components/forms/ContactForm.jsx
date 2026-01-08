@@ -9,17 +9,42 @@ const ContactForm = ({
     successMessage = 'Thank you for contacting us! We will get back to you within 24 hours.'
 }) => {
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-    const onSubmit = (data) => {
-        console.log('Contact Form Data:', data);
-        setIsSubmitted(true);
-        reset();
+    const onSubmit = async (data) => {
+        setIsLoading(true);
+        setErrorMessage('');
 
-        // Reset success message after 5 seconds
-        setTimeout(() => {
-            setIsSubmitted(false);
-        }, 5000);
+        try {
+            const response = await fetch('http://localhost:5000/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                setIsSubmitted(true);
+                reset();
+
+                // Reset success message after 5 seconds
+                setTimeout(() => {
+                    setIsSubmitted(false);
+                }, 5000);
+            } else {
+                setErrorMessage(result.message || 'Failed to send message. Please try again.');
+            }
+        } catch (error) {
+            console.error('Contact form error:', error);
+            setErrorMessage('Network error. Please check your connection and try again.');
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -30,6 +55,12 @@ const ContactForm = ({
                 <div className={styles.successMessage}>
                     <FaCheckCircle className={styles.successIcon} />
                     <p>{successMessage}</p>
+                </div>
+            )}
+
+            {errorMessage && (
+                <div className={styles.errorMessageBox}>
+                    <p>{errorMessage}</p>
                 </div>
             )}
 
@@ -107,8 +138,12 @@ const ContactForm = ({
                     </div>
 
                     <div className="col-12">
-                        <button type="submit" className={styles.submitButton}>
-                            {submitButtonText}
+                        <button
+                            type="submit"
+                            className={styles.submitButton}
+                            disabled={isLoading}
+                        >
+                            {isLoading ? 'Sending...' : submitButtonText}
                         </button>
                     </div>
                 </div>
