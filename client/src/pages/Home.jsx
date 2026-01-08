@@ -53,7 +53,7 @@ const Home = () => {
                 title="NeuroMusculoRehab - Expert Neuro & Physical Rehabilitation Care"
                 description="Leading rehabilitation center in Delhi providing comprehensive neuro and physical rehabilitation services. Expert care for stroke, spinal injuries, and neurological conditions."
                 keywords="NeuroMusculoRehab, rehabilitation center, neuro rehabilitation, physical therapy, stroke recovery, spinal injury, Delhi hospital"
-                canonicalUrl="https://pmrhospital.com/"
+                canonicalUrl="https://musculoneurorehab.in/"
             />
 
             <HeroSection {...heroData} />

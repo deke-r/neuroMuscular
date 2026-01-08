@@ -17,7 +17,7 @@ const Services = () => {
                 title="Our Services - NeuroMusculoRehab | Comprehensive Rehabilitation Care"
                 description="Explore our comprehensive rehabilitation services including neuro rehabilitation, physical therapy, occupational therapy, speech therapy, and more."
                 keywords="rehabilitation services, neuro rehabilitation, physical therapy, occupational therapy, speech therapy, pediatric rehabilitation, sports rehabilitation"
-                canonicalUrl="https://pmrhospital.com/services"
+                canonicalUrl="https://musculoneurorehab.in/services"
             />
 
             <PageHeader

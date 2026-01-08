@@ -61,7 +61,7 @@ const Infrastructure = () => {
                 title="Infrastructure & Facilities - NeuroMusculoRehab | State-of-the-Art Equipment"
                 description="Explore our modern rehabilitation facility featuring advanced equipment, spacious therapy areas, inpatient care, and comprehensive diagnostic services."
                 keywords="rehabilitation facility, modern hospital infrastructure, therapy equipment, inpatient care, diagnostic lab, accessible facility"
-                canonicalUrl="https://pmrhospital.com/infrastructure"
+                canonicalUrl="https://musculoneurorehab.in/infrastructure"
             />
 
             <PageHeader

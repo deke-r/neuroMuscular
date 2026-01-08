@@ -42,7 +42,7 @@ const Contact = () => {
                 title="Contact Us - NeuroMusculoRehab | Get in Touch"
                 description="Contact NeuroMusculoRehab for appointments, inquiries, or to learn more about our rehabilitation services. We're here to help you on your recovery journey."
                 keywords="contact NeuroMusculoRehab, rehabilitation center contact, book appointment, hospital address, phone number, email"
-                canonicalUrl="https://pmrhospital.com/contact"
+                canonicalUrl="https://musculoneurorehab.in/contact"
             />
 
             <PageHeader

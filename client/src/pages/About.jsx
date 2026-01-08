@@ -66,7 +66,7 @@ const About = () => {
                 title="About Us - NeuroMusculoRehab | Leading Rehabilitation Center"
                 description="Learn about NeuroMusculoRehab, our expert team, state-of-the-art facilities, and commitment to providing exceptional rehabilitation care in Delhi."
                 keywords="about NeuroMusculoRehab, rehabilitation center Delhi, expert rehabilitation team, neuro rehabilitation facility"
-                canonicalUrl="https://pmrhospital.com/about"
+                canonicalUrl="https://musculoneurorehab.in/about"
             />
 
             <PageHeader
