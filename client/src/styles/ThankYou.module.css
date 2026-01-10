@@ -50,6 +50,8 @@
 .successIcon {
     color: #7CC339;
     filter: drop-shadow(0 4px 8px rgba(124, 195, 57, 0.3));
+    width: 80px;
+    height: 80px;
 }
 
 .title {

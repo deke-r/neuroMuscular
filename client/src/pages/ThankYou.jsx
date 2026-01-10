@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CheckCircle } from 'lucide-react';
+import { FaCheckCircle } from 'react-icons/fa';
 import styles from '../styles/ThankYou.module.css';
 
 const ThankYou = () => {
@@ -19,7 +19,7 @@ const ThankYou = () => {
         <div className={styles.thankYouContainer}>
             <div className={styles.thankYouCard}>
                 <div className={styles.iconWrapper}>
-                    <CheckCircle className={styles.successIcon} size={80} />
+                    <FaCheckCircle className={styles.successIcon} />
                 </div>
 
                 <h1 className={styles.title}>Thank You!</h1>
