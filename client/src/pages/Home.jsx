@@ -31,7 +31,7 @@ const Home = () => {
     };
 
     const heroData = {
-        title: 'Expert Neuro & Physical Rehabilitation Care',
+        title: 'Expert Ortho, Neuro & Sports Rehabilitation Care',
         subtitle: 'Welcome to MuscloNeuroRehab',
         ctaText: 'Book Appointment',
         ctaLink: '/book-appointment',
@@ -50,7 +50,7 @@ const Home = () => {
     return (
         <>
             <PageHelmet
-                title="MuscloNeuroRehab - Expert Neuro & Physical Rehabilitation Care"
+                title="MuscloNeuroRehab - Expert Ortho, Neuro & Sports Rehabilitation Care"
                 description="Leading rehabilitation center in Delhi providing comprehensive neuro and physical rehabilitation services. Expert care for stroke, spinal injuries, and neurological conditions."
                 keywords="MuscloNeuroRehab, rehabilitation center, neuro rehabilitation, physical therapy, stroke recovery, spinal injury, Delhi hospital"
                 canonicalUrl="https://MuscloNeuroRehab.in/"

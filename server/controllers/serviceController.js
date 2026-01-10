@@ -3,7 +3,9 @@ const { pool } = require('../config/database');
 // Get all services
 const getAllServices = async (req, res, next) => {
     try {
-        const [services] = await pool.query(`
+        const { doctorId } = req.query;
+
+        let query = `
             SELECT 
                 s.id,
                 s.doctor_id,
@@ -15,8 +17,19 @@ const getAllServices = async (req, res, next) => {
             FROM services s
             LEFT JOIN doctors d ON s.doctor_id = d.id
             WHERE s.is_active = TRUE
-            ORDER BY s.service_name
-        `);
+        `;
+
+        const params = [];
+
+        // Filter by doctor if doctorId is provided
+        if (doctorId) {
+            query += ` AND s.doctor_id = ?`;
+            params.push(doctorId);
+        }
+
+        query += ` ORDER BY s.service_name`;
+
+        const [services] = await pool.query(query, params);
 
         res.status(200).json({
             success: true,

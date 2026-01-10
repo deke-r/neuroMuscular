@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import axios from 'axios';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import PageHelmet from '../utils/PageHelmet.jsx';
 import PageHeader from '../components/layout/PageHeader';
 import { fetchDoctors, fetchServicesByDoctor, fetchAvailableSlots } from '../utils/api';
@@ -10,6 +12,7 @@ const BookAppointment = () => {
     const [doctors, setDoctors] = useState([]);
     const [services, setServices] = useState([]);
     const [availableSlots, setAvailableSlots] = useState([]);
+    const [offDays, setOffDays] = useState([]);
     const [loading, setLoading] = useState(true);
     const [loadingServices, setLoadingServices] = useState(false);
     const [loadingSlots, setLoadingSlots] = useState(false);
@@ -22,6 +25,7 @@ const BookAppointment = () => {
         handleSubmit,
         watch,
         setValue,
+        control,
         formState: { errors, isSubmitting }
     } = useForm();
 
@@ -34,6 +38,7 @@ const BookAppointment = () => {
 
     useEffect(() => {
         loadDoctors();
+        loadOffDays();
     }, []);
 
     // Load time slots when date changes
@@ -53,6 +58,24 @@ const BookAppointment = () => {
             setError('Failed to load doctors. Please try again later.');
         } finally {
             setLoading(false);
+        }
+    };
+
+    const loadOffDays = async () => {
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/clinic-off-days/upcoming`);
+            const fetchedOffDays = response.data.data || [];
+
+            // Normalize off-days to ensure consistent date format
+            const normalizedOffDays = fetchedOffDays.map(od => ({
+                ...od,
+                off_date: od.off_date.split('T')[0] // Ensure YYYY-MM-DD format
+            }));
+
+            console.log('Loaded off-days:', normalizedOffDays);
+            setOffDays(normalizedOffDays);
+        } catch (err) {
+            console.error('Failed to load off-days:', err);
         }
     };
 
@@ -146,6 +169,62 @@ const BookAppointment = () => {
     const getMinDate = () => {
         const today = new Date();
         return today.toISOString().split('T')[0];
+    };
+
+    // Check if a date is an off-day
+    const isOffDay = (dateString) => {
+        const result = offDays.some(offDay => offDay.off_date === dateString);
+        console.log('Checking if off-day:', dateString, 'Result:', result, 'Off-days:', offDays.map(od => od.off_date));
+        return result;
+    };
+
+    // Get reason for off-day
+    const getOffDayReason = (dateString) => {
+        const offDay = offDays.find(od => od.off_date === dateString);
+        return offDay?.reason || 'Clinic Holiday';
+    };
+
+    // Validate date is not an off-day
+    const validateDate = (value) => {
+        if (isOffDay(value)) {
+            // Clear the invalid date
+            setTimeout(() => setValue('appointmentDate', ''), 0);
+            return `Clinic is closed on this date (${getOffDayReason(value)})`;
+        }
+        return true;
+    };
+
+    // Format off-days for display
+    const formatOffDaysMessage = () => {
+        if (offDays.length === 0) return null;
+
+        const upcomingOffDays = offDays.slice(0, 5); // Show first 5
+        return upcomingOffDays.map(od => {
+            const date = new Date(od.off_date);
+            const formatted = date.toLocaleDateString('en-IN', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric'
+            });
+            return `${formatted}${od.reason ? ` (${od.reason})` : ''}`;
+        }).join(', ');
+    };
+
+    // Check if a date should be excluded (off-day)
+    const isDateDisabled = (date) => {
+        // Convert date object to YYYY-MM-DD format in local timezone
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const dateString = `${year}-${month}-${day}`;
+
+        console.log('Checking date for picker:', dateString);
+        return isOffDay(dateString);
+    };
+
+    // Filter function for react-datepicker
+    const filterDate = (date) => {
+        return !isDateDisabled(date);
     };
 
     if (success) {
@@ -306,15 +385,45 @@ const BookAppointment = () => {
                                             <label htmlFor="appointmentDate">
                                                 Appointment Date <span className={styles.required}>*</span>
                                             </label>
-                                            <input
-                                                type="date"
-                                                id="appointmentDate"
-                                                min={getMinDate()}
-                                                className={`${styles.formInput} ${errors.appointmentDate ? styles.error : ''}`}
-                                                {...register('appointmentDate', { required: 'Please select a date' })}
+                                            <Controller
+                                                name="appointmentDate"
+                                                control={control}
+                                                rules={{
+                                                    required: 'Please select a date',
+                                                    validate: validateDate
+                                                }}
+                                                render={({ field }) => (
+                                                    <DatePicker
+                                                        selected={field.value ? new Date(field.value) : null}
+                                                        onChange={(date) => {
+                                                            const dateString = date ? date.toISOString().split('T')[0] : '';
+                                                            field.onChange(dateString);
+                                                        }}
+                                                        filterDate={filterDate}
+                                                        minDate={new Date()}
+                                                        dateFormat="dd-MM-yyyy"
+                                                        placeholderText="Select appointment date"
+                                                        className={`${styles.formInput} ${errors.appointmentDate ? styles.error : ''}`}
+                                                        wrapperClassName={styles.datePickerWrapper}
+                                                        calendarClassName={styles.datePickerCalendar}
+                                                    />
+                                                )}
                                             />
                                             {errors.appointmentDate && (
                                                 <span className={styles.errorMessage}>{errors.appointmentDate.message}</span>
+                                            )}
+                                            {offDays.length > 0 && (
+                                                <div style={{
+                                                    marginTop: '8px',
+                                                    padding: '8px 12px',
+                                                    background: '#fff3cd',
+                                                    border: '1px solid #ffc107',
+                                                    borderRadius: '4px',
+                                                    fontSize: '13px',
+                                                    color: '#856404'
+                                                }}>
+                                                    <strong>⚠️ Clinic Off-Days:</strong> {formatOffDaysMessage()}
+                                                </div>
                                             )}
                                         </div>
 

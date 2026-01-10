@@ -62,7 +62,7 @@
 }
 
 .logoImage {
-    height: 80px;
+    height: 100px;
     width: auto;
     object-fit: contain;
     transition: transform var(--transition-fast);
@@ -233,6 +233,6 @@
     }
 
     .logoImage {
-        height: 70px;
+        height: 90px;
     }
 }

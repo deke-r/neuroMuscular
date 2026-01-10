@@ -8,6 +8,8 @@ import ServicesManagement from './ServicesManagement';
 import AppointmentsManagement from './AppointmentsManagement';
 import Settings from './Settings';
 import ManagersManagement from './ManagersManagement';
+import WorkingHoursManagement from './WorkingHoursManagement';
+import ClinicOffDaysManagement from './ClinicOffDaysManagement';
 
 const DashboardHome = ({ stats, user }) => (
     <>
@@ -240,6 +242,20 @@ const Dashboard = () => {
                                 <span className={styles.icon}>🏥</span>
                                 Services
                             </Link>
+                            <Link
+                                to="/admin/dashboard/working-hours"
+                                className={`${styles.navItem} ${location.pathname.includes('/working-hours') ? styles.active : ''}`}
+                            >
+                                <span className={styles.icon}>🕒</span>
+                                Working Hours
+                            </Link>
+                            <Link
+                                to="/admin/dashboard/clinic-off-days"
+                                className={`${styles.navItem} ${location.pathname.includes('/clinic-off-days') ? styles.active : ''}`}
+                            >
+                                <span className={styles.icon}>📅</span>
+                                Clinic Off-Days
+                            </Link>
                         </>
                     )}
 
@@ -291,6 +307,8 @@ const Dashboard = () => {
                         <Route index element={<DashboardHome stats={stats} user={user} />} />
                         <Route path="doctors" element={<DoctorsManagement />} />
                         <Route path="services" element={<ServicesManagement />} />
+                        <Route path="working-hours" element={<WorkingHoursManagement />} />
+                        <Route path="clinic-off-days" element={<ClinicOffDaysManagement />} />
                         <Route path="appointments" element={<AppointmentsManagement />} />
                         <Route path="managers" element={<ManagersManagement />} />
                         <Route path="settings" element={<Settings />} />

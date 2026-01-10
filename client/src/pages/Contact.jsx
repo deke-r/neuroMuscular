@@ -32,7 +32,7 @@ const Contact = () => {
         {
             icon: FaClock,
             title: 'Working Hours',
-            content: 'Mon - Sat: 9:00 AM - 6:00 PM\nSunday: Closed'
+            content: 'Mon - Sat: 9:00 AM - 9:00 PM\nSunday: 10:00 AM - 2:00 PM'
         }
     ];
 

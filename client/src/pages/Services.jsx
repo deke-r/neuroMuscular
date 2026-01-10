@@ -15,8 +15,8 @@ const Services = () => {
         <>
             <PageHelmet
                 title="Our Services - MuscloNeuroRehab | Comprehensive Rehabilitation Care"
-                description="Explore our comprehensive rehabilitation services including neuro rehabilitation, physical therapy, occupational therapy, speech therapy, and more."
-                keywords="rehabilitation services, neuro rehabilitation, physical therapy, occupational therapy, speech therapy, pediatric rehabilitation, sports rehabilitation"
+                description="Explore our comprehensive rehabilitation services including neuro rehabilitation, physical therapy, occupational therapy, speech therapy, geriatric rehabilitation, pelvic floor rehabilitation, and more."
+                keywords="rehabilitation services, neuro rehabilitation, physical therapy, occupational therapy, speech therapy, pediatric rehabilitation, sports rehabilitation, geriatric rehabilitation, pelvic floor rehabilitation"
                 canonicalUrl="https://MuscloNeuroRehab.in/services"
             />
 
@@ -31,7 +31,7 @@ const Services = () => {
                 <div className="container">
                     <div className="row g-4">
                         {services.map((service) => (
-                            <div key={service.id} className="col-lg-6 col-md-6">
+                            <div key={service.id} className="col-lg-4 col-md-6">
                                 <ServiceCard {...service} />
                             </div>
                         ))}
@@ -44,7 +44,7 @@ const Services = () => {
                 description="Our expert team can help you determine the best treatment plan for your condition."
                 buttonText="Book a Consultation"
                 buttonLink="/book-appointment"
-                variant="secondary"
+                variant="primary"
             />
         </>
     );

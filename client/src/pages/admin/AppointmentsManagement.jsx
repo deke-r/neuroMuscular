@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import styles from '../../styles/admin/Management.module.css';
 
 const AppointmentsManagement = () => {
@@ -19,9 +21,11 @@ const AppointmentsManagement = () => {
     const [availableSlots, setAvailableSlots] = useState([]);
     const [rescheduleData, setRescheduleData] = useState({ date: '', time: '' });
     const [loadingSlots, setLoadingSlots] = useState(false);
+    const [offDays, setOffDays] = useState([]);
 
     useEffect(() => {
         fetchAppointments();
+        loadOffDays();
     }, [filterStatus, currentPage]);
 
     const fetchAppointments = async () => {
@@ -43,6 +47,20 @@ const AppointmentsManagement = () => {
         } catch (err) {
             setError('Failed to fetch appointments');
             setLoading(false);
+        }
+    };
+
+    const loadOffDays = async () => {
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/clinic-off-days/upcoming`);
+            const fetchedOffDays = response.data.data || [];
+            const normalizedOffDays = fetchedOffDays.map(od => ({
+                ...od,
+                off_date: od.off_date.split('T')[0]
+            }));
+            setOffDays(normalizedOffDays);
+        } catch (err) {
+            console.error('Failed to load off-days:', err);
         }
     };
 
@@ -84,10 +102,31 @@ const AppointmentsManagement = () => {
         }
     };
 
-    const handleDateChange = (e) => {
-        const newDate = e.target.value;
-        setRescheduleData({ date: newDate, time: '' });
-        fetchAvailableSlots(newDate);
+    // Check if a date is an off-day
+    const isOffDay = (dateString) => {
+        return offDays.some(offDay => offDay.off_date === dateString);
+    };
+
+    // Filter function for react-datepicker
+    const filterDate = (date) => {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const dateString = `${year}-${month}-${day}`;
+        return !isOffDay(dateString);
+    };
+
+    const handleDateChange = (date) => {
+        if (!date) {
+            setRescheduleData({ date: '', time: '' });
+            return;
+        }
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const dateString = `${year}-${month}-${day}`;
+        setRescheduleData({ date: dateString, time: '' });
+        fetchAvailableSlots(dateString);
     };
 
     const handleRescheduleSubmit = async () => {
@@ -310,11 +349,13 @@ const AppointmentsManagement = () => {
 
                         <div className={styles.formGroup}>
                             <label>New Date:</label>
-                            <input
-                                type="date"
-                                value={rescheduleData.date}
+                            <DatePicker
+                                selected={rescheduleData.date ? new Date(rescheduleData.date) : null}
                                 onChange={handleDateChange}
-                                min={new Date().toISOString().split('T')[0]}
+                                filterDate={filterDate}
+                                minDate={new Date()}
+                                dateFormat="dd-MM-yyyy"
+                                placeholderText="Select new date"
                                 className={styles.input}
                             />
                         </div>
