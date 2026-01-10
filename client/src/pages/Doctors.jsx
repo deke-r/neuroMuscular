@@ -43,7 +43,7 @@ const Doctors = () => {
                 title="Our Doctors - MuscloNeuroRehab | Expert Rehabilitation Specialists"
                 description="Meet our team of expert rehabilitation specialists including physiatrists, neurologists, physiotherapists, occupational therapists, and speech therapists."
                 keywords="rehabilitation doctors, physiatrist, neurologist, physiotherapist, occupational therapist, speech therapist, expert medical team"
-                canonicalUrl="https://MuscloNeuroRehab.in/doctors"
+                canonicalUrl="https://musculoneurorehab.com/doctors"
             />
 
             <PageHeader

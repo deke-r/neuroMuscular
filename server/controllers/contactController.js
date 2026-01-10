@@ -34,7 +34,8 @@ const sendContactEmail = async (req, res) => {
         }
 
         const transporter = createTransporter();
-        const recipientEmail = process.env.EMAIL_RECIPIENT || 'info@muscloneurorehab.com';
+       
+        const recipientEmail=['info@muscloneurorehab.com','musculoneurorehab@gmail.com']
 
         console.log('📧 Sending contact form email to:', recipientEmail);
 

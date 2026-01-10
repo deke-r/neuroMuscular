@@ -234,7 +234,7 @@ const BookAppointment = () => {
                     title="Appointment Confirmed - MuscloNeuroRehab"
                     description="Your appointment has been successfully booked."
                     keywords="appointment confirmed, booking success"
-                    canonicalUrl="https://MuscloNeuroRehab.in/book-appointment"
+                    canonicalUrl="https://musculoneurorehab.com/book-appointment"
                 />
 
                 <PageHeader
@@ -271,7 +271,7 @@ const BookAppointment = () => {
                 title="Book Appointment - MuscloNeuroRehab | Schedule Your Visit"
                 description="Book an appointment with our expert rehabilitation specialists. Choose your doctor, select a service, and pick a convenient time slot."
                 keywords="book appointment, schedule visit, doctor appointment, rehabilitation booking, MuscloNeuroRehab appointment"
-                canonicalUrl="https://MuscloNeuroRehab.in/book-appointment"
+                canonicalUrl="https://musculoneurorehab.com/book-appointment"
             />
 
             <PageHeader
@@ -324,7 +324,7 @@ const BookAppointment = () => {
                                                         <h3 className={styles.doctorName}>{doctor.name}</h3>
                                                         <p className={styles.doctorDesignation}>{doctor.designation}</p>
                                                         <p className={styles.doctorSpecialization}>{doctor.specialization}</p>
-                                                        <p className={styles.doctorExperience}>{doctor.experience} Experience</p>
+                                                        <p className={styles.doctorExperience}>{doctor.experience}+ Years Experience</p>
                                                     </div>
                                                 </div>
                                             );

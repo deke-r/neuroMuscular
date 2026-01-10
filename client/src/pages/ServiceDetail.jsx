@@ -28,7 +28,7 @@ const ServiceDetail = () => {
                 title={`${service.title} | MuscloNeuroRehab`}
                 description={service.description}
                 keywords={`${service.title}, rehabilitation, therapy, MuscloNeuroRehab`}
-                canonicalUrl={`https://MuscloNeuroRehab.in/services/${service.id}`}
+                canonicalUrl={`https://musculoneurorehab.com/services/${service.id}`}
             />
 
             <PageHeader

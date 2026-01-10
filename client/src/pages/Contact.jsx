@@ -42,7 +42,7 @@ const Contact = () => {
                 title="Contact Us - MuscloNeuroRehab | Get in Touch"
                 description="Contact MuscloNeuroRehab for appointments, inquiries, or to learn more about our rehabilitation services. We're here to help you on your recovery journey."
                 keywords="contact MuscloNeuroRehab, rehabilitation center contact, book appointment, hospital address, phone number, email"
-                canonicalUrl="https://MuscloNeuroRehab.in/contact"
+                canonicalUrl="https://musculoneurorehab.com/contact"
             />
 
             <PageHeader
@@ -116,7 +116,7 @@ const Contact = () => {
                         height: '400px'
                     }}>
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.2916756447897!2d77.20902931508047!3d28.61393948241943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd371d9e2c1f%3A0x5d3f2f1c8c8c8c8c!2sConnaught%20Place%2C%20New%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3331.533465233228!2d77.29181267528556!3d28.541049575714833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce545542e5a1d%3A0x5f8e0a0e07bdab72!2sMusculoNeuro%20Rehab%20Physiotherapy%20Centre!5e1!3m2!1sen!2sin!4v1768036026503!5m2!1sen!2sin"
                             width="100%"
                             height="100%"
                             style={{ border: 0 }}

@@ -23,7 +23,7 @@ const Packages = () => {
                 title="Treatment Packages - MuscloNeuroRehab | Affordable Rehabilitation Plans"
                 description="Choose from our comprehensive rehabilitation packages designed to meet your specific needs and budget. From basic to intensive care programs."
                 keywords="rehabilitation packages, treatment plans, stroke recovery program, physiotherapy packages, affordable rehabilitation, comprehensive care packages"
-                canonicalUrl="https://MuscloNeuroRehab.in/packages"
+                canonicalUrl="https://musculoneurorehab.com/packages"
             />
 
             <PageHeader

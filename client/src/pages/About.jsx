@@ -66,7 +66,7 @@ const About = () => {
                 title="About Us - MuscloNeuroRehab | Leading Rehabilitation Center"
                 description="Learn about MuscloNeuroRehab, our expert team, state-of-the-art facilities, and commitment to providing exceptional rehabilitation care in Delhi."
                 keywords="about MuscloNeuroRehab, rehabilitation center Delhi, expert rehabilitation team, neuro rehabilitation facility"
-                canonicalUrl="https://MuscloNeuroRehab.in/about"
+                canonicalUrl="https://musculoneurorehab.com/about"
             />
 
             <PageHeader

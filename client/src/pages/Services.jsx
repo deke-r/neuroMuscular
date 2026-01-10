@@ -17,7 +17,7 @@ const Services = () => {
                 title="Our Services - MuscloNeuroRehab | Comprehensive Rehabilitation Care"
                 description="Explore our comprehensive rehabilitation services including neuro rehabilitation, physical therapy, occupational therapy, speech therapy, geriatric rehabilitation, pelvic floor rehabilitation, and more."
                 keywords="rehabilitation services, neuro rehabilitation, physical therapy, occupational therapy, speech therapy, pediatric rehabilitation, sports rehabilitation, geriatric rehabilitation, pelvic floor rehabilitation"
-                canonicalUrl="https://MuscloNeuroRehab.in/services"
+                canonicalUrl="https://musculoneurorehab.com/services"
             />
 
             <PageHeader

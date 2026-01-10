@@ -17,7 +17,7 @@ const Conditions = () => {
                 title="Conditions We Treat - MuscloNeuroRehab | Expert Rehabilitation Care"
                 description="We specialize in treating stroke, spinal cord injuries, traumatic brain injury, Parkinson's disease, multiple sclerosis, cerebral palsy, and more."
                 keywords="stroke rehabilitation, spinal cord injury treatment, traumatic brain injury, Parkinson's disease, multiple sclerosis, cerebral palsy, orthopedic rehabilitation"
-                canonicalUrl="https://MuscloNeuroRehab.in/conditions"
+                canonicalUrl="https://musculoneurorehab.com/conditions"
             />
 
             <PageHeader

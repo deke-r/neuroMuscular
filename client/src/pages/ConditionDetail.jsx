@@ -28,7 +28,7 @@ const ConditionDetail = () => {
                 title={`${condition.title} Treatment | MuscloNeuroRehab`}
                 description={`Expert rehabilitation and treatment for ${condition.title}. ${condition.description}`}
                 keywords={`${condition.title}, ${condition.title} treatment, ${condition.title} rehabilitation, physiotherapy, MuscloNeuroRehab`}
-                canonicalUrl={`https://MuscloNeuroRehab.in/conditions/${condition.slug}`}
+                canonicalUrl={`https://musculoneurorehab.com/conditions/${condition.slug}`}
             />
 
             <PageHeader
