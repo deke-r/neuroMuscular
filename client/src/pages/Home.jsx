@@ -62,7 +62,7 @@ const Home = () => {
                 <div className="container">
                     <div className="row g-4">
                         <div className="col-lg-3 col-md-6">
-                            <StatsBox number={doctors.length.toString()} suffix="" label="Expert Physiotherapists" icon={FaAward} />
+                            <StatsBox number="2" suffix="" label="Expert Physiotherapists" icon={FaAward} />
                         </div>
                         <div className="col-lg-3 col-md-6">
                             <StatsBox number={services.length.toString()} suffix="" label="Specialized Services" icon={FaUsers} />
@@ -80,7 +80,7 @@ const Home = () => {
             <ServicesSection
                 title="Our Specialized Services"
                 subtitle="What We Offer"
-                services={services.slice(0, 6)}
+                services={services}
             />
 
             <DoctorsSection

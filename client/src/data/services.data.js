@@ -1,4 +1,4 @@
-import { FaBone, FaBrain, FaBolt, FaDumbbell, FaUserMd, FaHeartbeat } from 'react-icons/fa';
+import { FaBone, FaBrain, FaBolt, FaDumbbell, FaUserMd, FaHeartbeat, FaHandsHelping, FaLungs } from 'react-icons/fa';
 
 export const services = [
     {
@@ -91,6 +91,38 @@ export const services = [
             'Pelvic organ prolapse conservative management',
             'Biofeedback and electrical stimulation therapy',
             'Core and pelvic floor coordination training'
+        ]
+    },
+    {
+        id: 7,
+        title: 'Manual Therapy',
+        description: 'Specialized hands-on treatment techniques for musculoskeletal pain, joint dysfunction, and soft tissue injuries using advanced manual therapy approaches.',
+        icon: FaHandsHelping,
+        image: '/img/services/manual-therapy.jpg',
+        features: [
+            'Joint mobilization and manipulation techniques',
+            'Soft tissue mobilization and myofascial release',
+            'Trigger point therapy and deep tissue massage',
+            'Muscle energy techniques (MET) and PNF stretching',
+            'Mulligan concept and Maitland mobilization',
+            'Craniosacral therapy and visceral manipulation',
+            'Sports massage and injury-specific manual techniques'
+        ]
+    },
+    {
+        id: 8,
+        title: 'Oncology & Pulmonary Rehabilitation',
+        description: 'Comprehensive rehabilitation programs for cancer patients and individuals with respiratory conditions to improve function, endurance, and quality of life.',
+        icon: FaLungs,
+        image: '/img/services/oncology-pulmonary.jpg',
+        features: [
+            'Cancer rehabilitation: pre and post-surgery, chemotherapy, and radiation therapy',
+            'Lymphedema management and compression therapy',
+            'Fatigue management and energy conservation techniques',
+            'Pulmonary rehabilitation for COPD, asthma, and post-COVID recovery',
+            'Breathing exercises and airway clearance techniques',
+            'Cardiopulmonary endurance training and oxygen therapy support',
+            'Quality of life improvement programs for chronic respiratory conditions'
         ]
     }
 ];
