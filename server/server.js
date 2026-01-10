@@ -19,8 +19,31 @@ const clinicOffDaysRoutes = require('./routes/clinicOffDaysRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// CORS configuration - allow both www and non-www versions
+const allowedOrigins = [
+    'http://localhost:5173',
+    'http://localhost:3000',
+    'https://musculoneurorehab.com',
+    'https://www.musculoneurorehab.com',
+    'https://musculoneurorehab.in',
+    'https://www.musculoneurorehab.in'
+];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+
+        if (allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true
+}));
+
 // Middleware
-app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
