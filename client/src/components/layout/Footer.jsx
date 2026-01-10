@@ -39,7 +39,7 @@ const Footer = () => {
                 <div className="row g-4">
                     <div className="col-lg-4 col-md-6">
                         <div className={styles.footerSection}>
-                            <h3 className={styles.footerTitle}>MusculoNeuro Rehab</h3>
+                            <h3 className={styles.footerTitle}>MusculoNeuro Rehab Physiotherapy Centre</h3>
                             <p className={styles.footerDescription}>
                                 Professional rehabilitation center providing comprehensive care for neurological and musculoskeletal conditions.
                                 Our expert team is dedicated to helping you regain independence and improve quality of life.

@@ -32,7 +32,7 @@ const Home = () => {
 
     const heroData = {
         title: 'Expert Ortho, Neuro & Sports Rehabilitation Care',
-        subtitle: 'Welcome to MusculoNeuro Rehab',
+        subtitle: 'Welcome to MusculoNeuro Rehab Physiotherapy Centre',
         ctaText: 'Book Appointment',
         ctaLink: '/book-appointment',
         backgroundImage: '/img/hero/infrastructure-hero.jpg',
