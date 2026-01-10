@@ -39,9 +39,9 @@ const Contact = () => {
     return (
         <>
             <PageHelmet
-                title="Contact Us - MuscloNeuroRehab | Get in Touch"
-                description="Contact MuscloNeuroRehab for appointments, inquiries, or to learn more about our rehabilitation services. We're here to help you on your recovery journey."
-                keywords="contact MuscloNeuroRehab, rehabilitation center contact, book appointment, hospital address, phone number, email"
+                title="Contact Us - MusculoNeuro Rehab | Get in Touch"
+                description="Contact MusculoNeuro Rehab for appointments, inquiries, or to learn more about our rehabilitation services. We're here to help you on your recovery journey."
+                keywords="contact MusculoNeuro Rehab, rehabilitation center contact, book appointment, hospital address, phone number, email"
                 canonicalUrl="https://musculoneurorehab.com/contact"
             />
 
@@ -123,7 +123,7 @@ const Contact = () => {
                             allowFullScreen=""
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
-                            title="MuscloNeuroRehab Location"
+                            title="MusculoNeuro Rehab Location"
                         />
                     </div>
                 </div>

@@ -14,7 +14,7 @@ const Conditions = () => {
     return (
         <>
             <PageHelmet
-                title="Conditions We Treat - MuscloNeuroRehab | Expert Rehabilitation Care"
+                title="Conditions We Treat - MusculoNeuro Rehab | Expert Rehabilitation Care"
                 description="We specialize in treating stroke, spinal cord injuries, traumatic brain injury, Parkinson's disease, multiple sclerosis, cerebral palsy, and more."
                 keywords="stroke rehabilitation, spinal cord injury treatment, traumatic brain injury, Parkinson's disease, multiple sclerosis, cerebral palsy, orthopedic rehabilitation"
                 canonicalUrl="https://musculoneurorehab.com/conditions"

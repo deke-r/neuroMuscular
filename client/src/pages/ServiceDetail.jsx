@@ -25,9 +25,9 @@ const ServiceDetail = () => {
     return (
         <>
             <PageHelmet
-                title={`${service.title} | MuscloNeuroRehab`}
+                title={`${service.title} | MusculoNeuro Rehab`}
                 description={service.description}
-                keywords={`${service.title}, rehabilitation, therapy, MuscloNeuroRehab`}
+                keywords={`${service.title}, rehabilitation, therapy, MusculoNeuro Rehab`}
                 canonicalUrl={`https://musculoneurorehab.com/services/${service.id}`}
             />
 

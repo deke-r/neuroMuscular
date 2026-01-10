@@ -212,7 +212,7 @@ const Dashboard = () => {
             {/* Sidebar */}
             <aside className={styles.sidebar}>
                 <div className={styles.sidebarHeader}>
-                    <h2 className={styles.logo}>MuscloNeuroRehab</h2>
+                    <h2 className={styles.logo}>MusculoNeuro Rehab</h2>
                     <p className={styles.adminLabel}>Admin Panel</p>
                 </div>
 

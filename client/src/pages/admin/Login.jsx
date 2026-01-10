@@ -48,7 +48,7 @@ const Login = () => {
             <div className={styles.loginContainer}>
                 <div className={styles.loginCard}>
                     <div className={styles.logoSection}>
-                        <h1 className={styles.title}>MuscloNeuroRehab</h1>
+                        <h1 className={styles.title}>MusculoNeuro Rehab</h1>
                         <p className={styles.subtitle}>Admin Portal</p>
                     </div>
 

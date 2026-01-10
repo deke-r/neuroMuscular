@@ -27,9 +27,9 @@ const Footer = () => {
     };
 
     const socialLinks = [
-        { icon: FaFacebookF, url: 'https://www.facebook.com/MuscloNeuroRehab', label: 'Facebook' },
+        { icon: FaFacebookF, url: 'https://www.facebook.com/musculoneurorehab', label: 'Facebook' },
         { icon: FaTwitter, url: 'https://x.com/musculoneuro', label: 'Twitter' },
-        { icon: FaInstagram, url: 'https://www.instagram.com/MuscloNeuroRehab/', label: 'Instagram' },
+        { icon: FaInstagram, url: 'https://www.instagram.com/musculoneurorehab/', label: 'Instagram' },
         { icon: FaLinkedinIn, url: 'https://www.linkedin.com/in/musculoneuro-rehab-physiotherapy-centre-b221543a2/', label: 'LinkedIn' }
     ];
 
@@ -118,7 +118,7 @@ const Footer = () => {
 
                 <div className={styles.footerBottom}>
                     <p className={styles.copyright}>
-                        © {new Date().getFullYear()} MuscloNeuroRehab. All rights reserved.
+                        © {new Date().getFullYear()} MusculoNeuro Rehab. All rights reserved.
                     </p>
                     <div className={styles.footerBottomLinks}>
                         <Link to="/privacy" className={styles.bottomLink}>Privacy Policy</Link>

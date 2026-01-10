@@ -231,7 +231,7 @@ const BookAppointment = () => {
         return (
             <>
                 <PageHelmet
-                    title="Appointment Confirmed - MuscloNeuroRehab"
+                    title="Appointment Confirmed - MusculoNeuro Rehab"
                     description="Your appointment has been successfully booked."
                     keywords="appointment confirmed, booking success"
                     canonicalUrl="https://musculoneurorehab.com/book-appointment"
@@ -268,9 +268,9 @@ const BookAppointment = () => {
     return (
         <>
             <PageHelmet
-                title="Book Appointment - MuscloNeuroRehab | Schedule Your Visit"
+                title="Book Appointment - MusculoNeuro Rehab | Schedule Your Visit"
                 description="Book an appointment with our expert rehabilitation specialists. Choose your doctor, select a service, and pick a convenient time slot."
-                keywords="book appointment, schedule visit, doctor appointment, rehabilitation booking, MuscloNeuroRehab appointment"
+                keywords="book appointment, schedule visit, doctor appointment, rehabilitation booking, MusculoNeuro Rehab appointment"
                 canonicalUrl="https://musculoneurorehab.com/book-appointment"
             />
 

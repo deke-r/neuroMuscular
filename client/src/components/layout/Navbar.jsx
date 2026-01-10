@@ -44,7 +44,7 @@ const Navbar = () => {
                 <div className="container">
                     <div className={styles.navContent}>
                         <Link to="/" className={styles.logo} onClick={closeMenu}>
-                            <img src="/img/logo.png" alt="MuscloNeuroRehab" className={styles.logoImage} />
+                            <img src="/img/logo.png" alt="MusculoNeuro Rehab" className={styles.logoImage} />
                         </Link>
 
                         <button

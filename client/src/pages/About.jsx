@@ -70,7 +70,7 @@ const About = () => {
             />
 
             <PageHeader
-                title="About MusculoNeuroRehab"
+                title="About MusculoNeuro Rehab"
                 subtitle="Dedicated to Restoring Lives and Rebuilding Hope"
                 breadcrumbs={breadcrumbs}
                 backgroundImage="/img/hero/about-hero.jpg"
@@ -86,7 +86,7 @@ const About = () => {
                                 align="left"
                             />
                             <p style={{ fontSize: 'var(--font-size-lg)', lineHeight: 'var(--line-height-relaxed)', color: 'var(--color-gray-600)' }}>
-                                MuscloNeuroRehab is a professional rehabilitation center dedicated to providing world-class rehabilitation services
+                                MusculoNeuro Rehab is a professional rehabilitation center dedicated to providing world-class rehabilitation services
                                 to patients recovering from neurological and musculoskeletal conditions. Our vision is to become
                                 a premier destination for comprehensive rehabilitation care.
                             </p>

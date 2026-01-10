@@ -14,7 +14,7 @@ const Services = () => {
     return (
         <>
             <PageHelmet
-                title="Our Services - MuscloNeuroRehab | Comprehensive Rehabilitation Care"
+                title="Our Services - MusculoNeuro Rehab | Comprehensive Rehabilitation Care"
                 description="Explore our comprehensive rehabilitation services including neuro rehabilitation, physical therapy, occupational therapy, speech therapy, geriatric rehabilitation, pelvic floor rehabilitation, and more."
                 keywords="rehabilitation services, neuro rehabilitation, physical therapy, occupational therapy, speech therapy, pediatric rehabilitation, sports rehabilitation, geriatric rehabilitation, pelvic floor rehabilitation"
                 canonicalUrl="https://musculoneurorehab.com/services"
