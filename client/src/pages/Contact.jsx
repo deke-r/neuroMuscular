@@ -26,8 +26,8 @@ const Contact = () => {
         {
             icon: FaEnvelope,
             title: 'Email',
-            content: 'info@muscloneurorehab.com',
-            link: 'mailto:info@muscloneurorehab.com'
+            content: 'info@musculoneurorehab.com',
+            link: 'mailto:info@musculoneurorehab.com'
         },
         {
             icon: FaClock,

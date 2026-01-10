@@ -34,8 +34,8 @@ const sendContactEmail = async (req, res) => {
         }
 
         const transporter = createTransporter();
-       
-        const recipientEmail=['info@muscloneurorehab.com','musculoneurorehab@gmail.com']
+
+        const recipientEmail = ['info@musculoneurorehab.com', 'musculoneurorehab@gmail.com']
 
         console.log('📧 Sending contact form email to:', recipientEmail);
 
@@ -90,7 +90,7 @@ const sendContactEmail = async (req, res) => {
                         <h3 style="margin-top: 0;">Contact Information</h3>
                         <p style="margin: 5px 0;">📍 Plot number 114 Ground floor, Pocket 1 Jasola, Near DAV school opposite Police park, New Delhi, Delhi - 110025</p>
                         <p style="margin: 5px 0;">📞 +91 8882270509</p>
-                        <p style="margin: 5px 0;">📧 info@muscloneurorehab.com</p>
+                        <p style="margin: 5px 0;">📧 info@musculoneurorehab.com</p>
                     </div>
                     <p style="line-height: 1.6; color: #555;">
                         Best regards,<br>

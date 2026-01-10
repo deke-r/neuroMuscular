@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { FaCheckCircle } from 'react-icons/fa';
 import styles from '../../styles/form/ContactForm.module.css';
@@ -8,6 +9,7 @@ const ContactForm = ({
     submitButtonText = 'Send Message',
     successMessage = 'Thank you for contacting us! We will get back to you within 24 hours.'
 }) => {
+    const navigate = useNavigate();
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
@@ -29,13 +31,9 @@ const ContactForm = ({
             const result = await response.json();
 
             if (response.ok && result.success) {
-                setIsSubmitted(true);
                 reset();
-
-                // Reset success message after 5 seconds
-                setTimeout(() => {
-                    setIsSubmitted(false);
-                }, 5000);
+                // Redirect to thank you page
+                navigate('/thank-you');
             } else {
                 setErrorMessage(result.message || 'Failed to send message. Please try again.');
             }

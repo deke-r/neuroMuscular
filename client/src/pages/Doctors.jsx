@@ -87,7 +87,7 @@ const Doctors = () => {
                 description="Book an appointment with one of our expert specialists and start your journey to recovery."
                 buttonText="Book Appointment"
                 buttonLink="/book-appointment"
-                variant="secondary"
+                variant="primary"
             />
         </>
     );

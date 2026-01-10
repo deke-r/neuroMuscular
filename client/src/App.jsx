@@ -17,6 +17,7 @@ import Infrastructure from './pages/Infrastructure';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 import BookAppointment from './pages/BookAppointment';
+import ThankYou from './pages/ThankYou';
 import AdminLogin from './pages/admin/Login';
 import ForgotPassword from './pages/admin/ForgotPassword';
 import Dashboard from './pages/admin/Dashboard';
@@ -24,10 +25,12 @@ import Dashboard from './pages/admin/Dashboard';
 const AppContent = () => {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
+  const isThankYouPage = location.pathname === '/thank-you';
+  const hideLayout = isAdminRoute || isThankYouPage;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      {!isAdminRoute && <Navbar />}
+      {!hideLayout && <Navbar />}
       <main style={{ flex: 1 }}>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -42,12 +45,13 @@ const AppContent = () => {
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/book-appointment" element={<BookAppointment />} />
+          <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/forgot-password" element={<ForgotPassword />} />
           <Route path="/admin/dashboard/*" element={<Dashboard />} />
         </Routes>
       </main>
-      {!isAdminRoute && <Footer />}
+      {!hideLayout && <Footer />}
     </div>
   );
 };

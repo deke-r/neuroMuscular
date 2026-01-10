@@ -76,7 +76,7 @@ app.get('/api/test', (req, res) => {
         emailConfig: {
             mailUser: process.env.MAIL_USER ? 'Configured ✅' : 'Missing ❌',
             mailPass: process.env.MAIL_PASS ? 'Configured ✅' : 'Missing ❌',
-            emailRecipient: process.env.EMAIL_RECIPIENT || 'info@muscloneurorehab.com (default)'
+            emailRecipient: process.env.EMAIL_RECIPIENT || 'info@musculoneurorehab.com (default)'
         },
         database: 'Connected',
         port: process.env.PORT || 5000

@@ -63,14 +63,14 @@ const About = () => {
     return (
         <>
             <PageHelmet
-                title="About Us - MuscloNeuroRehab | Leading Rehabilitation Center"
-                description="Learn about MuscloNeuroRehab, our expert team, state-of-the-art facilities, and commitment to providing exceptional rehabilitation care in Delhi."
-                keywords="about MuscloNeuroRehab, rehabilitation center Delhi, expert rehabilitation team, neuro rehabilitation facility"
+                title="About Us - MusculoNeuroRehab | Leading Rehabilitation Center"
+                description="Learn about MusculoNeuroRehab, our expert team, state-of-the-art facilities, and commitment to providing exceptional rehabilitation care in Delhi."
+                keywords="about MusculoNeuroRehab, rehabilitation center Delhi, expert rehabilitation team, neuro rehabilitation facility"
                 canonicalUrl="https://musculoneurorehab.com/about"
             />
 
             <PageHeader
-                title="About MuscloNeuroRehab"
+                title="About MusculoNeuroRehab"
                 subtitle="Dedicated to Restoring Lives and Rebuilding Hope"
                 breadcrumbs={breadcrumbs}
                 backgroundImage="/img/hero/about-hero.jpg"
@@ -184,7 +184,7 @@ const About = () => {
                 description="Book an appointment with one of our expert specialists and start your journey to recovery."
                 buttonText="Book Appointment"
                 buttonLink="/book-appointment"
-                variant="secondary"
+                variant="primary"
             />
         </>
     );

@@ -23,7 +23,7 @@ const Footer = () => {
     const contactInfo = {
         address: 'Plot number 114 Ground floor, Pocket 1 Jasola, Near DAV school opposite Police park, New Delhi, Delhi - 110025',
         phone: '+91 8882270509',
-        email: 'info@muscloneurorehab.com'
+        email: 'info@musculoneurorehab.com'
     };
 
     const socialLinks = [
@@ -39,7 +39,7 @@ const Footer = () => {
                 <div className="row g-4">
                     <div className="col-lg-4 col-md-6">
                         <div className={styles.footerSection}>
-                            <h3 className={styles.footerTitle}>MuscloNeuroRehab</h3>
+                            <h3 className={styles.footerTitle}>MusculoNeuro Rehab</h3>
                             <p className={styles.footerDescription}>
                                 Professional rehabilitation center providing comprehensive care for neurological and musculoskeletal conditions.
                                 Our expert team is dedicated to helping you regain independence and improve quality of life.

@@ -31,9 +31,9 @@ const Navbar = () => {
                                 <FaPhone className={styles.contactIcon} />
                                 <span>+91 8882270509</span>
                             </a>
-                            <a href="mailto:info@muscloneurorehab.com" className={styles.contactLink}>
+                            <a href="mailto:info@musculoneurorehab.com" className={styles.contactLink}>
                                 <FaEnvelope className={styles.contactIcon} />
-                                <span>info@muscloneurorehab.com</span>
+                                <span>info@musculoneurorehab.com</span>
                             </a>
                         </div>
                     </div>
