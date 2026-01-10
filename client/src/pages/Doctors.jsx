@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import PageHelmet from '../utils/PageHelmet.jsx';
 import PageHeader from '../components/layout/PageHeader';
@@ -6,6 +7,7 @@ import DoctorCard from '../components/cards/DoctorCard';
 import CTASection from '../components/sections/CTASection';
 
 const Doctors = () => {
+    const navigate = useNavigate();
     const [doctors, setDoctors] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -30,6 +32,10 @@ const Doctors = () => {
         { label: 'Home', path: '/' },
         { label: 'Doctors', path: '/doctors' }
     ];
+
+    const handleDoctorClick = () => {
+        navigate('/book-appointment');
+    };
 
     return (
         <>
@@ -68,7 +74,7 @@ const Doctors = () => {
                         <div className="row g-4 justify-content-center">
                             {doctors.map((doctor) => (
                                 <div key={doctor.id} className="col-lg-4 col-md-6">
-                                    <DoctorCard {...doctor} />
+                                    <DoctorCard {...doctor} onClick={handleDoctorClick} />
                                 </div>
                             ))}
                         </div>
