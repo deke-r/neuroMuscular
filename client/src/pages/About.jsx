@@ -98,7 +98,7 @@ const About = () => {
                         <div className="col-lg-6">
                             <div className="row g-4">
                                 <div className="col-6">
-                                    <StatsBox number={doctors.length.toString()} suffix="" label="Expert Physiotherapists" />
+                                    <StatsBox number="2" suffix="" label="Expert Physiotherapists" />
                                 </div>
                                 <div className="col-6">
                                     <StatsBox number={services.length.toString()} suffix="" label="Specialized Services" />
