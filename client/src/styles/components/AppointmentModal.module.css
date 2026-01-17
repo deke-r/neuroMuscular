@@ -1,0 +1,112 @@
+.appointmentModal :global(.modal-content) {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.modalHeader {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #0d6fa8 100%);
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 12px 12px 0 0;
+    border-bottom: none;
+    position: relative;
+}
+
+.modalTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    color: white;
+}
+
+.closeButton {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.closeButton:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) rotate(90deg);
+}
+
+.modalBody {
+    padding: 2rem;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/* Custom scrollbar for modal body */
+.modalBody::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modalBody::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.modalBody::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.modalBody::-webkit-scrollbar-thumb:hover {
+    background: #0d6fa8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .modalHeader {
+        padding: 1.25rem 1.5rem;
+    }
+
+    .modalTitle {
+        font-size: 1.25rem;
+        padding-right: 2rem;
+    }
+
+    .closeButton {
+        right: 1rem;
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+
+    .modalBody {
+        padding: 1.5rem;
+        max-height: 60vh;
+    }
+}
+
+@media (max-width: 576px) {
+    .appointmentModal :global(.modal-dialog) {
+        margin: 0.5rem;
+    }
+
+    .modalHeader {
+        padding: 1rem 1.25rem;
+    }
+
+    .modalTitle {
+        font-size: 1.1rem;
+    }
+
+    .modalBody {
+        padding: 1.25rem;
+    }
+}

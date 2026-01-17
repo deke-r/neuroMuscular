@@ -1,0 +1,193 @@
+.formWrapper {
+    width: 100%;
+}
+
+.form {
+    width: 100%;
+}
+
+.formGroup {
+    margin-bottom: 0.5rem;
+}
+
+.label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.input:focus,
+.textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(18, 137, 191, 0.1);
+}
+
+.input.error,
+.textarea.error {
+    border-color: #dc3545;
+}
+
+.input.error:focus,
+.textarea.error:focus {
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.errorMessage {
+    display: block;
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    font-weight: 500;
+}
+
+.errorMessageBox {
+    background-color: #f8d7da;
+    border: 1px solid #f5c2c7;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.errorMessageBox p {
+    margin: 0;
+    color: #842029;
+    font-weight: 500;
+}
+
+.successMessage {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    border: 1px solid #c3e6cb;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    animation: slideIn 0.3s ease;
+}
+
+.successIcon {
+    font-size: 3rem;
+    color: #28a745;
+    margin-bottom: 1rem;
+    animation: scaleIn 0.5s ease;
+}
+
+.successMessage p {
+    margin: 0;
+    color: #155724;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.submitButton {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #0d6fa8 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.submitButton:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(18, 137, 191, 0.3);
+}
+
+.submitButton:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.submitButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .label {
+        font-size: 0.9rem;
+    }
+
+    .input,
+    .textarea {
+        padding: 0.65rem 0.85rem;
+        font-size: 0.95rem;
+    }
+
+    .submitButton {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .successIcon {
+        font-size: 2.5rem;
+    }
+
+    .successMessage p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .input,
+    .textarea {
+        padding: 0.6rem 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .submitButton {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.95rem;
+    }
+}

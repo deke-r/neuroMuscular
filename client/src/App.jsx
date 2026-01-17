@@ -21,6 +21,7 @@ import ThankYou from './pages/ThankYou';
 import AdminLogin from './pages/admin/Login';
 import ForgotPassword from './pages/admin/ForgotPassword';
 import Dashboard from './pages/admin/Dashboard';
+import AdLanding from './pages/AdLanding';
 
 const AppContent = () => {
   const location = useLocation();
@@ -45,6 +46,7 @@ const AppContent = () => {
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/book-appointment" element={<BookAppointment />} />
+          <Route path="/ad" element={<AdLanding />} />
           <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/forgot-password" element={<ForgotPassword />} />
