@@ -131,7 +131,7 @@ const AdLanding = () => {
             />
 
             {/* CTA Banner 3 */}
-            <section className={styles.ctaBanner}>
+            <section className={styles.darkBanner}>
                 <div className="container">
                     <div className={styles.ctaContent}>
                         <h2>Experience the Difference</h2>
