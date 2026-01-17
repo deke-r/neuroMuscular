@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { FaAward, FaUsers, FaHospital, FaPhoneAlt } from 'react-icons/fa';
 import PageHelmet from '../utils/PageHelmet.jsx';
@@ -6,17 +7,17 @@ import HeroSection from '../components/sections/HeroSection';
 import ServicesSection from '../components/sections/ServicesSection';
 import DoctorsSection from '../components/sections/DoctorsSection';
 import TestimonialsSection from '../components/sections/TestimonialsSection';
-import AppointmentModal from '../components/common/AppointmentModal';
-import AdLandingForm from '../components/forms/AdLandingForm';
 import StatsBox from '../components/common/StatsBox';
+import AdNavbar from '../components/layout/AdNavbar';
+import AdFooter from '../components/layout/AdFooter';
 import { services } from '../data/services.data';
 import { testimonials } from '../data/testimonials.data';
 import styles from '../styles/pages/AdLanding.module.css';
 
 const AdLanding = () => {
+    const navigate = useNavigate();
     const [doctors, setDoctors] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         fetchDoctors();
@@ -33,26 +34,15 @@ const AdLanding = () => {
         }
     };
 
-    const handleOpenModal = () => {
-        setShowModal(true);
-    };
-
-    const handleCloseModal = () => {
-        setShowModal(false);
-    };
-
-    const handleFormSuccess = () => {
-        // Close modal after successful submission
-        setTimeout(() => {
-            handleCloseModal();
-        }, 2500);
+    const handleBookAppointment = () => {
+        navigate('/book-appointment');
     };
 
     const heroData = {
         title: 'Transform Your Life with Expert Rehabilitation',
         subtitle: 'Professional Physiotherapy & Neuro Rehabilitation Services',
         ctaText: 'Book Free Consultation',
-        ctaLink: '#',
+        ctaLink: '/book-appointment',
         backgroundImage: '/img/hero/ad-landing-hero.jpg',
         features: [
             { icon: FaAward, text: 'Certified Specialists' },
@@ -71,18 +61,13 @@ const AdLanding = () => {
                 title="Expert Rehabilitation Services - Book Your Appointment Today"
                 description="Get professional physiotherapy and neuro rehabilitation services from certified specialists. Book your free consultation now and start your recovery journey."
                 keywords="physiotherapy, neuro rehabilitation, physical therapy, sports rehabilitation, pain management, expert physiotherapists"
-                canonicalUrl="https://musculoneurorehab.com/ad"
+                canonicalUrl="https://musculoneurorehab.com/expert-rehab"
             />
 
+            <AdNavbar />
+
             {/* Hero Section with CTA */}
-            <div onClick={(e) => {
-                if (e.target.closest('a') || e.target.closest('button')) {
-                    e.preventDefault();
-                    handleOpenModal();
-                }
-            }}>
-                <HeroSection {...heroData} />
-            </div>
+            <HeroSection {...heroData} />
 
             {/* Stats Section */}
             <section className="section-padding" style={{ background: '#f8f9fa' }}>
@@ -105,12 +90,12 @@ const AdLanding = () => {
             </section>
 
             {/* CTA Banner 1 */}
-            <section className={styles.ctaBanner}>
+            <section className={styles.darkBanner}>
                 <div className="container">
                     <div className={styles.ctaContent}>
                         <h2>Ready to Start Your Recovery?</h2>
                         <p>Book your appointment today and get personalized treatment from our expert team</p>
-                        <button onClick={handleOpenModal} className={styles.ctaButton}>
+                        <button onClick={handleBookAppointment} className={styles.greenButton}>
                             Book Appointment Now
                         </button>
                     </div>
@@ -130,7 +115,7 @@ const AdLanding = () => {
                     <div className={styles.ctaContent}>
                         <h2>Don't Wait - Take Action Today!</h2>
                         <p>Limited slots available. Book now to secure your preferred time</p>
-                        <button onClick={handleOpenModal} className={styles.ctaButton}>
+                        <button onClick={handleBookAppointment} className={styles.whiteButton}>
                             Schedule Your Visit
                         </button>
                     </div>
@@ -142,6 +127,7 @@ const AdLanding = () => {
                 title="Meet Our Expert Specialists"
                 subtitle="Our Team"
                 doctors={doctors.slice(0, 3)}
+                onDoctorClick={handleBookAppointment}
             />
 
             {/* CTA Banner 3 */}
@@ -150,7 +136,7 @@ const AdLanding = () => {
                     <div className={styles.ctaContent}>
                         <h2>Experience the Difference</h2>
                         <p>Join thousands of satisfied patients who have transformed their lives</p>
-                        <button onClick={handleOpenModal} className={styles.ctaButton}>
+                        <button onClick={handleBookAppointment} className={styles.greenButton}>
                             Get Started Today
                         </button>
                     </div>
@@ -171,10 +157,10 @@ const AdLanding = () => {
                         <h2>Your Journey to Recovery Starts Here</h2>
                         <p>Take the first step towards a healthier, pain-free life. Our expert team is ready to help you achieve your rehabilitation goals.</p>
                         <div className={styles.ctaButtons}>
-                            <button onClick={handleOpenModal} className={styles.primaryButton}>
+                            <button onClick={handleBookAppointment} className={styles.greenButton}>
                                 Book Free Consultation
                             </button>
-                            <a href="tel:+911234567890" className={styles.secondaryButton}>
+                            <a href="tel:+918882270509" className={styles.secondaryButton}>
                                 <FaPhoneAlt /> Call Now
                             </a>
                         </div>
@@ -183,10 +169,7 @@ const AdLanding = () => {
                 </div>
             </section>
 
-            {/* Appointment Modal */}
-            <AppointmentModal show={showModal} onClose={handleCloseModal}>
-                <AdLandingForm onSuccess={handleFormSuccess} />
-            </AppointmentModal>
+            <AdFooter />
         </>
     );
 };

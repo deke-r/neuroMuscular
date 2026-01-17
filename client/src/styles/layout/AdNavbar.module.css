@@ -1,0 +1,79 @@
+.navbar {
+    background-color: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.logo {
+    height: 60px;
+    width: auto;
+}
+
+.contactInfo {
+    margin-left: auto;
+}
+
+.phoneLink {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.phoneLink:hover {
+    transform: translateY(-2px);
+}
+
+.iconBox {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #1289BF 0%, #0d6fa8 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(18, 137, 191, 0.3);
+}
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.number {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .logo {
+        height: 45px;
+    }
+
+    .label {
+        display: none;
+    }
+
+    .number {
+        font-size: 1rem;
+    }
+
+    .iconBox {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+}

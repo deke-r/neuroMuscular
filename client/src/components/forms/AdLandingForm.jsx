@@ -144,41 +144,7 @@ const AdLandingForm = ({ onSuccess }) => {
                             </div>
                         </div>
 
-                        <div className="col-md-6">
-                            <div className={styles.formGroup}>
-                                <label htmlFor="date" className={styles.label}>Preferred Date *</label>
-                                <input
-                                    id="date"
-                                    type="date"
-                                    className={`${styles.input} ${errors.date ? styles.error : ''}`}
-                                    min={new Date().toISOString().split('T')[0]}
-                                    {...register('date', { required: 'Date is required' })}
-                                />
-                                {errors.date && <span className={styles.errorMessage}>{errors.date.message}</span>}
-                            </div>
-                        </div>
 
-                        <div className="col-md-6">
-                            <div className={styles.formGroup}>
-                                <label htmlFor="time" className={styles.label}>Preferred Time *</label>
-                                <select
-                                    id="time"
-                                    className={`${styles.input} ${errors.time ? styles.error : ''}`}
-                                    {...register('time', { required: 'Please select a time' })}
-                                >
-                                    <option value="">Select a time</option>
-                                    <option value="09:00">09:00 AM</option>
-                                    <option value="10:00">10:00 AM</option>
-                                    <option value="11:00">11:00 AM</option>
-                                    <option value="12:00">12:00 PM</option>
-                                    <option value="14:00">02:00 PM</option>
-                                    <option value="15:00">03:00 PM</option>
-                                    <option value="16:00">04:00 PM</option>
-                                    <option value="17:00">05:00 PM</option>
-                                </select>
-                                {errors.time && <span className={styles.errorMessage}>{errors.time.message}</span>}
-                            </div>
-                        </div>
 
                         <div className="col-12">
                             <div className={styles.formGroup}>

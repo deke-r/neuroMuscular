@@ -27,7 +27,8 @@ const AppContent = () => {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
   const isThankYouPage = location.pathname === '/thank-you';
-  const hideLayout = isAdminRoute || isThankYouPage;
+  const isAdPage = location.pathname === '/expert-rehab';
+  const hideLayout = isAdminRoute || isThankYouPage || isAdPage;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
@@ -46,7 +47,7 @@ const AppContent = () => {
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/book-appointment" element={<BookAppointment />} />
-          <Route path="/ad" element={<AdLanding />} />
+          <Route path="/expert-rehab" element={<AdLanding />} />
           <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/forgot-password" element={<ForgotPassword />} />

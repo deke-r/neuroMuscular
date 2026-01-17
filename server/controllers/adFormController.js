@@ -14,10 +14,10 @@ const createTransporter = () => {
 // Send ad form appointment email
 const sendAdFormEmail = async (req, res) => {
     try {
-        const { name, email, phone, service, date, time, message } = req.body;
+        const { name, email, phone, service, message } = req.body;
 
         // Validate required fields
-        if (!name || !email || !phone || !service || !date || !time) {
+        if (!name || !email || !phone || !service) {
             return res.status(400).json({
                 success: false,
                 message: 'All required fields must be filled'
@@ -61,10 +61,8 @@ const sendAdFormEmail = async (req, res) => {
                         <p style="margin: 10px 0;"><strong>Phone:</strong> ${phone}</p>
                     </div>
                     <div style="background-color: #f9f9f9; padding: 20px; border-radius: 5px; margin: 20px 0;">
-                        <h3 style="color: #333; margin-top: 0;">Appointment Details</h3>
+                        <h3 style="color: #333; margin-top: 0;">Appointment Request</h3>
                         <p style="margin: 10px 0;"><strong>Service Required:</strong> ${service}</p>
-                        <p style="margin: 10px 0;"><strong>Preferred Date:</strong> ${date}</p>
-                        <p style="margin: 10px 0;"><strong>Preferred Time:</strong> ${time}</p>
                     </div>
                     ${message ? `
                     <div style="margin: 20px 0;">
@@ -103,8 +101,6 @@ const sendAdFormEmail = async (req, res) => {
                     <div style="background-color: #f9f9f9; padding: 20px; border-radius: 5px; margin: 20px 0;">
                         <h3 style="color: #333; margin-top: 0;">Your Appointment Request Details:</h3>
                         <p style="margin: 10px 0;"><strong>Service:</strong> ${service}</p>
-                        <p style="margin: 10px 0;"><strong>Preferred Date:</strong> ${date}</p>
-                        <p style="margin: 10px 0;"><strong>Preferred Time:</strong> ${time}</p>
                     </div>
                     <div style="background-color: #d1ecf1; padding: 15px; border-left: 4px solid #0c5460; margin: 20px 0;">
                         <p style="margin: 0; color: #0c5460;">

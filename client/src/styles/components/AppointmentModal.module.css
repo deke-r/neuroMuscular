@@ -1,7 +1,17 @@
-.appointmentModal :global(.modal-content) {
+.modalDialog {
+    max-width: 800px;
+}
+
+.modalContent {
+    background-color: white;
     border-radius: 12px;
     border: none;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    outline: 0;
 }
 
 .modalHeader {
@@ -11,6 +21,9 @@
     border-radius: 12px 12px 0 0;
     border-bottom: none;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .modalTitle {
@@ -24,10 +37,10 @@
     position: absolute;
     right: 1.5rem;
     top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%) !important;
+    background: white;
     border: none;
-    color: white;
+    color: #333333;
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -37,11 +50,15 @@
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 1.2rem;
+    padding: 0;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .closeButton:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-50%) rotate(90deg);
+    background: #f8f9fa;
+    transform: translateY(-50%) rotate(90deg) !important;
+    color: #d32f2f;
 }
 
 .modalBody {
@@ -77,11 +94,9 @@
 
     .modalTitle {
         font-size: 1.25rem;
-        padding-right: 2rem;
     }
 
     .closeButton {
-        right: 1rem;
         width: 32px;
         height: 32px;
         font-size: 1rem;
@@ -94,7 +109,7 @@
 }
 
 @media (max-width: 576px) {
-    .appointmentModal :global(.modal-dialog) {
+    .modalDialog {
         margin: 0.5rem;
     }
 
