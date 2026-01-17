@@ -12,6 +12,27 @@
 
 .contactInfo {
     margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.bookButton {
+    background: linear-gradient(135deg, #7CC339 0%, #5fa028 100%);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(124, 195, 57, 0.3);
+    white-space: nowrap;
+}
+
+.bookButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(124, 195, 57, 0.4);
+    color: white;
 }
 
 .phoneLink {
@@ -61,6 +82,15 @@
 @media (max-width: 576px) {
     .logo {
         height: 45px;
+    }
+
+    .contactInfo {
+        gap: 0.75rem;
+    }
+
+    .bookButton {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
     }
 
     .label {

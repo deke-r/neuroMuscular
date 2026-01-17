@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaPhoneAlt } from 'react-icons/fa';
 import styles from '../../styles/layout/AdNavbar.module.css';
 
@@ -11,6 +12,10 @@ const AdNavbar = () => {
                 </div>
 
                 <div className={styles.contactInfo}>
+                    <Link to="/book-appointment" className={styles.bookButton}>
+                        Book Appointment
+                    </Link>
+
                     <a href="tel:+918882270509" className={styles.phoneLink}>
                         <div className={styles.iconBox}>
                             <FaPhoneAlt />

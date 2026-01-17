@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
@@ -9,6 +10,7 @@ import { fetchDoctors, fetchServicesByDoctor, fetchAvailableSlots } from '../uti
 import styles from '../styles/pages/BookAppointment.module.css';
 
 const BookAppointment = () => {
+    const navigate = useNavigate();
     const [doctors, setDoctors] = useState([]);
     const [services, setServices] = useState([]);
     const [availableSlots, setAvailableSlots] = useState([]);
@@ -17,7 +19,6 @@ const BookAppointment = () => {
     const [loadingServices, setLoadingServices] = useState(false);
     const [loadingSlots, setLoadingSlots] = useState(false);
     const [error, setError] = useState(null);
-    const [success, setSuccess] = useState(false);
     const [selectedDoctor, setSelectedDoctor] = useState(null);
 
     const {
@@ -140,30 +141,14 @@ const BookAppointment = () => {
 
             await axios.post(`${import.meta.env.VITE_API_URL}/api/appointments`, appointmentData);
 
-            setSuccess(true);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            navigate('/thank-you');
         } catch (err) {
             setError(err.response?.data?.message || 'Failed to book appointment. Please try again.');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     };
 
-    const handleBookAnother = () => {
-        setSuccess(false);
-        setSelectedDoctor(null);
-        setValue('doctorId', '');
-        setValue('serviceId', '');
-        setValue('appointmentDate', '');
-        setValue('appointmentTime', '');
-        setValue('patientName', '');
-        setValue('patientEmail', '');
-        setValue('patientPhone', '');
-        setValue('patientAge', '');
-        setValue('patientGender', '');
-        setValue('notes', '');
-        setServices([]);
-        setAvailableSlots([]);
-    };
+    // Get minimum date (today)
 
     // Get minimum date (today)
     const getMinDate = () => {
@@ -226,44 +211,6 @@ const BookAppointment = () => {
     const filterDate = (date) => {
         return !isDateDisabled(date);
     };
-
-    if (success) {
-        return (
-            <>
-                <PageHelmet
-                    title="Appointment Confirmed - MusculoNeuro Rehab"
-                    description="Your appointment has been successfully booked."
-                    keywords="appointment confirmed, booking success"
-                    canonicalUrl="https://musculoneurorehab.com/book-appointment"
-                />
-
-                <PageHeader
-                    title="Book an Appointment"
-                    subtitle="Schedule Your Visit with Our Expert Team"
-                    breadcrumbs={breadcrumbs}
-                    backgroundImage="/img/hero/contact-hero.jpg"
-                />
-
-                <div className={styles.appointmentPage}>
-                    <div className={styles.container}>
-                        <div className={styles.successCard}>
-                            <div className={styles.successIcon}>✓</div>
-                            <h2 className={styles.successTitle}>Appointment Booked Successfully!</h2>
-                            <p className={styles.successMessage}>
-                                Your appointment has been confirmed. You will receive a confirmation email shortly.
-                            </p>
-                            <button
-                                onClick={handleBookAnother}
-                                className={styles.btnPrimary}
-                            >
-                                Book Another Appointment
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </>
-        );
-    }
 
     return (
         <>
